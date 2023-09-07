@@ -1,0 +1,150 @@
+/* Menambahkan garis bawah (underline) dan animasi saat tautan aktif dan hover */
+.navbar-nav .nav-link {
+    text-decoration: none; /* Hapus efek underline default */
+    position: relative; /* Atur posisi relatif untuk animasi */
+    color: #000000; /* Mengubah warna teks menjadi kuning */
+    transition: color 0.3s, transform 0.3s; /* Animasi transisi untuk warna dan transform */
+}
+
+.navbar-nav .nav-link.active {
+    text-decoration: none; /* Hapus efek underline default */
+    position: relative; /* Atur posisi relatif untuk animasi */
+    font-weight: bold; /* Membuat teks lebih tebal saat aktif */
+    color: #FFD700; /* Mengubah warna teks menjadi kuning saat aktif */
+}
+
+.navbar-nav .nav-link.active::before,
+.navbar-nav .nav-link:not(.active)::before {
+    content: ''; /* Tambahkan konten kosong */
+    position: absolute;
+    bottom: -2px; /* Geser garis bawah ke bawah teks */
+    left: 0;
+    right: 0;
+    height: 2px; /* Ketebalan garis bawah */
+    background-color: #FFD700; /* Warna garis bawah */
+    transform: scaleX(0); /* Skala X nol untuk memulai */
+    transform-origin: center; /* Pusat transformasi */
+    transition: transform 0.3s ease; /* Animasi transisi */
+}
+
+.navbar-nav .nav-link.active:hover::before {
+    transform: scaleX(1); /* Skala X 1 untuk efek animasi saat hover pada tautan yang aktif */
+}
+
+.navbar-nav .nav-link:not(.active):hover::before {
+    transform: scaleX(1); /* Skala X 1 untuk efek animasi saat hover pada tautan yang tidak aktif */
+}
+
+.navbar-nav .nav-link:hover {
+    color: #FFD700; /* Warna teks saat hover pada tautan yang tidak aktif */
+}
+
+/* CSS untuk teks di atas gambar */
+.image-under-navbar h1 {
+    position: absolute;
+    top: 10px; /* Atur posisi teks di atas gambar sesuai kebutuhan Anda */
+    left: 10px; /* Atur posisi teks di atas gambar sesuai kebutuhan Anda */
+    color: #fff; /* Warna teks */
+    background-color: rgba(0, 0, 0, 0.5); /* Latar belakang teks dengan efek transparan */
+    padding: 10px; /* Padding teks */
+    font-size: 24px; /* Ukuran font teks */
+    font-weight: bold; /* Membuat teks lebih tebal */
+}
+
+/* Tambahan: CSS untuk tombol CTA */
+.cta-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Tambahkan CSS khusus untuk footer di sini */
+footer {
+    background-color: #02021E;
+    color: #fff;
+    padding: 30px 0;
+}
+
+footer hr {
+    color: white;
+}
+
+footer h4 {
+    color: #FFD700;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #FFD700;
+}
+
+footer hr {
+    border-top: 1px solid #3a3a3a;
+}
+
+footer p {
+    margin-top: 10px;
+}
+
+/* CSS untuk tombol Back to Top */
+#back-to-top {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+}
+
+#back-to-top a {
+    font-size: 24px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 50%;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+}
+
+#back-to-top a:hover {
+    background-color: #0056b3;
+}
+
+/* Gaya untuk tombol "Hubungi Kami" */
+.contact-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.contact-button:hover {
+    background-color: #0056b3;
+}
+
+/* Gaya untuk ikon font-awesome */
+.fa-envelope {
+    margin-right: 10px;
+}
+
+/* Tampilan tombol Login dan Register */
+@media (max-width: 576px) {
+    .navbar-nav {
+        flex-direction: column;
+        text-align: center;
+    }
+    .navbar-nav .nav-item {
+        margin-bottom: 10px;
+    }
+    .d-flex {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    .d-flex a {
+        margin-top: 5px;
+    }
+}
