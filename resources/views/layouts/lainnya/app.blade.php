@@ -17,6 +17,62 @@
 
     {{-- CSS - CUSTOM --}}
     <link rel="stylesheet" href="{{ asset('/css/app-homepage.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/app2-homepage.css') }}">
+
+    <style>
+        /* CSS untuk teks di atas gambar */
+        .image-with-text {
+            position: relative;
+            text-align: center;
+        }
+
+        .text-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            text-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000, 1px 1px 1px #000;
+        }
+
+        /* Menggunakan Flexbox untuk mengatur tata letak */
+        .flex-container {
+            display: flex;
+            flex-direction: column;
+            /* Tampilkan elemen dalam kolom */
+            align-items: center;
+            /* Pusatkan elemen secara horizontal */
+        }
+
+        .text-overlay h2 {
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .text-overlay p {
+            font-size: 16px;
+        }
+
+        /* CSS untuk tampilan desktop */
+        .image-with-text img {
+            width: 120%;
+            /* Lebar gambar 100% dari lebar elemen parent */
+        }
+
+        /* CSS untuk tampilan perangkat seluler */
+        @media (max-width: 767px) {
+            .image-with-text img {
+                width: auto;
+                /* Reset lebar gambar menjadi ukuran aslinya */
+                max-width: 120%;
+                /* Maksimum lebar gambar 100% dari lebar elemen parent */
+                height: auto;
+                /* Atur tinggi gambar agar mengikuti proporsi aslinya */
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -45,11 +101,13 @@
                         </a>
                     </li>
                 </ul>
-            </div>
-            <!-- Tombol Login dan Register di pojok kanan -->
-            <div class="d-flex">
-                <a href="/login" class="btn btn-outline-primary" style="margin-right: 10px">Login</a>
-                <a href="/register" class="btn btn-outline-success">Register</a>
+                <!-- Tombol Login dan Register di pojok kanan -->
+                <div class="d-flex ms-auto justify-content-center">
+                    <center>
+                        <a href="/login" class="btn btn-outline-primary" style="margin-right: 10px">Login</a>
+                        <a href="/register" class="btn btn-outline-success">Register</a>
+                    </center>
+                </div>
             </div>
         </div>
     </nav>
@@ -58,7 +116,7 @@
 
     <!-- Tombol Back to Top -->
     <div id="back-to-top" class="position-fixed bottom-0 end-0 mb-4 me-4" style="display: none">
-        <a href="#" class="btn btn-primary">
+        <a href="#" class="btn-back-to-top rounded-3">
             <i class="fas fa-arrow-up"></i>
         </a>
     </div>

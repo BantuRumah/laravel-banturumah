@@ -98,17 +98,17 @@ footer p {
     z-index: 999;
 }
 
-#back-to-top a {
+.btn-back-to-top {
     font-size: 24px;
     text-decoration: none;
     color: #fff;
     background-color: #007bff;
-    border-radius: 50%;
+    border-radius: 0; /* Membuat sudut tombol tanpa sudut (square) */
     padding: 10px;
     transition: background-color 0.3s ease;
 }
 
-#back-to-top a:hover {
+.btn-back-to-top:hover {
     background-color: #0056b3;
 }
 
@@ -132,7 +132,7 @@ footer p {
 }
 
 /* Tampilan tombol Login dan Register */
-@media (max-width: 576px) {
+@media (max-width: 767px) {
     .navbar-nav {
         flex-direction: column;
         text-align: center;
@@ -146,5 +146,8 @@ footer p {
     }
     .d-flex a {
         margin-top: 5px;
+    }
+    .navbar-collapse .navbar-nav.ml-auto {
+        justify-content: center;
     }
 }
