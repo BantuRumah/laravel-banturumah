@@ -20,58 +20,7 @@
     <link rel="stylesheet" href="{{ asset('/css/app2-homepage.css') }}">
 
     <style>
-        /* CSS untuk teks di atas gambar */
-        .image-with-text {
-            position: relative;
-            text-align: center;
-        }
 
-        .text-overlay {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            color: white;
-            text-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000, 1px 1px 1px #000;
-        }
-
-        /* Menggunakan Flexbox untuk mengatur tata letak */
-        .flex-container {
-            display: flex;
-            flex-direction: column;
-            /* Tampilkan elemen dalam kolom */
-            align-items: center;
-            /* Pusatkan elemen secara horizontal */
-        }
-
-        .text-overlay h2 {
-            font-size: 26px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .text-overlay p {
-            font-size: 16px;
-        }
-
-        /* CSS untuk tampilan desktop */
-        .image-with-text img {
-            width: 120%;
-            /* Lebar gambar 100% dari lebar elemen parent */
-        }
-
-        /* CSS untuk tampilan perangkat seluler */
-        @media (max-width: 767px) {
-            .image-with-text img {
-                width: auto;
-                /* Reset lebar gambar menjadi ukuran aslinya */
-                max-width: 120%;
-                /* Maksimum lebar gambar 100% dari lebar elemen parent */
-                height: auto;
-                /* Atur tinggi gambar agar mengikuti proporsi aslinya */
-            }
-        }
     </style>
 </head>
 

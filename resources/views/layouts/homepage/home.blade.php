@@ -22,7 +22,7 @@
                     dengan fasilitas yang dirancang khusus untuk mereka. Dengan daycare ini, orangtua dapat bekerja dengan
                     tenang, sambil tahu bahwa anak-anak mereka dalam perawatan yang baik dan penuh kasih.
                 </p>
-                <a href="/layanan-anak" class="btn btn-primary mb-4">Layanan Anak</a>
+                <a href="#" class="btn btn-primary mb-4">Selengkapnya</a>
             </div>
             <div class="col-md-6 mb-5">
                 <img src="{{ asset('/img/gambar-anak.jpg') }}" alt="Gambar Anak" class="img-fluid">
@@ -41,7 +41,7 @@
                     sehari-hari, seperti membersihkan rumah, memasak makanan sehat, dan melakukan tugas-tugas lainnya sesuai
                     kebutuhan.
                 </p>
-                <a href="/layanan-orang-tua" class="btn btn-primary">Layanan Orang Tua</a>
+                <a href="#" class="btn btn-primary">Selengkapnya</a>
             </div>
         </div>
 
