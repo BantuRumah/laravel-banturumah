@@ -18,10 +18,7 @@
     {{-- CSS - CUSTOM --}}
     <link rel="stylesheet" href="{{ asset('/css/app-homepage.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/app2-homepage.css') }}">
-
-    <style>
-
-    </style>
+    <link rel="stylesheet" href="{{ asset('/css/slider.css') }}">
 </head>
 
 <body>
@@ -50,7 +47,6 @@
                         </a>
                     </li>
                 </ul>
-                <!-- Tombol Login dan Register di pojok kanan -->
                 <div class="d-flex ms-auto justify-content-center">
                     <center>
                         <a href="/login" class="btn btn-outline-primary" style="margin-right: 10px">Login</a>
@@ -159,6 +155,23 @@
     <script src="{{ asset('js/home-app.js') }}"></script>
 
     <script src="{{ asset('js/backtotop.js') }}"></script>
+
+    <script>
+        // Menghitung jumlah slide dalam carousel
+        var totalSlides = $('.carousel-item').length;
+
+        // Mengisi indikator halaman sesuai dengan jumlah slide
+        for (var i = 0; i < totalSlides; i++) {
+            if (i === 0) {
+                // Tandai slide pertama sebagai active
+                $('.carousel-indicators').append('<li data-bs-target="#carouselExample" data-bs-slide-to="' + i +
+                    '" class="active"></li>');
+            } else {
+                $('.carousel-indicators').append('<li data-bs-target="#carouselExample" data-bs-slide-to="' + i +
+                    '"></li>');
+            }
+        }
+    </script>
 </body>
 
 </html>

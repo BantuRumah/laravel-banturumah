@@ -1,18 +1,48 @@
 @extends('layouts.lainnya.app')
 
 @section('content')
-    <!-- Gambar Perawat dan Teks -->
-    <div class="image-with-text">
-        <img src="{{ asset('/img/gambar-asistens.jpg') }}" alt="Gambar Perawat" class="img-fluid mb-5" style="width: 100%;">
-        <div class="text-overlay col-lg-6 ">
-            <div class="flex-container">
-                <h2>Aplikasi Pencari Pekerja Rumah Tangga</h2>
-                <p>Dan Penitipan Anak Secara Profesional</p>
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel"
+        style="margin-left: 25px; margin-right: 25px; margin-top: 10px; margin-bottom: 70px">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="d-flex justify-content-center">
+                    <!-- Gambar Slider -->
+                    <div class="carousel-image">
+                        <img src="{{ asset('/img/gambar-asistens.jpg') }}" class="img-fluid" alt="Gambar 1">
+                    </div>
+                </div>
+                <div class="carousel-caption text-center">
+                    <h2>Aplikasi Pencari Pekerja Rumah Tangga</h2>
+                    <p>Dan Penitipan Anak Secara Profesional</p>
+                </div>
             </div>
+            <div class="carousel-item">
+                <div class="d-flex justify-content-center">
+                    <!-- Gambar Slider -->
+                    <div class="carousel-image">
+                        <img src="{{ asset('/img/gambar-anak.jpg') }}" class="img-fluid" alt="Gambar 2">
+                    </div>
+                </div>
+                <div class="carousel-caption text-center">
+                    <h2>Slider Slide Kedua</h2>
+                    <p>Deskripsi slide kedua di sini.</p>
+                </div>
+            </div>
+            <!-- Tambahkan slide lainnya sesuai kebutuhan -->
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+        <!-- Indikator halaman -->
+        <ol class="carousel-indicators"></ol>
     </div>
 
-    <div class="container" style="margin-top: 75px">
+    <div class="container" style="margin-top: 100px">
         <div class="row">
             <div class="col-md-6">
                 <h1>Layanan Daycare</h1>
@@ -22,7 +52,7 @@
                     dengan fasilitas yang dirancang khusus untuk mereka. Dengan daycare ini, orangtua dapat bekerja dengan
                     tenang, sambil tahu bahwa anak-anak mereka dalam perawatan yang baik dan penuh kasih.
                 </p>
-                <a href="#" class="btn btn-primary mb-4">Selengkapnya</a>
+                <a href="#" class="btn btn-primary mb-5">Selengkapnya</a>
             </div>
             <div class="col-md-6 mb-5">
                 <img src="{{ asset('/img/gambar-anak.jpg') }}" alt="Gambar Anak" class="img-fluid">

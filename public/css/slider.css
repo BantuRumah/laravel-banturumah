@@ -1,0 +1,81 @@
+.carousel-control-prev,
+.carousel-control-next {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 25px;
+    width: 40px;
+    height: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0 50px;
+    z-index: 2;
+}
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background-color: #0d6efd;
+}
+.carousel-caption {
+    color: #fff;
+    text-align: center;
+    position: absolute;
+    top: 61%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0px;
+    width: 100%;
+    z-index: 2;
+}
+.carousel-caption h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+.carousel-caption p {
+    font-size: 1.25rem;
+}
+.carousel-inner .carousel-item img {
+    height: auto;
+    object-fit: cover;
+    max-height: calc(100vw * 9 / 16);
+}
+.carousel-image {
+    position: relative;
+    width: 100%;
+    max-height: calc(100vw * 9 / 16);
+}
+.carousel-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    border-radius: 15px;
+}
+.carousel-inner img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 15px;
+}
+.carousel img {
+    width: 100%;
+    height: auto;
+}
+.carousel-indicators li {
+    color: transparent;
+}
+@media (min-width: 700px) {
+    .carousel-caption {
+        display: block;
+    }
+}
+@media (max-width: 768px) {
+    .carousel-caption {
+        display: none;
+    }
+}
