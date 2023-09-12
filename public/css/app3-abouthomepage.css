@@ -1,0 +1,70 @@
+.header-bg {
+    width: 100%;
+    background: #279EFF;
+    padding-top: 75px;
+    padding-bottom: 75px;
+}
+
+.title {
+    font-size: 3rem;
+}
+
+.breadcrumb {
+    margin-top: 85px;
+}
+
+.breadcrumb-content {
+    margin-top: 100px;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: white;
+}
+
+.about-image {
+    width: 100%;
+    max-width: 600px;
+}
+
+.contact-info {
+    text-align: right;
+    margin-top: 10px;
+}
+
+/* Media query untuk perangkat berukuran kecil */
+@media screen and (max-width: 768px) {
+    #about h1 {
+        text-align: left;
+    }
+
+    .breadcrumb-content {
+        flex-direction: column;
+        /* Mengatur tata letak menjadi tumpukan vertikal */
+    }
+
+    .col-md-6 {
+        text-align: left;
+        /* Mengatur teks ke kiri */
+    }
+
+    .col-md-6.text-end {
+        text-align: left;
+        /* Mengatur teks ke kiri */
+    }
+
+    .contact-info {
+        text-align: left;
+        /* Mengatur teks ke kiri */
+        margin-left: 0;
+        /* Menghapus margin kiri yang sebelumnya diberikan */
+    }
+
+    .contact-info i {
+        margin-left: 0;
+        margin-right: 5px;
+        /* Tambahkan sedikit ruang antara ikon dan teks */
+        vertical-align: middle;
+        /* Memastikan ikon berada di tengah vertikal dengan teks */
+    }
+}

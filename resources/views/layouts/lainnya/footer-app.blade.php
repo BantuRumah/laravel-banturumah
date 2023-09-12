@@ -1,4 +1,4 @@
-<footer style="margin-top: 250px">
+<footer style="margin-top: 150px">
     <div class="container">
         <div class="row mb-5">
             <div class="col-md-5" style="margin-right: 75px">
@@ -16,7 +16,7 @@
                     commodi
                     quo, debitis ex. Officiis expedita quasi quod nam architecto perferendis similique.</p>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 mt-2">
                 <h4>Menu</h4>
                 <ul class="list-unstyled">
                     <li><a href="/home">Beranda</a></li>

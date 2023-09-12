@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>banturumah</title>
+
     {{-- WEBSITE ICON --}}
     <link rel="icon" href="{{ asset('img/banturumah_icons.png') }}">
 
@@ -22,16 +23,17 @@
     {{-- CSS - CUSTOM --}}
     <link rel="stylesheet" href="{{ asset('/css/app-homepage.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/app2-homepage.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/app3-abouthomepage.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/sliders.css') }}">
 
     {{-- TAMBAHAN --}}
-
     <style>
         .card {
             /* margin: 0 1em; */
             box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
         }
     </style>
+
 </head>
 
 <body>
