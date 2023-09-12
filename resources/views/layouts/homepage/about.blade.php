@@ -1,5 +1,5 @@
-@extends('layouts.lainnya.app')
+@extends('layouts.app')
 
-@section('content')
+@section('content-app')
     <h1>test2</h1>
 @endsection

@@ -20,6 +20,6 @@ Route::get('/welcome', function () {
 Route::group(['prefix' => '/'], function () {
     Route::get('/', [HomepageController::class, 'home']);
     Route::get('/service', [HomepageController::class, 'service']);
-    Route::get('/about', [HomepageController::class, 'about']);
+    Route::get('/about-us', [HomepageController::class, 'about']);
 });
 

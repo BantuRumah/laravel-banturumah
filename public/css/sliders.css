@@ -1,6 +1,10 @@
+.carousel-inner {
+    padding: 1em;
+}
+
 .carousel-control-prev,
 .carousel-control-next {
-    background-color: #3498db;
+    background-color: #aeaeae;
     color: #fff;
     border: none;
     border-radius: 50%;
@@ -12,10 +16,12 @@
     margin: 0 50px;
     z-index: 2;
 }
+
 .carousel-control-prev:hover,
 .carousel-control-next:hover {
-    background-color: #0d6efd;
+    background-color: #006eff;
 }
+
 .carousel-caption {
     color: #fff;
     text-align: center;
@@ -27,23 +33,28 @@
     width: 100%;
     z-index: 2;
 }
+
 .carousel-caption h2 {
     font-size: 2rem;
     margin-bottom: 10px;
 }
+
 .carousel-caption p {
     font-size: 1.25rem;
 }
+
 .carousel-inner .carousel-item img {
     height: auto;
     object-fit: cover;
     max-height: calc(100vw * 9 / 16);
 }
+
 .carousel-image {
     position: relative;
     width: 100%;
     max-height: calc(100vw * 9 / 16);
 }
+
 .carousel-image::before {
     content: '';
     position: absolute;
@@ -55,6 +66,7 @@
     z-index: 1;
     border-radius: 15px;
 }
+
 .carousel-inner img {
     width: 100%;
     height: auto;
@@ -62,18 +74,22 @@
     object-position: center top;
     border-radius: 15px;
 }
+
 .carousel img {
     width: 100%;
     height: auto;
 }
+
 .carousel-indicators li {
     color: transparent;
 }
+
 @media (min-width: 700px) {
     .carousel-caption {
         display: block;
     }
 }
+
 @media (max-width: 768px) {
     .carousel-caption {
         display: none;
