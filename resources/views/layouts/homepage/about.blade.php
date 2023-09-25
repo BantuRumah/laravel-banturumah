@@ -8,7 +8,7 @@
         </div>
         <div class="container">
             <p class="breadcrumb">
-                <a href="/">Home</a>&nbsp><strong>&nbspAbout Us</strong>
+                <a href="/">Beranda</a>&nbsp><strong>&nbspAbout Us</strong>
             </p>
         </div>
     </div>

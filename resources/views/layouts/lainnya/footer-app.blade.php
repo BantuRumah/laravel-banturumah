@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row mb-5">
             <div class="col-md-5" style="margin-right: 75px">
-                <img src="{{ asset('img/banturumah_icons.png') }}" alt="" style="width: 125px">
+                <img src="{{ asset('img/banturumah_nobg.png') }}" alt="" style="width: 250px">
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam nisi quae ut debitis
                     provident
                     esse fugiat error sunt ad doloribus. Facere, itaque amet. Voluptatum enim aspernatur ad,
@@ -19,9 +19,9 @@
             <div class="col-md-2 mt-2">
                 <h4>Menu</h4>
                 <ul class="list-unstyled">
-                    <li><a href="/home">Beranda</a></li>
+                    <li><a href="/">Beranda</a></li>
                     <li><a href="/service">Layanan Kami</a></li>
-                    <li><a href="/about">Tentang Kami</a></li>
+                    <li><a href="/aboutus">Tentang Kami</a></li>
                 </ul>
             </div>
             <div class="col-md-4 mt-2">

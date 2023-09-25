@@ -2,7 +2,7 @@
     <div class="container mt-3 mb-3">
         <div class="icon-web" style="margin-right: 10px">
             <a class="navbar-brand" href="/">
-                <img src="{{ asset('img/banturumah_icons.png') }}" alt="banturumah_logo" style="width: 50px">
+                <img src="{{ asset('img/banturumah.png') }}" alt="banturumah_logo" style="width: 125px">
             </a>
         </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"

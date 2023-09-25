@@ -1,0 +1,29 @@
+/* Gaya kustom untuk card */
+.cards-fixed {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+    width: 300px; /* Lebar card yang lebih besar */
+    margin: 0 auto; /* Tengahkan secara horizontal */
+    margin-bottom: 20px; /* Beri jarak antar card */
+    text-align: center;
+}
+.cards-fixed img {
+    max-width: 100%;
+    height: auto;
+}
+.cards-fixed:hover {
+    transform: scale(1.08); /* Perbesar sedikit saat dihover */
+}
+.cards-fixed-body {
+    padding: 1.5rem; /* Tingkatkan padding untuk konten yang lebih besar */
+}
+.cards-fixed-title {
+    font-size: 1.5rem; /* Font title yang lebih besar */
+    margin-bottom: 1rem;
+}
+.cards-fixed-text {
+    font-size: 1.25rem; /* Font teks yang lebih besar */
+}

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomepageController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +24,4 @@ Route::group(['prefix' => '/'], function () {
     Route::get('/about-us', [HomepageController::class, 'about']);
 });
 
+Route::get('/login', [LoginController::class, 'index']);
