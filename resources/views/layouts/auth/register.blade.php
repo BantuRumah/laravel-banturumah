@@ -8,6 +8,7 @@
     <title>Register | BantuRumah</title>
     {{-- WEBSITE ICON --}}
     <link rel="icon" href="{{ asset('img/Artboard 1banturumah_icon.png') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     {{-- CSS - BOOTSTRAP --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
@@ -23,6 +24,7 @@
     <link rel="stylesheet" href="{{ asset('/css/app-homepage.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/app2-homepage.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/app3-abouthomepage.css') }}">
+
 </head>
 
 <body>
