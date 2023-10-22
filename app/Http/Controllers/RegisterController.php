@@ -18,15 +18,18 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+        ], [
+            'password.confirmed' => 'Konfirmasi password tidak cocok dengan password.',
         ]);
-
+    
         $user = User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
             'role' => 'user', // Set peran sebagai "user"
         ]);
-
+    
         return redirect('/login')->with('success', 'Anda telah berhasil melakukan registrasi');
     }
+    
 }
