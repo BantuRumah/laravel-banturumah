@@ -27,6 +27,6 @@ class RegisterController extends Controller
             'role' => 'user', // Set peran sebagai "user"
         ]);
 
-        return view('layouts.auth.lainnya.app-register', ['success' => true]);
+        return redirect('/login')->with('success', 'Anda telah berhasil melakukan registrasi');
     }
 }
