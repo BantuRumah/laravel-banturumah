@@ -11,6 +11,6 @@ class UserController extends Controller
         // echo "halo user ".Auth::user()->name;
         // echo "<a href='/logout'>logout</a>";
 
-        return view('');
+        return view('layouts.homepage.home');
     }
 }

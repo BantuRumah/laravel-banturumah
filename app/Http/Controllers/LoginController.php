@@ -30,13 +30,13 @@ class LoginController extends Controller
 
         if(Auth::attempt($infologin)) {
             if(Auth::user()->role == 'admin') {
-                return redirect('/admin')->with('success', 'Anda berhasil login');
+                return redirect('/admin/dashboard')->with('success', 'Anda berhasil login');
             } else if(Auth::user()->role == 'mitra') {
                 return redirect('/mitra')->with('success', 'Anda berhasil login');
             } else if(Auth::user()->role == 'user') {
                 return redirect('/user')->with('success', 'Anda berhasil login');
             }
-            // return redirect('admin');
+            return response()->json(['success' => 'Anda telah berhasil login']);
         } else {
             return redirect('/login')->with('error', 'Gagal login, email atau password salah');
         }

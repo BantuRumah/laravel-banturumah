@@ -28,10 +28,21 @@
                 </li>
             </ul>
             <div class="d-flex ms-auto justify-content-center">
-                <center>
-                    <a href="/login" class="btn btn-outline-primary" style="margin-right: 10px">Login</a>
-                    <a href="/register" class="btn btn-outline-success">Register</a>
-                </center>
+                @auth
+                    <div class="dropdown">
+                        <button class="dropbtn text-primary"><b>{{ Auth::user()->name }}</b></button>
+                        <div class="dropdown-content">
+                            <a href="#" id="logoutButton">
+                                <i class="fa fa-sign-out-alt"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+                @else
+                    <center>
+                        <a href="/login" class="btn btn-outline-primary" style="margin-right: 10px">Login</a>
+                        <a href="/register" class="btn btn-outline-success">Register</a>
+                    </center>
+                @endauth
             </div>
         </div>
     </div>

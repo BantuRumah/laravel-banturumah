@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Auth;
 class MitraController extends Controller
 {
     public function index() {
-        echo "halo mitra ".Auth::user()->name;
-        echo "<a href='/logout'>logout</a>";
+        // echo "halo mitra ".Auth::user()->name;
+        // echo "<a href='/logout'>logout</a>";
+        return view('layouts.homepage.home');
     }
 }

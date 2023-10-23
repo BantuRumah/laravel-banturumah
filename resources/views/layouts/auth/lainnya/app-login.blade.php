@@ -73,6 +73,45 @@
     </script>
 
     <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Send an AJAX POST request to the login route
+            $.ajax({
+                url: '/login', // Change to your login route
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    email: email,
+                    password: password
+                },
+                success: function(response) {
+                    // Check for a successful login
+                    if (response.success) {
+                        Swal.fire({
+                            title: 'Sukses',
+                            text: response.success,
+                            icon: 'success'
+                        });
+
+                        // You can redirect the user to a different page if needed
+                        // window.location.href = '/dashboard';
+                    } else if (response.error) {
+                        Swal.fire({
+                            title: 'Gagal',
+                            text: response.error,
+                            icon: 'error'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+
+    <script>
         @if (session('success'))
             Swal.fire({
                 icon: 'success',
@@ -87,4 +126,19 @@
             });
         @endif
     </script>
+
+    {{-- <script>
+        // JavaScript to display a SweetAlert after a successful login
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginSuccess = {{ session('loginSuccess', false) ? 'true' : 'false' }};
+            if (loginSuccess) {
+                Swal.fire({
+                    title: 'Anda telah berhasil login',
+                    icon: 'success',
+                    confirmButtonColor: '#3085d6',
+                });
+            }
+        });
+    </script> --}}
+
 @endsection

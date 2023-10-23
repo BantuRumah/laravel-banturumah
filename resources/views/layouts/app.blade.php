@@ -15,10 +15,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+
     {{-- JS - BOOTSTRAP --}}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     {{-- CSS - CUSTOM --}}
     <link rel="stylesheet" href="{{ asset('/css/app-homepage.css') }}">
@@ -26,6 +28,7 @@
     <link rel="stylesheet" href="{{ asset('/css/app3-abouthomepage.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/sliders.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/cardd-fixed.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/dropdown-navbar.css') }}">
 
     {{-- TAMBAHAN --}}
     <style>
@@ -117,6 +120,9 @@
     <!-- footer -->
     @include('layouts.lainnya.footer-app')
 
+    <!-- modal logout -->
+    @include('layouts.lainnya.popup.modal-logout')
+
     <script src="{{ asset('js/home-app.js') }}"></script>
     <script src="{{ asset('js/backtotop.js') }}"></script>
 
@@ -160,6 +166,44 @@
         document.getElementById('prevSlide').addEventListener('click', prevSlide);
         document.getElementById('nextSlide').addEventListener('click', nextSlide);
     </script>
+
+    <script>
+        // JavaScript to open the modal when the "Logout" link is clicked
+        document.getElementById('logoutButton').addEventListener('click', function() {
+            $('#logoutModal').modal('show');
+        });
+
+        // JavaScript to handle the "Logout" button within the modal
+        document.getElementById('confirmLogout').addEventListener('click', function() {
+            // Close the modal
+            $('#logoutModal').modal('hide');
+
+            // Display the SweetAlert for successful logout
+            Swal.fire({
+                title: 'Anda telah berhasil logout',
+                icon: 'success',
+                confirmButtonColor: '#3085d6',
+            });
+
+            // Delay the redirect after 10 seconds
+            setTimeout(() => {
+                window.location.href = '/';
+            }, 10000); // 10 seconds delay
+        });
+
+        // JavaScript to display a SweetAlert after a successful login
+        document.addEventListener('DOMContentLoaded', function() {
+            const successfulLogin = '{{ session('loginSuccess') }}';
+            if (successfulLogin === '1') {
+                Swal.fire({
+                    title: 'Anda telah berhasil login',
+                    icon: 'success',
+                    confirmButtonColor: '#3085d6',
+                });
+            }
+        });
+    </script>
+
 </body>
 
 </html>

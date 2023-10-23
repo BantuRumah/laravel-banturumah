@@ -29,21 +29,37 @@ Route::group(['prefix' => '/'], function () {
     Route::get('/about-us', [HomepageController::class, 'about']);
 });
 
+// Login
 Route::middleware(['guest'])->group(function() {
     Route::get('/login', [LoginController::class, 'index'])->name('login');
     Route::post('/login', [LoginController::class, 'login']);
 });
 
+// Direct ke route admin
 Route::get('/home', function() {
-    return redirect('admin');
+    return redirect('/admin/dashboard');
 });
 
+// Admin
 Route::middleware(['auth'])->group(function(){
-    Route::get('/admin', [AdminController::class, 'index'])->middleware('userAkses:admin');
+    Route::get('/admin/dashboard', [AdminController::class, 'index'])->middleware('userAkses:admin');
+});
+
+// Mitra
+Route::middleware(['auth'])->group(function(){
     Route::get('/mitra', [MitraController::class, 'index'])->middleware('userAkses:mitra');
+});
+
+// User
+Route::middleware(['auth'])->group(function(){
     Route::get('/user', [UserController::class, 'index'])->middleware('userAkses:user');
+});
+
+// Logout
+Route::middleware(['auth'])->group(function(){
     Route::get('/logout', [LoginController::class, 'logout']);
 });
 
+// Register
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
