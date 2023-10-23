@@ -34,6 +34,25 @@
     @include('layouts.lainnya.backtotop')
 
     @include('layouts.lainnya.footer-app')
+
+    <script src="{{ asset('/js/show-password-login.js') }}"></script>
+    <script src="{{ asset('/js/berhasil-gagal-login.js') }}"></script>
+
+    <script>
+        @if (session('success'))
+            Swal.fire({
+                icon: 'success',
+                title: 'Sukses',
+                text: '{{ session('success') }}',
+            });
+        @elseif (session('error'))
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal',
+                text: '{{ session('error') }}',
+            });
+        @endif
+    </script>
 </body>
 
 </html>

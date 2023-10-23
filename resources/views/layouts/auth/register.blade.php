@@ -36,6 +36,18 @@
     @include('layouts.lainnya.backtotop')
 
     @include('layouts.lainnya.footer-app')
+
+    <script src="{{ asset('/js/show-password-register.js') }}"></script>
+
+    @if (isset($success) && $success)
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Registrasi Berhasil',
+                text: 'Anda telah berhasil melakukan registrasi.'
+            });
+        </script>
+    @endif
 </body>
 
 </html>
