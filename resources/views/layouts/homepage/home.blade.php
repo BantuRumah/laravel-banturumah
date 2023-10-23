@@ -168,12 +168,16 @@
                             Hubungi kami jika anda mempunyai kendala, <br>
                             silahkan klik salah satu tombol dibawah ini.
                         </p>
+                        {{-- <a href="/sendemail" class="btn btn-primary btn-lg mb-4">
+                            <i class="fas fa-envelope" style="margin-right: 10px"></i>
+                            Hubungi melalui Email
+                        </a><br> --}}
                         <button id="emailBtn" class="btn btn-primary btn-lg mb-4" data-toggle="modal"
                             data-target="#emailModal">
                             <i class="fas fa-envelope" style="margin-right: 10px"></i>
                             Hubungi melalui Email
                         </button><br>
-                        <a href="https://api.whatsapp.com/send?phone=+6285159094233&text=Hi%20Taskhub%20Center%2C%20Saya%20ingin%20Memesan%20Perawat%0A%0ADATA%20PEMESANAN%0A%E2%80%A2%20Nama%20Lengkap%20%3A%20%0A%E2%80%A2%20Email%20%3A%20%0A%E2%80%A2%20No%20HP%20%3A%20%0A%E2%80%A2%20Kota%20%3A%20%0A%0ADATA%20PASIEN%0A%E2%80%A2%20Usia%20%3A%20%0A%E2%80%A2%20Berat%20Badan%2FTinggi%20Badan%20%3A%20%0A%E2%80%A2%20Jenis%20Kelamin%20%3A%20%0A%E2%80%A2%20Kota%20Tinggal%20Pasien%20%3A%20%0A%0AKONDISI%20PASIEN%0A%E2%80%A2%20Alat%20yang%20Terpasang%20%3A%20%0A%E2%80%A2%20Luka%20pada%20Pasien%20%3A%20%0A%E2%80%A2%20Ceritakan%20Kondisi%20Pasien%20%3A%20"
+                        <a href="https://api.whatsapp.com/send?phone=+6282313568127&text=Halo%20Bantu%20Rumah%2C%20Saya%20Punya%20Kendala%20tentang%0A%0ATULIS%20KENDALA%20DIBAWAH%20:%0A"
                             target="_blank">
                             <button class="btn btn-success btn-lg">
                                 <i class="fab fa-whatsapp"></i>
@@ -187,4 +191,18 @@
     </div>
 
     @include('layouts.lainnya.popup.form-mail')
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("sendButton").addEventListener("click", function(e) {
+                e.preventDefault(); // Prevent the form from submitting
+
+                // Display a popup alert
+                alert("Email sent successfully!");
+
+                // Optionally, you can submit the form after displaying the alert
+                document.querySelector('form').submit();
+            });
+        });
+    </script>
 @endsection

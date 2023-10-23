@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MitraController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\SendEmailController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +29,9 @@ Route::group(['prefix' => '/'], function () {
     Route::get('/service', [HomepageController::class, 'service']);
     Route::get('/about-us', [HomepageController::class, 'about']);
 });
+
+Route::get('/sendemail', [SendEmailController::class, 'index']);
+Route::post('/sendemail/send', [SendEmailController::class, 'send']);
 
 // Login
 Route::middleware(['guest'])->group(function() {

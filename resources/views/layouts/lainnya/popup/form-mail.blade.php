@@ -7,23 +7,23 @@
                 <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form method="post" action="{{ url('sendemail/send') }}">
+                    {{ csrf_field() }}
                     <div class="form-group">
-                        <label for="nama">Nama</label>
-                        <input type="text" class="form-control mb-2" id="nama" placeholder="Nama Anda">
+                        <label>Masukkan Nama</label>
+                        <input type="text" name="name" class="form-control" value="" />
                     </div>
                     <div class="form-group">
-                        <label for="email">Alamat Email</label>
-                        <input type="email" class="form-control mb-2" id="email" placeholder="Email Anda">
+                        <label>Masukkan Email</label>
+                        <input type="text" name="email" class="form-control" value="" />
                     </div>
                     <div class="form-group">
-                        <label for="deskripsi">Deskripsi</label>
-                        <textarea class="form-control mb-2" id="deskripsi" rows="4" placeholder="Tulis pesan Anda di sini"></textarea>
+                        <label>Tulis Pesan Kendala</label>
+                        <textarea class="form-control mb-2" name="message" id="deskripsi" rows="4"></textarea>
                     </div>
-                    <button class="btn btn-success button" onclick="sendEmail(event)">
-                        Send message
-                        <i class="uil uil-message button__icon"></i>
-                    </button>
+                    <div class="form-group">
+                        <input type="submit" name="send" class="btn btn-success" value="Kirim" />
+                    </div>
                 </form>
             </div>
         </div>

@@ -107,6 +107,12 @@
         });
     </script>
 
+    <script>
+        @if (session('success'))
+            alert("{{ session('success') }}");
+        @endif
+    </script>
+
 </body>
 
 </html>
