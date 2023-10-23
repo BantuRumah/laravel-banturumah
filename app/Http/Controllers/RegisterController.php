@@ -17,8 +17,12 @@ class RegisterController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => ['required', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/'],
         ], [
+            'email.required' => 'Email wajib diisi',
+            'email.email' => 'Format email tidak valid',
+            'password.required' => 'Password wajib diisi',
+            'password.regex' => 'Password harus mengandung setidaknya 8 karakter, satu huruf besar, satu huruf kecil, dan satu angka.',
             'password.confirmed' => 'Konfirmasi password tidak cocok dengan password.',
         ]);
     
