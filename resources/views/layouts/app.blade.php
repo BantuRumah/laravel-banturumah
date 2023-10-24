@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="{{ asset('/css/cardd-fixed.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/cardd-homepage.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/dropdown-navbar.css') }}">
+
 </head>
 
 <body>
@@ -111,6 +112,22 @@
         @if (session('success'))
             alert("{{ session('success') }}");
         @endif
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const userDropdown = document.getElementById("userDropdown");
+            const dropdownContent = document.getElementById("dropdownContent");
+
+            userDropdown.addEventListener("click", function(e) {
+                dropdownContent.style.display = "block";
+                e.stopPropagation();
+            });
+
+            document.addEventListener("click", function() {
+                dropdownContent.style.display = "none";
+            });
+        });
     </script>
 
 </body>

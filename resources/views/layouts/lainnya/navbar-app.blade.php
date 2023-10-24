@@ -29,9 +29,14 @@
             </ul>
             <div class="d-flex ms-auto justify-content-center">
                 @auth
-                    <div class="dropdown">
-                        <button class="dropbtn text-primary"><b>{{ Auth::user()->name }}</b></button>
-                        <div class="dropdown-content">
+                    <div class="custom-dropdown">
+                        <button class="custom-dropdown-toggle" id="userDropdown">
+                            <div class="user-avatar">
+                                <div class="avatar">{{ strtoupper(substr(Auth::user()->name, 0, 1)) }}</div>
+                                <div class="user-name">{{ Auth::user()->name }}</div>
+                            </div>
+                        </button>
+                        <div class="custom-dropdown-content" id="dropdownContent">
                             <a href="#" id="logoutButton">
                                 <i class="fa fa-sign-out-alt"></i> Logout
                             </a>
