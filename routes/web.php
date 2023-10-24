@@ -33,37 +33,37 @@ Route::group(['prefix' => '/'], function () {
 Route::get('/sendemail', [SendEmailController::class, 'index']);
 Route::post('/sendemail/send', [SendEmailController::class, 'send']);
 
-// Login
-Route::middleware(['guest'])->group(function() {
+Route::middleware(['guest'])->group(function () {
+    // Login
     Route::get('/login', [LoginController::class, 'index'])->name('login');
     Route::post('/login', [LoginController::class, 'login']);
+
+    // Register
+    Route::get('/register', [RegisterController::class, 'index'])->name('register');
+    Route::post('/register', [RegisterController::class, 'register']);
 });
 
-// Direct ke route admin
-Route::get('/home', function() {
-    return redirect('/admin/dashboard');
-});
-
-// Admin
-Route::middleware(['auth'])->group(function(){
-    Route::get('/admin/dashboard', [AdminController::class, 'index'])->middleware('userAkses:admin');
-});
-
-// Mitra
-Route::middleware(['auth'])->group(function(){
-    Route::get('/mitra', [MitraController::class, 'index'])->middleware('userAkses:mitra');
-});
-
-// User
-Route::middleware(['auth'])->group(function(){
-    Route::get('/user', [UserController::class, 'index'])->middleware('userAkses:user');
-});
-
-// Logout
-Route::middleware(['auth'])->group(function(){
+Route::middleware(['auth'])->group(function () {
+    // Logout
     Route::get('/logout', [LoginController::class, 'logout']);
-});
 
-// Register
-Route::get('/register', [RegisterController::class, 'index'])->name('register');
-Route::post('/register', [RegisterController::class, 'register']);
+    // Direct ke route admin
+    Route::get('/home', function () {
+        return redirect('/admin/dashboard');
+    });
+
+    // Admin
+    Route::middleware('userAkses:admin')->group(function () {
+        Route::get('/admin/dashboard', [AdminController::class, 'index']);
+    });
+
+    // Mitra
+    Route::middleware('userAkses:mitra')->group(function () {
+        Route::get('/mitra', [MitraController::class, 'index']);
+    });
+
+    // User
+    Route::middleware('userAkses:user')->group(function () {
+        Route::get('/user', [UserController::class, 'index']);
+    });
+});
