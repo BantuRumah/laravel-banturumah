@@ -32,9 +32,9 @@
                     Jatimulyo, Kec.Lowokwaru, Kota Malang, Jawa Timur 65141</p>
             </div>
             <div class="row">
-                <div class="col-md-2 mt-4">
+                <div class="col-md-3 mt-4">
                     <div class="icons">
-                        <a href="">
+                        <a href="https://www.facebook.com/profile.php?id=61552004108558" target="_blank">
                             <img src="{{ asset('img/facebook_icon.png') }}" alt=""
                                 style="width: 45px; height: 45px; border-radius: 10px; margin-right: 2px">
                         </a>
@@ -44,7 +44,10 @@
                         </a>
                         <a href="">
                             <img src="{{ asset('img/linkedin_icon.png') }}" alt=""
-                                style="width: 47px; height: 47px;">
+                                style="width: 47px; height: 47px; margin-right: 6px">
+                        </a>
+                        <a href="https://wa.me/+6282313568127" target="_blank">
+                            <img src="{{ asset('img/wa_icon.png') }}" alt="" style="width: 43px; height: 43px">
                         </a>
                     </div>
                 </div>
