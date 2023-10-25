@@ -55,6 +55,7 @@ Route::middleware(['auth'])->group(function () {
     // Admin
     Route::middleware('userAkses:admin')->group(function () {
         Route::get('/admin/dashboard', [AdminController::class, 'index']);
+        Route::get('/admin/user/alluser', [AdminController::class, 'usersAll'])->name('admin.user.alluser');
     });
 
     // Mitra
@@ -66,4 +67,13 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware('userAkses:user')->group(function () {
         Route::get('/user', [UserController::class, 'index']);
     });
+
+    // Edit User
+    Route::get('/admin/user/edit/{id}', [AdminController::class, 'editUser'])->name('admin.users.edit');
+
+    // View User
+    Route::get('/admin/user/view/{id}', [AdminController::class, 'viewUser'])->name('admin.users.view');
+
+    // Delete User
+    Route::get('/admin/user/delete/{id}', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
 });

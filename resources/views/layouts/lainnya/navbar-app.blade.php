@@ -29,18 +29,47 @@
             </ul>
             <div class="d-flex ms-auto justify-content-center">
                 @auth
-                    <div class="custom-dropdown">
-                        <button class="custom-dropdown-toggle" id="userDropdown">
+                    <div class="dropdown custom-dropdown">
+                        <button class="btn btn-clear" type="button" data-bs-toggle="dropdown" id="userDropdown">
                             <div class="user-avatar">
                                 <div class="avatar">{{ strtoupper(substr(Auth::user()->name, 0, 1)) }}</div>
                                 <div class="user-name">{{ Auth::user()->name }}</div>
                             </div>
                         </button>
-                        <div class="custom-dropdown-content" id="dropdownContent">
-                            <a href="#" id="logoutButton">
-                                <i class="fa fa-sign-out-alt"></i> Logout
-                            </a>
-                        </div>
+                        <div class="custom-dropdown-content" id="dropdownContent"></div>
+                        <ul class="dropdown-menu" id="dropdownContent">
+                            @if (Auth()->check())
+                                @if (Auth()->user()->role == 'admin')
+                                    <li>
+                                        <a class="dropdown-item" href="/admin/dashboard">
+                                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                                            Dashboard
+                                        </a>
+                                    </li>
+                                @elseif (Auth()->user()->role == 'mitra')
+                                    <li>
+                                        <a class="dropdown-item" href="/mitra/dashboard">
+                                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                                            Dashboard
+                                        </a>
+                                    </li>
+                                @endif
+                                <li>
+                                    <a class="dropdown-item" href="javascript:void(0)" id="logoutButton">
+                                        <i class="fa fa-sign-out-alt"></i>
+                                        Logout
+                                    </a>
+                                </li>
+                            @else
+                                <li>
+                                    <a class="dropdown-item" href="javascript:void(0)" id="logoutButton">
+                                        <i class="fa fa-sign-out-alt"></i>
+                                        Logout
+                                    </a>
+                                </li>
+                            @endif
+
+                        </ul>
                     </div>
                 @else
                     <center>

@@ -12,13 +12,11 @@
 
     {{-- CSS - BOOTSTRAP --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 
     {{-- JS - BOOTSTRAP --}}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
@@ -72,6 +70,28 @@
     <script src="{{ asset('js/slider-homepage.js') }}"></script>
 
     <script>
+        // Toggle dropdown when the button is clicked
+        document.getElementById('userDropdown').addEventListener('click', function(e) {
+            var dropdownContent = document.getElementById('dropdownContent');
+            dropdownContent.classList.toggle('active');
+            e.stopPropagation(); // Stop the click event from reaching the document
+        });
+
+        // Close the dropdown when clicking outside of it
+        document.addEventListener('click', function(e) {
+            var dropdownContent = document.getElementById('dropdownContent');
+            if (!e.target.closest('.custom-dropdown')) {
+                dropdownContent.classList.remove('active');
+            }
+        });
+
+        // Close the dropdown when clicking the logout button
+        document.getElementById('logoutButton').addEventListener('click', function() {
+            var dropdownContent = document.getElementById('dropdownContent');
+            dropdownContent.classList.remove('active');
+        });
+
+
         // JavaScript to open the modal when the "Logout" link is clicked
         document.getElementById('logoutButton').addEventListener('click', function() {
             $('#logoutModal').modal('show');
@@ -108,13 +128,13 @@
         });
     </script>
 
-    <script>
+    {{-- <script>
         @if (session('success'))
             alert("{{ session('success') }}");
         @endif
-    </script>
+    </script> --}}
 
-    <script>
+    {{-- <script>
         document.addEventListener("DOMContentLoaded", function() {
             const userDropdown = document.getElementById("userDropdown");
             const dropdownContent = document.getElementById("dropdownContent");
@@ -128,7 +148,7 @@
                 dropdownContent.style.display = "none";
             });
         });
-    </script>
+    </script> --}}
 
 </body>
 
