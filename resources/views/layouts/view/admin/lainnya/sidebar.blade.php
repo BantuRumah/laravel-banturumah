@@ -36,7 +36,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/admin/user/" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
                             Users
@@ -44,6 +44,13 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/admin/user/alluser"
+                                class="nav-link {{ Request::is('admin/user/alluser') ? ' active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>All User</p>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="/admin/user/admin"
                                 class="nav-link {{ Request::is('admin/user/admin') ? ' active' : '' }}">
