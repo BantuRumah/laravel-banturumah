@@ -114,16 +114,15 @@
                         </li>
                     </ul>
                 </li>
-
+                <li class="nav-header">PENGATURAN</li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="settings/mail-config" class="nav-link">
                         <i class="nav-icon far fa-envelope"></i>
                         <p>
                             Mailbox
                         </p>
                     </a>
                 </li>
-                <li class="nav-header">PENGATURAN</li>
                 <li class="nav-item">
                     <a href="iframe.html" class="nav-link">
                         <i class="nav-icon fas fa-ellipsis-h"></i>

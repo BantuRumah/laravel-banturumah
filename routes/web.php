@@ -8,6 +8,7 @@ use App\Http\Controllers\MitraController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\SendEmailController;
+use App\Http\Controllers\MailConfigController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,9 +46,6 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    // Logout
-    Route::get('/logout', [LoginController::class, 'logout']);
-
     // Direct ke route admin
     Route::get('/home', function () {
         return redirect('/admin/dashboard');
@@ -60,8 +58,28 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/user/admin', [AdminController::class, 'usersAdmin'])->name('admin.user.admin');
         Route::get('/admin/user/mitra', [MitraController::class, 'mitraUsers'])->name('admin.user.mitra');
         Route::get('/admin/user/user', [UserController::class, 'userUsers'])->name('admin.user.user');
+
+        Route::get('/admin/settings/mail-config', [MailConfigController::class, 'index'])->name('mail-config');
+        Route::post('/admin/settings/mail-config/update', [MailConfigController::class, 'update'])->name('mail-config.update');
+
     });
 
+    // Create User Admin
+    Route::get('/admin/user/create', [AdminController::class, 'createUser'])->name('admin.users.create');
+    Route::post('/admin/user/store', [AdminController::class, 'storeUser'])->name('admin.users.store');
+
+    // Edit dan Update User
+    Route::get('/admin/user/edit/{id}', [AdminController::class, 'editUser'])->name('admin.users.edit');
+    Route::put('/admin/user/update/{id}', [AdminController::class, 'updateUser'])->name('admin.users.update');
+
+    // View User
+    Route::get('/admin/user/view/{id}', [AdminController::class, 'viewUser'])->name('admin.users.view');
+
+    // Delete User
+    Route::get('/admin/user/delete/{id}', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
+
+
+    
     // Mitra
     Route::middleware('userAkses:mitra')->group(function () {
         Route::get('/mitra', [MitraController::class, 'index']);
@@ -72,19 +90,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/user', [UserController::class, 'index']);
     });
 
-    // Create User Admin
-    Route::get('/admin/user/create', [AdminController::class, 'createUser'])->name('admin.users.create');
-    Route::post('/admin/user/store', [AdminController::class, 'storeUser'])->name('admin.users.store');
-
-    // Edit User
-    Route::get('/admin/user/edit/{id}', [AdminController::class, 'editUser'])->name('admin.users.edit');
-
-    // Update User
-    Route::put('/admin/user/update/{id}', [AdminController::class, 'updateUser'])->name('admin.users.update');
-
-    // View User
-    Route::get('/admin/user/view/{id}', [AdminController::class, 'viewUser'])->name('admin.users.view');
-
-    // Delete User
-    Route::get('/admin/user/delete/{id}', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
+    // Logout
+    Route::get('/logout', [LoginController::class, 'logout']);
 });
