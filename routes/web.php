@@ -3,6 +3,7 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AllUserController;
 use App\Http\Controllers\MitraController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomepageController;
@@ -55,7 +56,7 @@ Route::middleware(['auth'])->group(function () {
     // Admin
     Route::middleware('userAkses:admin')->group(function () {
         Route::get('/admin/dashboard', [AdminController::class, 'index']);
-        Route::get('/admin/user/alluser', [AdminController::class, 'usersAll'])->name('admin.user.alluser');
+        Route::get('/admin/user/alluser', [AllUserController::class, 'index'])->name('admin.user.alluser');
         Route::get('/admin/user/admin', [AdminController::class, 'usersAdmin'])->name('admin.user.admin');
         Route::get('/admin/user/mitra', [MitraController::class, 'mitraUsers'])->name('admin.user.mitra');
         Route::get('/admin/user/user', [UserController::class, 'userUsers'])->name('admin.user.user');
@@ -70,6 +71,10 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware('userAkses:user')->group(function () {
         Route::get('/user', [UserController::class, 'index']);
     });
+
+    // Create User Admin
+    Route::get('/admin/user/create', [AdminController::class, 'createUser'])->name('admin.users.create');
+    Route::post('/admin/user/store', [AdminController::class, 'storeUser'])->name('admin.users.store');
 
     // Edit User
     Route::get('/admin/user/edit/{id}', [AdminController::class, 'editUser'])->name('admin.users.edit');

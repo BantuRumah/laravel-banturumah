@@ -31,10 +31,20 @@
                 @auth
                     <div class="dropdown custom-dropdown">
                         <button class="btn btn-clear" type="button" data-bs-toggle="dropdown" id="userDropdown">
-                            <div class="user-avatar">
-                                <div class="avatar">{{ strtoupper(substr(Auth::user()->name, 0, 1)) }}</div>
-                                <div class="user-name">{{ Auth::user()->name }}</div>
-                            </div>
+                            @if (Auth::user()->profile_picture)
+                                <div class="user-avatar">
+                                    <img src="{{ asset('storage/profile_pictures/' . Auth::user()->profile_picture) }}"
+                                        class="user-avatar" alt="User Image"
+                                        style="border-radius: 50%; width: 40px; height: 40px; margin-right: 8px">
+                                    <div class="user-name">{{ Auth::user()->name }}</div>
+                                </div>
+                            @else
+                                <div class="user-avatar">
+                                    <div class="avatar">{{ strtoupper(substr(Auth::user()->name, 0, 1)) }}</div>
+                                    <div class="user-name">{{ Auth::user()->name }}</div>
+                                </div>
+                            @endif
+
                         </button>
                         <div class="custom-dropdown-content" id="dropdownContent"></div>
                         <ul class="dropdown-menu" id="dropdownContent">
@@ -62,13 +72,12 @@
                                 </li>
                             @else
                                 <li>
-                                    <a class="dropdown-item" href="javascript:void(0)" id="logoutButton">
+                                    <a class "dropdown-item" href="javascript:void(0)" id="logoutButton">
                                         <i class="fa fa-sign-out-alt"></i>
                                         Logout
                                     </a>
                                 </li>
                             @endif
-
                         </ul>
                     </div>
                 @else

@@ -40,29 +40,5 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password'),
             'role' => $userRole->id,
         ]);
-        // $userData = [
-        //     [
-        //         'name' => 'Admin BantuRumah',
-        //         'email' => 'banturumah4@gmail.com',
-        //         'password' => Hash::make('Password121'),
-        //         'role' => $adminRole->id,
-        //     ],
-        //     [
-        //         'name' => 'Mitra BantuRumah',
-        //         'email' => 'mitra@gmail.com',
-        //         'password' => Hash::make('Password121'),
-        //         'role' => $mitraRole->id,
-        //     ],
-        //     [
-        //         'name' => 'User BantuRumah',
-        //         'email' => 'user@gmail.com',
-        //         'password' => Hash::make('Password121'),
-        //         'role' => $userRole->id,
-        //     ],
-        // ];
-
-        // foreach($userData as $key => $value) {
-        //     User::create($value);
-        // }
     }
 }

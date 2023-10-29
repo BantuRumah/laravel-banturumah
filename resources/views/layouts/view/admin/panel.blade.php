@@ -17,6 +17,9 @@
     <link rel="stylesheet" href="{{ asset('lte/dist/css/adminlte.min.css') }}">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ asset('lte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -61,6 +64,30 @@
     <script src="{{ asset('lte/dist/js/demo.js') }}"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('lte/dist/js/pages/dashboard.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            // Get the current URL or route
+            var currentURL = window.location.pathname;
+
+            // Define the parent URLs for the dropdown menu items
+            var parentURLs = [
+                "/admin/user/alluser",
+                "/admin/user/admin",
+                "/admin/user/mitra",
+                "/admin/user/user",
+            ];
+
+            // Check if the current URL matches any of the parent URLs
+            for (var i = 0; i < parentURLs.length; i++) {
+                if (currentURL.startsWith(parentURLs[i])) {
+                    // Add the 'open' class to the parent <li> element
+                    $(".nav-link[href='" + parentURLs[i] + "']").closest("li").addClass("menu-open");
+                }
+            }
+        });
+    </script>
+
 </body>
 
 </html>

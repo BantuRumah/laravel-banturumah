@@ -5,40 +5,54 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
     public function index() {
-        // echo "halo admin ".Auth::user()->name;
-        // echo "<a href='/logout'>logout</a>";
-        return view('layouts.view.admin.layouts.homes.home');
-    }
-
-    public function usersAll() {
-        $users = User::with('role')->get();
-        return view('layouts.view.admin.layouts.users.userall', compact('users'));
+        $userCount = User::count();
+        return view('layouts.view.admin.layouts.homes.home', ['userCount' => $userCount]);
     }
 
     public function usersAdmin() {
-        // Mengambil pengguna dengan role "admin"
         $adminUsers = User::where('role', 'admin')->get();
-        
         return view('layouts.view.admin.layouts.users.useradmin', compact('adminUsers'));
+    }   
+    
+    public function createUser() {
+        return view('layouts.view.admin.layouts.users.formuser.create');
+    }
+    
+    public function storeUser(Request $request) {
+        // Validate the form data
+        $request->validate([
+            'profile_picture' => 'image|mimes:jpeg,png,jpg',
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users',
+            'role' => 'required|in:admin,mitra,user',
+            'password' => ['required', 'regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/'],
+        ]);
+    
+        // Initialize a variable to store the image path
+        $imageName = null;
+    
+        if ($request->hasFile('profile_picture')) {
+            $image = $request->file('profile_picture');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->storeAs('public/profile_pictures', $imageName);
+        }
+    
+        // Create the user and save the image path
+        $user = User::create([
+            'profile_picture' => $imageName, // Save the image path
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'role' => $request->input('role'),
+            'password' => Hash::make($request->input('password')),
+        ]);
+    
+        return redirect()->route('admin.user.alluser')->with('success', 'Pengguna berhasil dibuat.');
     }    
-
-    public function usersMitra() {
-        // Mengambil pengguna dengan role "admin"
-        $mitraUsers = User::where('role', 'mitra')->get();
-        
-        return view('layouts.view.admin.layouts.users.usermitra', compact('mitraUsers'));
-    }
-
-    public function usersUser() {
-        // Mengambil pengguna dengan role "admin"
-        $adminUsers = User::where('role', 'user')->get();
-        
-        return view('layouts.view.admin.layouts.users.useruser', compact('userUsers'));
-    }
 
     public function editUser($id) {
         // Mengambil data pengguna berdasarkan ID
@@ -58,28 +72,46 @@ class AdminController extends Controller
     {
         // Validasi data yang dikirimkan oleh form edit
         $request->validate([
+            'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg',
             'name' => 'required|string',
-            'email' => 'required|email|unique:users,email,' . $id, // Agar email yang diubah tetap unik kecuali untuk pengguna saat ini
-            'role' => 'required|in:admin,mitra,user', // Sesuaikan aturan validasi sesuai dengan kebutuhan Anda
-            'password' => ['required', 'regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/'],
+            'email' => 'required|email|unique:users,email,' . $id,
+            'role' => 'required|in:admin,mitra,user',
+            'password' => ['nullable', 'regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/'],
         ]);
     
         // Temukan pengguna yang akan diubah berdasarkan ID
         $user = User::find($id);
-    
+
         // Perbarui data pengguna dengan data baru dari form edit
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->role = $request->input('role');
-    
+
         // Enkripsi kata sandi hanya jika kata sandi baru telah diisi
-        if (!empty($request->input('password'))) {
+        if ($request->filled('password')) {
             $user->password = Hash::make($request->input('password'));
         }
-    
+
+        // Mengunggah foto profil baru jika ada
+        if ($request->hasFile('profile_picture')) {
+            $image = $request->file('profile_picture');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->storeAs('public/profile_pictures', $imageName);
+            $user->profile_picture = $imageName;
+        }
+
+        // Hapus foto profil jika checkbox "Remove Profile Picture" dipilih
+if ($request->input('remove_profile_picture') == 1) {
+    // Hapus foto profil lama
+    if ($user->profile_picture) {
+        Storage::delete('public/profile_pictures/' . $user->profile_picture);
+        $user->profile_picture = null;
+    }
+}
+
         // Simpan perubahan ke dalam database
         $user->save();
-    
+
         return redirect()->route('admin.user.alluser')->with('success', 'Data pengguna berhasil diperbarui.');
     }    
 

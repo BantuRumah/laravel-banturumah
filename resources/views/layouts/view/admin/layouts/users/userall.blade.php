@@ -6,6 +6,8 @@
             <div class="container-fluid">
                 <h1>Data Users</h1>
 
+                <a href="/admin/user/create" class="btn btn-success mb-3 mt-2">+ Tambah</a>
+
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -29,7 +31,6 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
-                            <th>Action</th> <!-- Kolom untuk Action -->
                         </tr>
                     </thead>
                     <tbody>
@@ -39,12 +40,6 @@
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->role }}</td>
-                                <td>
-                                    <a href=" {{ route('admin.users.edit', $user->id) }}">Edit</a> |
-                                    <a href="{{ route('admin.users.view', $user->id) }}">View</a> |
-                                    <a href="{{ route('admin.users.delete', $user->id) }}"
-                                        onclick="return confirm('Apakah Anda yakin ingin menghapus pengguna ini?')">Delete</a>
-                                </td>
                             </tr>
                         @endforeach
                     </tbody>
