@@ -116,7 +116,9 @@
                 </li>
                 <li class="nav-header">PENGATURAN</li>
                 <li class="nav-item">
-                    <a href="settings/mail-config" class="nav-link">
+                    <a href="settings/mail-config"
+                        class="nav-link {{ Request::is('admin/settings/mail-config') ? 'active' : '' }}"
+                        class="nav-link">
                         <i class="nav-icon far fa-envelope"></i>
                         <p>
                             Mailbox
