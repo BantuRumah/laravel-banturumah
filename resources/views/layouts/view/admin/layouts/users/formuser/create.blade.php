@@ -44,6 +44,18 @@
                         </select>
                     </div>
 
+                    <!-- Form tambahan hanya ditampilkan saat peran "mitra" dipilih -->
+                    <div id="mitraForm" style="display: none;">
+                        <div class="form-group">
+                            <label for="mitra_id">Nama:</label>
+                            <select id="mitra_id" name="mitra_id" class="form-control" required>
+                                @foreach ($mitra as $mitraItem)
+                                    <option value="{{ $mitraItem->id }}">{{ $mitraItem->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label for="profile_picture">Profile Picture</label>
                         <input type="file" name="profile_picture" id="profile_picture">
@@ -56,6 +68,16 @@
 
                     <button type="submit" class="btn btn-primary">Create User</button>
                 </form>
+                <script>
+                    // Event handler untuk perubahan pilihan "role"
+                    $('#role').change(function() {
+                        if ($(this).val() === 'mitra') {
+                            $('#mitraForm').show();
+                        } else {
+                            $('#mitraForm').hide();
+                        }
+                    });
+                </script>
             </div>
         </div>
     </section>

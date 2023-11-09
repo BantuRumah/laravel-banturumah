@@ -13,12 +13,13 @@
     {{-- CSS - BOOTSTRAP --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@12/dist/sweetalert2.min.css">
 
     {{-- JS - BOOTSTRAP --}}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@12"></script>
 
     {{-- CSS - CUSTOM --}}
     <link rel="stylesheet" href="{{ asset('/css/app-homepage.css') }}">
@@ -127,28 +128,6 @@
             }
         });
     </script>
-
-    {{-- <script>
-        @if (session('success'))
-            alert("{{ session('success') }}");
-        @endif
-    </script> --}}
-
-    {{-- <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const userDropdown = document.getElementById("userDropdown");
-            const dropdownContent = document.getElementById("dropdownContent");
-
-            userDropdown.addEventListener("click", function(e) {
-                dropdownContent.style.display = "block";
-                e.stopPropagation();
-            });
-
-            document.addEventListener("click", function() {
-                dropdownContent.style.display = "none";
-            });
-        });
-    </script> --}}
 
 </body>
 

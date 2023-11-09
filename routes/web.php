@@ -3,12 +3,15 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminTransaksiController;
 use App\Http\Controllers\AllUserController;
 use App\Http\Controllers\MitraController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\SendEmailController;
 use App\Http\Controllers\MailConfigController;
+use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -57,7 +60,13 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/user/alluser', [AllUserController::class, 'index'])->name('admin.user.alluser');
         Route::get('/admin/user/admin', [AdminController::class, 'usersAdmin'])->name('admin.user.admin');
         Route::get('/admin/user/mitra', [MitraController::class, 'mitraUsers'])->name('admin.user.mitra');
+        Route::get('/admin/user/keterangan-mitra', [MitraController::class, 'keteranganMitra'])->name('admin.user.keterangan-mitra');
+        Route::get('/admin/user/create-keterangan-mitra', [MitraController::class, 'create'])->name('admin.user.create-keterangan-mitra');
+        Route::post('/admin/user/create-keterangan-mitra', [MitraController::class, 'store'])->name('admin.user.create-keterangan-mitra.store');
         Route::get('/admin/user/user', [UserController::class, 'userUsers'])->name('admin.user.user');
+        Route::get('/admin/transaksi', [AdminTransaksiController::class, 'index'])->name('admin.transaksi');
+        Route::delete('/admin/transaksi/{id}', [AdminTransaksiController::class, 'destroy'])->name('admin.transaksi.destroy');
+        Route::put('/admin/transaksi/{id}', [AdminTransaksiController::class, 'update_status'])->name('admin.transaksi.update_status');
 
         Route::get('/admin/settings/mail-config', [MailConfigController::class, 'index'])->name('mail-config');
         Route::post('/admin/settings/mail-config/update', [MailConfigController::class, 'update'])->name('mail-config.update');
@@ -77,8 +86,6 @@ Route::middleware(['auth'])->group(function () {
 
     // Delete User
     Route::get('/admin/user/delete/{id}', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
-
-
     
     // Mitra
     Route::middleware('userAkses:mitra')->group(function () {
@@ -88,7 +95,19 @@ Route::middleware(['auth'])->group(function () {
     // User
     Route::middleware('userAkses:user')->group(function () {
         Route::get('/user', [UserController::class, 'index']);
+        Route::get('/user/mitra-list', [UserController::class, 'mitraList'])->name('user.mitra-list');
+        Route::get('/user/riwayat-transaksi', [AdminTransaksiController::class, 'riwayattransaksi'])->name('user.riwayat-transaksi');
+        Route::get('/reorder/{id}', [AdminTransaksiController::class, 'reorder'])->name('reorder');
+
+        // Transaksi
+        Route::get('/transaksi/create', [TransaksiController::class, 'create'])->name('transaksi.create');
+        Route::post('/transaksi', [TransaksiController::class, 'store'])->name('transaksi.store');
+        Route::get('/transaksi/list', [TransaksiController::class, 'index'])->name('transaksi.index');
     });
+
+    Route::get('/update_profiles', [UserProfileController::class, 'edit'])->name('profile1.update');
+    Route::put('/update_profiles', [UserProfileController::class, 'update'])->name('profile.update');
+    Route::get('/profile/delete-picture', [UserProfileController::class, 'deletePicture'])->name('profile.delete_picture');
 
     // Logout
     Route::get('/logout', [LoginController::class, 'logout']);

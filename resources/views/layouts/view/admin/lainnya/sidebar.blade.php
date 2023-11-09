@@ -69,11 +69,29 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/user/mitra"
-                                class="nav-link {{ Request::is('admin/user/mitra') ? 'active' : '' }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Mitra</p>
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-circle"></i>
+                                <p>
+                                    Mitra
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/admin/user/mitra" class="nav-link"
+                                        class="nav-link {{ Request::is('admin/user/mitra') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Mitra</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/admin/user/keterangan-mitra" class="nav-link"
+                                        class="nav-link {{ Request::is('admin/user/keterangan-mitra') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Keterangan Mitra</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a href="/admin/user/user"
@@ -83,6 +101,16 @@
                             </a>
                         </li>
                     </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/admin/transaksi" class="nav-link {{ Request::is('admin/transaksi') ? 'active' : '' }}"
+                        class="nav-link">
+                        <i class="nav-icon far fa-envelope"></i>
+                        <p>
+                            Transaksi
+                        </p>
+                    </a>
                 </li>
 
                 <li class="nav-item">

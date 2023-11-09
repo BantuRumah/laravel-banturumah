@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Mitra;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -20,7 +21,8 @@ class AdminController extends Controller
     }   
     
     public function createUser() {
-        return view('layouts.view.admin.layouts.users.formuser.create');
+        $mitra = Mitra::all();
+        return view('layouts.view.admin.layouts.users.formuser.create', compact('mitra'));
     }
     
     public function storeUser(Request $request) {
@@ -43,16 +45,23 @@ class AdminController extends Controller
         }
     
         // Create the user and save the image path
-        $user = User::create([
+        $userData = [
             'profile_picture' => $imageName, // Save the image path
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'role' => $request->input('role'),
             'password' => Hash::make($request->input('password')),
-        ]);
+        ];
+    
+        if ($request->input('role') === 'mitra') {
+            $userData['mitra_id'] = $request->input('mitra_id');
+        }
+    
+        $user = User::create($userData);
     
         return redirect()->route('admin.user.alluser')->with('success', 'Pengguna berhasil dibuat.');
-    }    
+    }
+        
 
     public function editUser($id) {
         // Mengambil data pengguna berdasarkan ID
@@ -101,13 +110,13 @@ class AdminController extends Controller
         }
 
         // Hapus foto profil jika checkbox "Remove Profile Picture" dipilih
-if ($request->input('remove_profile_picture') == 1) {
-    // Hapus foto profil lama
-    if ($user->profile_picture) {
-        Storage::delete('public/profile_pictures/' . $user->profile_picture);
-        $user->profile_picture = null;
-    }
-}
+        if ($request->input('remove_profile_picture') == 1) {
+            // Hapus foto profil lama
+            if ($user->profile_picture) {
+                Storage::delete('public/profile_pictures/' . $user->profile_picture);
+                $user->profile_picture = null;
+            }
+        }
 
         // Simpan perubahan ke dalam database
         $user->save();

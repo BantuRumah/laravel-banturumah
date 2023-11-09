@@ -21,8 +21,11 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('role');
+            $table->unsignedBigInteger('mitra_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
+
+            $table->foreign('mitra_id')->references('id')->on('mitra');
         });
     }
 

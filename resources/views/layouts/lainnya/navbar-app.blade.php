@@ -11,21 +11,98 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/">
-                        Beranda
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ Request::is('service') ? 'active' : '' }}" href="/service">
-                        Layanan Kami
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ Request::is('about-us') ? 'active' : '' }}" href="/about-us">
-                        Tentang Kami
-                    </a>
-                </li>
+                @auth
+                    @if (Auth::user()->role == 'user')
+                        <ul class="navbar-nav ml-auto">
+                            <!-- Menu-menu untuk role user -->
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/">
+                                    Beranda
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::is('service') ? 'active' : '' }}" href="/service">
+                                    Layanan Kami
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::is('about-us') ? 'active' : '' }}" href="/about-us">
+                                    Tentang Kami
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::is('user/mitra-list') ? 'active' : '' }}"
+                                    href="/user/mitra-list">
+                                    Transaksi
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::is('user/riwayat-transaksi') ? 'active' : '' }}"
+                                    href="/user/riwayat-transaksi">
+                                    Riwayat Transaksi
+                                </a>
+                            </li>
+                        </ul>
+                    @elseif (Auth::user()->role == 'mitra' && Auth::user()->role == 'admin')
+                        <ul class="navbar-nav ml-auto">
+                            <!-- Menu-menu untuk role mitra -->
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/">
+                                    Beranda
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::is('service') ? 'active' : '' }}" href="/service">
+                                    Layanan Kami
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::is('about-us') ? 'active' : '' }}" href="/about-us">
+                                    Tentang Kami
+                                </a>
+                            </li>
+                        </ul>
+                    @else
+                        <ul class="navbar-nav ml-auto">
+                            <!-- Menu-menu untuk role mitra -->
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/">
+                                    Beranda
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::is('service') ? 'active' : '' }}" href="/service">
+                                    Layanan Kami
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::is('about-us') ? 'active' : '' }}" href="/about-us">
+                                    Tentang Kami
+                                </a>
+                            </li>
+                        </ul>
+                    @endif
+                @else
+                    <!-- Menu-menu ketika tidak ada auth yang login -->
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/">
+                                Beranda
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::is('service') ? 'active' : '' }}" href="/service">
+                                Layanan Kami
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::is('about-us') ? 'active' : '' }}" href="/about-us">
+                                Tentang Kami
+                            </a>
+                        </li>
+                    </ul>
+                @endauth
+
             </ul>
             <div class="d-flex ms-auto justify-content-center">
                 @auth
@@ -44,40 +121,29 @@
                                     <div class="user-name">{{ Auth::user()->name }}</div>
                                 </div>
                             @endif
-
                         </button>
                         <div class="custom-dropdown-content" id="dropdownContent"></div>
                         <ul class="dropdown-menu" id="dropdownContent">
-                            @if (Auth()->check())
-                                @if (Auth()->user()->role == 'admin')
-                                    <li>
-                                        <a class="dropdown-item" href="/admin/dashboard">
-                                            <i class="nav-icon fas fa-tachometer-alt"></i>
-                                            Dashboard
-                                        </a>
-                                    </li>
-                                @elseif (Auth()->user()->role == 'mitra')
-                                    <li>
-                                        <a class="dropdown-item" href="/mitra/dashboard">
-                                            <i class="nav-icon fas fa-tachometer-alt"></i>
-                                            Dashboard
-                                        </a>
-                                    </li>
-                                @endif
+                            @if (Auth()->user()->role == 'admin')
                                 <li>
-                                    <a class="dropdown-item" href="javascript:void(0)" id="logoutButton">
-                                        <i class="fa fa-sign-out-alt"></i>
-                                        Logout
-                                    </a>
-                                </li>
-                            @else
-                                <li>
-                                    <a class "dropdown-item" href="javascript:void(0)" id="logoutButton">
-                                        <i class="fa fa-sign-out-alt"></i>
-                                        Logout
+                                    <a class="dropdown-item" href="/admin/dashboard">
+                                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                                        Dashboard
                                     </a>
                                 </li>
                             @endif
+                            <li>
+                                <a class="dropdown-item" href="/update_profiles">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    Update Profile
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="javascript:void(0)" id="logoutButton">
+                                    <i class="fa fa-sign-out-alt"></i>
+                                    Logout
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 @else
@@ -86,6 +152,7 @@
                         <a href="/register" class="btn btn-outline-success">Register</a>
                     </center>
                 @endauth
+
             </div>
         </div>
     </div>
