@@ -49,7 +49,7 @@
                     </div>
 
                     <div class="form-group form-check" style="margin-top: 25px">
-                        <input type="checkbox" class="form-check-input" id="showPassword">
+                        <input type="checkbox" class="form-check-input" id="showPassword" value="Password121">
                         <label class="form-check-label" for="showPassword">Show Password</label>
                     </div>
 

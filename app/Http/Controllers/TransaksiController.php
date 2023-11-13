@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Transaksi;
 use App\Models\Mitra;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -29,7 +30,7 @@ class TransaksiController extends Controller
             $file = $request->file('bukti_pembayaran');
             $imageName = time() . '_' . $file->getClientOriginalExtension();
             $file -> storeAs('public/bukti_pembayaran', $imageName);
-    
+            
             // Create the transaction with the path of the stored image
             $transaksi = Transaksi::create([
                 'mitra_id' => $request->mitra_id,
@@ -42,6 +43,23 @@ class TransaksiController extends Controller
                 'status' => 'payyed',
                 'bukti_pembayaran' => $imageName, // Store the path of the image
             ]);
+              // Periksa apakah tanggal_berakhir melebihi tanggal sekarang
+        $tanggalSekarang = now();
+        $tanggalBerakhir = Carbon::parse($request->tanggal_berakhir);
+
+        if ($tanggalBerakhir->isPast()) {
+            // Jika tanggal_berakhir sudah lewat, ubah status mitra menjadi 'tersedia'
+            $mitra = Mitra::find($request->mitra_id);
+            if ($mitra) {
+                $mitra->update(['status' => 'tersedia']);
+            }
+
+            // Ubah status transaksi menjadi 'finished'
+            $transaksi->update(['status' => 'finished']);
+        } else {
+            // Tanggal_berakhir belum lewat, status transaksi tetap 'payyed'
+            $statusTransaksi = $transaksi->status;
+        }
     
             if ($transaksi) {
                 $mitra = Mitra::find($request->mitra_id);

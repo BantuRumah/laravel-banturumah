@@ -38,7 +38,9 @@
                                 @elseif ($tr->status == 'success')
                                     <button class="btn btn-success btn-sm" disabled>Success</button>
                                 @elseif ($tr->status == 'failed')
-                                    <button class="btn btn-danger btn-sm" disabled>Failed</button>
+                                    <button class="btn btn-danger btn-sm" disabled>Failed
+                                    @elseif ($tr->status == 'finished')
+                                        <button class="btn btn-info btn-sm" disabled>Finished
                                 @endif
                             </td>
                             <td>

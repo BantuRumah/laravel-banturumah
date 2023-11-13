@@ -21,7 +21,7 @@ return new class extends Migration
             $table->date('tanggal_transaksi');
             $table->time('waktu_transaksi');
             $table->string('bukti_pembayaran');
-            $table->enum('status', ['payyed', 'success', 'failed'])->default('payyed');
+            $table->enum('status', ['payyed', 'success', 'failed','finished'])->default('payyed');
             $table->unsignedBigInteger('mitra_id');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
