@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->bigInteger('telephone');
             $table->longText('layanan')->nullable();
-            $table->enum('status', ['tersedia', 'tidak tersedia'])->default('tersedia');
+            $table->enum('status', ['menunggu', 'tersedia', 'tidak tersedia'])->default('tersedia');
             $table->bigInteger('harga');
             $table->timestamps();
         });

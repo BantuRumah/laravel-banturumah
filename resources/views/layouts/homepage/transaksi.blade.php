@@ -131,14 +131,31 @@
                                                 </span>
                                             </div>
                                             <label>Harga:</label>
-                                            <p class="card-text">{{ $mitraItem->harga }}</p>
-                                            <a href="#"
+                                            <p class="card-text">Rp. {{ $mitraItem->harga }} / Bulan</p>
+                                            {{-- <a href="#"
                                                 class="btn {{ $mitraItem->status == 'tidak tersedia' ? 'btn-secondary' : 'btn-primary' }} order-button"
                                                 data-mitra="{{ $mitraItem->user_name }}"
                                                 data-mitra_id="{{ $mitraItem->id }}"
                                                 {{ $mitraItem->status == 'tidak tersedia' ? 'disabled' : '' }}>
                                                 {{ $mitraItem->status == 'tidak tersedia' ? 'Dipesan' : 'Pesan Sekarang' }}
-                                            </a>
+                                            </a> --}}
+                                            @if ($mitraItem->status == 'tersedia')
+                                                <a href="#" class="btn btn-primary order-button"
+                                                    data-mitra="{{ $mitraItem->user_name }}"
+                                                    data-mitra_id="{{ $mitraItem->id }}">Order
+                                                    Sekarang</a>
+                                            @elseif ($mitraItem->status == 'menunggu')
+                                                <a href="#" class="btn btn-warning order-button disabled"
+                                                    data-mitra="{{ $mitraItem->user_name }}"
+                                                    data-mitra_id="{{ $mitraItem->id }}">Menunggu Konfirmasi</a>
+                                            @else
+                                                <a href="#" class="btn btn-secondary order-button disabled"
+                                                    data-mitra="{{ $mitraItem->user_name }}"
+                                                    data-mitra_id="{{ $mitraItem->id }}">Booked</a>
+                                            @endif
+
+
+                                            <a href="#" class=""></a>
                                         </div>
                                     </div>
                                 </div>
@@ -250,20 +267,15 @@
                 // Buat FormData objek untuk pengiriman formulir
                 var formData = new FormData(form);
 
-                // Kirim data ke server menggunakan metode POST
-                fetch("{{ route('transaksi.store') }}", {
-                        method: "POST",
-                        body: formData,
-                    })
-                    .then(function(response) {
-                        if (response.ok) {
-                            return response.json();
-                        } else {
-                            throw new Error("Respon jaringan tidak berhasil");
-                        }
-                    })
-                    .then(function(data) {
-                        // Tangani respons JSON dari server
+                // Send data to the server using AJAX
+                $.ajax({
+                    url: "{{ route('transaksi.store') }}",
+                    type: "POST",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(data) {
+                        // Hide the order modal
                         $("#orderModal").modal("hide");
 
                         var statusParagraph = $('a[data-mitra_id="' + mitraId + '"]').siblings(
@@ -271,22 +283,23 @@
                         statusParagraph.text('tidak tersedia');
                         statusParagraph.css('color', 'red');
 
-                        // Tampilkan SweetAlert
+                        // Show SweetAlert
                         Swal.fire({
                             icon: 'success',
                             title: 'Berhasil',
                             text: 'Anda telah berhasil melakukan transaksi.',
                         }).then((result) => {
                             if (result.isConfirmed) {
-                                // Muat ulang halaman ke '/user/mitra-list'
+                                // Reload the page to '/user/mitra-list'
                                 window.location.href = '/user/mitra-list';
                             }
                         });
-                    })
-                    .catch(function(error) {
-                        // Tangani kesalahan yang mungkin terjadi selama pengiriman
-                        alert("Error: " + error.message);
-                    });
+                    },
+                    error: function(error) {
+                        // Handle errors that may occur during submission
+                        alert("Error: " + error.responseText);
+                    }
+                });
             });
 
             // Tutup modal

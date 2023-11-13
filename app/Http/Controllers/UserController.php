@@ -31,13 +31,9 @@ class UserController extends Controller
             ->select('mitra.*', 'users.name as user_name', 'users.profile_picture as user_profile_picture')
             ->get();
 
-        // Check each mitra for existing transactions and update status accordingly
-        foreach ($mitra as $mitraItem) {
-            $transactionExists = Transaksi::where('mitra_id', $mitraItem->id)->exists();
-            $mitraItem->status = $transactionExists ? 'tidak tersedia' : 'tersedia';
-        }
+            $transaksi = Transaksi::where('user_id', auth()->id())->first();
 
-        return view('layouts.homepage.transaksi', compact('mitra'));
+            return view('layouts.homepage.transaksi', compact('mitra', 'transaksi'));
     }
 
 }

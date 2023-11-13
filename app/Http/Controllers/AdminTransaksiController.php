@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Mitra;
 use App\Models\Transaksi;
 use Illuminate\Support\Facades\Auth;
 
@@ -34,6 +35,23 @@ class AdminTransaksiController extends Controller
 
         $transaksi = Transaksi::findOrFail($id);
         $transaksi->update(['status' => $validatedData['status']]);
+        // Cek jika status transaksi adalah 'failed' dan update status mitra
+        if ($validatedData['status'] == 'failed') {
+            $mitra = Mitra::find($transaksi->mitra_id);
+            if ($mitra) {
+                $mitra->update(['status' => 'tersedia']);
+            }
+        } else if ($validatedData['status'] == 'success'){
+            $mitra = Mitra::find($transaksi->mitra_id);
+            if ($mitra) {
+                $mitra->update(['status' => 'tidak tersedia']);
+            }
+        } else{
+            $mitra = Mitra::find($transaksi->mitra_id);
+            if ($mitra) {
+                $mitra->update(['status' => 'menunggu']);
+            }
+        }
 
         return redirect()->route('admin.transaksi')->with('success', 'Transaction status updated successfully');
     }

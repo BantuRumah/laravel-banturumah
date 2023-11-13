@@ -28,4 +28,12 @@ class Transaksi extends Model
     public function users() {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    // public function setStatusAttribute($value)
+    // {
+    //     $this->attributes['status'] = $value;
+
+    //     // Memicu event TransaksiStatusUpdated
+    //     event(new TransaksiStatusUpdated($this));
+    // }
 }

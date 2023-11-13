@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaksi;
+use App\Models\Mitra;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -43,6 +44,10 @@ class TransaksiController extends Controller
             ]);
     
             if ($transaksi) {
+                $mitra = Mitra::find($request->mitra_id);
+                if ($mitra && $transaksi->status == 'payyed') {
+                    $mitra->update(['status' => 'menunggu']);
+                }
                 return response()->json([
                     'success' => true,
                     'message' => 'Transaksi Anda telah berhasil tersimpan.',
