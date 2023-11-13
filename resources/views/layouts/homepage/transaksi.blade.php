@@ -315,7 +315,7 @@
 
                 switch (jenisSewa) {
                     case "harian":
-                        tanggalBerakhir = new Date(tanggalSewa);
+                        tanggalBerakhir = new Date(tanggalSewa.setDate(tanggalSewa.getDate() + 1));
                         break;
                     case "mingguan":
                         tanggalBerakhir = new Date(tanggalSewa.setDate(tanggalSewa.getDate() + 7));

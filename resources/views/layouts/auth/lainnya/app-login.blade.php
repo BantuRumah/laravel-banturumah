@@ -45,7 +45,8 @@
                     </div>
 
                     <div class="form-group" style="margin-top: 25px">
-                        <input type="password" id="password" name="password" class="form-control" placeholder="Password">
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Password"
+                            value="Password121">
                     </div>
 
                     <div class="form-group form-check" style="margin-top: 25px">

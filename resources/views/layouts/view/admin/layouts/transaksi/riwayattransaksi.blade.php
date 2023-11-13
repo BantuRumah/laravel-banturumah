@@ -38,16 +38,18 @@
                                 @elseif ($tr->status == 'success')
                                     <button class="btn btn-success btn-sm" disabled>Success</button>
                                 @elseif ($tr->status == 'failed')
-                                    <button class="btn btn-danger btn-sm" disabled>Failed
-                                    @elseif ($tr->status == 'finished')
-                                        <button class="btn btn-info btn-sm" disabled>Finished
+                                    <button class="btn btn-danger btn-sm" disabled>Failed</button>
+                                    <a href="{{ route('user.mitra-list') }}" class="btn btn-primary btn-sm">Re-Order</a>
+                                @elseif ($tr->status == 'finished')
+                                    <button class="btn btn-info btn-sm" disabled>Finished</button>
+                                    <a href="{{ route('user.mitra-list') }}" class="btn btn-primary btn-sm">Re-Order</a>
                                 @endif
                             </td>
                             <td>
-                                @if ($tr->status == 'success' && \Carbon\Carbon::now()->between($tr->tanggal_sewa, $tr->tanggal_berakhir))
+                                {{-- @if ($tr->status == 'success' && \Carbon\Carbon::now()->between($tr->tanggal_sewa, $tr->tanggal_berakhir))
                                     <button class="btn btn-success btn-sm" disabled>Success</button>
                                     <a href="{{ route('user.mitra-list') }}" class="btn btn-primary btn-sm">Re-Order</a>
-                                @endif
+                                @endif --}}
                             </td>
                         </tr>
                     @endforeach
