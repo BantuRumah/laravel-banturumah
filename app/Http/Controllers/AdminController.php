@@ -68,8 +68,9 @@ class AdminController extends Controller
     public function editUser($id) {
         // Mengambil data pengguna berdasarkan ID
         $user = User::find($id);
-
-        return view('layouts.view.admin.layouts.users.formuser.edit', ['user' => $user]);
+        $mitra = Mitra::all(); // Get all Mitra data
+    
+        return view('layouts.view.admin.layouts.users.formuser.edit', compact('user', 'mitra'));
     }
 
     public function viewUser($id) {
@@ -120,10 +121,17 @@ class AdminController extends Controller
             }
         }
 
+        // Update mitra_id if the user role is 'mitra'
+        if ($request->input('role') === 'mitra') {
+            $user->mitra_id = $request->input('mitra_id');
+        } else {
+            $user->mitra_id = null; // Or handle accordingly if role is not 'mitra'
+        }
+
         // Simpan perubahan ke dalam database
         $user->save();
 
-        return redirect()->route('admin.user.alluser')->with('success', 'Data pengguna berhasil diperbarui.');
+        return redirect()->route('admin.user.mitra')->with('success', 'Data pengguna berhasil diperbarui.');
     }    
 
     public function deleteUser($id) {

@@ -47,6 +47,19 @@
                         </select>
                     </div>
 
+                    @if ($user->role == 'mitra')
+                        <div class="form-group">
+                            <label for="mitra_id">Mitra ID:</label>
+                            <select id="mitra_id" name="mitra_id" class="form-control" required>
+                                @foreach ($mitra as $mitraItem)
+                                    <option value="{{ $mitraItem->id }}" @if ($user->mitra_id == $mitraItem->id) selected @endif>
+                                        {{ $mitraItem->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    @endif
+
                     <div class="form-group">
                         <label for="profile_picture">Profile Picture</label>
                         <input type="file" name="profile_picture" id="profile_picture">

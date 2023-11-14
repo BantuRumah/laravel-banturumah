@@ -86,87 +86,82 @@
                     </div>
                     <div class="card-body">
                         <div class="alert alert-info" role="alert">
-                            Transfer ke rekening Mandiri <strong>3512313123</strong> atas nama <strong>Arief Nauvan
+                            Transfer ke rekening BRI <strong>312701035606537</strong> atas nama <strong>Arief Nauvan
                                 Ramadha</strong>
                         </div>
+                        @php
+                            $chunks = $mitra->chunk(3);
+                            // dd($chunks);
+                        @endphp
+                        @foreach ($chunks as $chunk)
+                            <div class="row">
+                                @foreach ($chunk as $mitraItem)
+                                    <div class="col-md-4 mb-4">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="image mb-4">
+                                                    @if ($mitraItem->user_profile_picture)
+                                                        <img src="{{ asset('storage/profile_pictures/' . $mitraItem->user_profile_picture) }}"
+                                                            alt="{{ $mitraItem->user_name }}"
+                                                            class="card-img-top img-fluid">
+                                                    @else
+                                                        <div style="text-align: center;">
+                                                            <img src="{{ asset('img/profile_icon.png') }}"
+                                                                alt="Gambar Profil Default" class="img-fluid">
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                                <label>User Name:</label>
+                                                <b>
+                                                    <p class="card-text mb-2">{{ $mitraItem->user_name }}</p>
+                                                </b>
 
+                                                <label>Telephone:</label>
+                                                <b>
+                                                    <p class="card-text mb-2">{{ $mitraItem->telephone }}</p>
+                                                </b>
 
-                        <div class="row">
-                            @foreach ($mitra as $mitraItem)
-                                <div class="col-md-4 mb-4">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="image mb-4">
-                                                @if ($mitraItem->user_profile_picture)
-                                                    <img src="{{ asset('storage/profile_pictures/' . $mitraItem->user_profile_picture) }}"
-                                                        alt="{{ $mitraItem->user_name }}" class="card-img-top img-fluid">
+                                                <label>Layanan:</label>
+                                                <b>
+                                                    <p class="card-text mb-2">{{ $mitraItem->layanan }}</p>
+                                                </b>
+
+                                                <label>Status:</label>
+                                                <div class="card-text mb-2">
+                                                    <span
+                                                        class="badge {{ $mitraItem->status == 'tersedia' ? 'bg-success' : 'bg-danger' }}"
+                                                        style="font-size: 14px; padding: 8px 12px; border-radius: 8px;">
+                                                        {{ $mitraItem->status }}
+                                                    </span>
+                                                </div>
+                                                <label>Harga:</label>
+                                                <p class="card-text">Rp. {{ $mitraItem->harga }} / Bulan</p>
+                                                @if ($mitraItem->status == 'tersedia')
+                                                    <a href="#" class="btn btn-primary order-button"
+                                                        data-mitra="{{ $mitraItem->user_name }}"
+                                                        data-mitra_id="{{ $mitraItem->id }}">Order
+                                                        Sekarang</a>
+                                                @elseif ($mitraItem->status == 'menunggu')
+                                                    <a href="#" class="btn btn-warning order-button disabled"
+                                                        data-mitra="{{ $mitraItem->user_name }}"
+                                                        data-mitra_id="{{ $mitraItem->id }}">Menunggu Konfirmasi</a>
                                                 @else
-                                                    <div style="text-align: center;">
-                                                        <img src="{{ asset('img/profile_icon.png') }}"
-                                                            alt="Gambar Profil Default" class="img-fluid">
-                                                    </div>
+                                                    <a href="#" class="btn btn-secondary order-button disabled"
+                                                        data-mitra="{{ $mitraItem->user_name }}"
+                                                        data-mitra_id="{{ $mitraItem->id }}">Booked</a>
                                                 @endif
+                                                <a href="#" class=""></a>
                                             </div>
-                                            <label>User Name:</label>
-                                            <b>
-                                                <p class="card-text mb-2">{{ $mitraItem->user_name }}</p>
-                                            </b>
-
-                                            <label>Telephone:</label>
-                                            <b>
-                                                <p class="card-text mb-2">{{ $mitraItem->telephone }}</p>
-                                            </b>
-
-                                            <label>Layanan:</label>
-                                            <b>
-                                                <p class="card-text mb-2">{{ $mitraItem->layanan }}</p>
-                                            </b>
-
-                                            <label>Status:</label>
-                                            <div class="card-text mb-2">
-                                                <span
-                                                    class="badge {{ $mitraItem->status == 'tersedia' ? 'bg-success' : 'bg-danger' }}"
-                                                    style="font-size: 14px; padding: 8px 12px; border-radius: 8px;">
-                                                    {{ $mitraItem->status }}
-                                                </span>
-                                            </div>
-                                            <label>Harga:</label>
-                                            <p class="card-text">Rp. {{ $mitraItem->harga }} / Bulan</p>
-                                            {{-- <a href="#"
-                                                class="btn {{ $mitraItem->status == 'tidak tersedia' ? 'btn-secondary' : 'btn-primary' }} order-button"
-                                                data-mitra="{{ $mitraItem->user_name }}"
-                                                data-mitra_id="{{ $mitraItem->id }}"
-                                                {{ $mitraItem->status == 'tidak tersedia' ? 'disabled' : '' }}>
-                                                {{ $mitraItem->status == 'tidak tersedia' ? 'Dipesan' : 'Pesan Sekarang' }}
-                                            </a> --}}
-                                            @if ($mitraItem->status == 'tersedia')
-                                                <a href="#" class="btn btn-primary order-button"
-                                                    data-mitra="{{ $mitraItem->user_name }}"
-                                                    data-mitra_id="{{ $mitraItem->id }}">Order
-                                                    Sekarang</a>
-                                            @elseif ($mitraItem->status == 'menunggu')
-                                                <a href="#" class="btn btn-warning order-button disabled"
-                                                    data-mitra="{{ $mitraItem->user_name }}"
-                                                    data-mitra_id="{{ $mitraItem->id }}">Menunggu Konfirmasi</a>
-                                            @else
-                                                <a href="#" class="btn btn-secondary order-button disabled"
-                                                    data-mitra="{{ $mitraItem->user_name }}"
-                                                    data-mitra_id="{{ $mitraItem->id }}">Booked</a>
-                                            @endif
-
-
-                                            <a href="#" class=""></a>
                                         </div>
                                     </div>
-                                </div>
-                            @endforeach
-                        </div>
+                                @endforeach
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Modal -->
     <!-- Modal -->
     <div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="orderModalLabel"
         aria-hidden="true">
