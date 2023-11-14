@@ -33,6 +33,8 @@ class DummyUsersSeeder extends Seeder
                  'email' => 'mitra@gmail.com',
                  'password' => Hash::make('Password121'),
                  'role' => 'mitra',
+                 'telephone' => '085159094233',
+                 'alamat' => 'Jl. Soekarno Hatta No.9, Jatimulyo, Kec.Lowokwaru, Kota Malang, Jawa Timur 65141',
                  'mitra_id' => 1,
              ],
              [

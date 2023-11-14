@@ -19,11 +19,11 @@
                         class="mx-auto">
                 </div>
                 <h3 class="text-center">LOGIN</h3>
-                <center>
+                {{-- <center>
                     <p>email admin : banturumah4@gmail.com</p>
                     <p>email mitra : mitra@gmail.com</p>
                     <p>email admin : user@gmail.com</p>
-                </center>
+                </center> --}}
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -49,12 +49,11 @@
                     </div>
 
                     <div class="form-group" style="margin-top: 25px">
-                        <input type="password" id="password" name="password" class="form-control" placeholder="Password"
-                            value="Password121">
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Password">
                     </div>
 
                     <div class="form-group form-check" style="margin-top: 25px">
-                        <input type="checkbox" class="form-check-input" id="showPassword" value="Password121">
+                        <input type="checkbox" class="form-check-input" id="showPassword">
                         <label class="form-check-label" for="showPassword">Show Password</label>
                     </div>
 
