@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('mitra', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->bigInteger('telephone');
             $table->longText('layanan')->nullable();
+            $table->bigInteger('umur');
             $table->enum('status', ['menunggu', 'tersedia', 'tidak tersedia'])->default('tersedia');
             $table->bigInteger('harga');
             $table->timestamps();

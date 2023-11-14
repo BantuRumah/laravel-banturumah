@@ -38,8 +38,8 @@ class MitraController extends Controller
     {
         $data = $request->validate([
             'name' => 'required',
-            'telephone' => 'required|numeric',
             'layanan' => 'nullable',
+            'umur' => 'required|numeric',
             'status' => 'required|in:tersedia,tidak tersedia',
             'harga' => 'required',
         ]);
@@ -74,16 +74,16 @@ class MitraController extends Controller
         // Validate and update the Keterangan Mitra details
         $request->validate([
             'name' => 'required|string|max:255',
-            'telephone' => 'required|numeric',
             'layanan' => 'nullable',
+            'umur' => 'required|numeric',
             'status' => 'required|in:tersedia,tidak tersedia',
             'harga' => 'required',
         ]);
     
         // Update the Keterangan Mitra fields with the new values
         $keteranganMitra->name = $request->input('name');
-        $keteranganMitra->telephone = $request->input('telephone');
         $keteranganMitra->layanan = $request->input('layanan');
+        $keteranganMitra->umur = $request->input('umur');
         $keteranganMitra->status = $request->input('status');
         $keteranganMitra->harga = $request->input('harga');
         $keteranganMitra->save();
@@ -117,8 +117,8 @@ class MitraController extends Controller
         $data = $request->validate([
             'profile_picture' => 'nullable',
             'name' => 'required',
-            'telephone' => 'required',
             'layanan' => 'nullable',
+            'umur' => 'required',
             'status' => 'nullable|in:tersedia,tidak tersedia',
             'harga' => 'nullable',
         ]);

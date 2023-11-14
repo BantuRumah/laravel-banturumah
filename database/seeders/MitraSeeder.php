@@ -18,8 +18,8 @@ class MitraSeeder extends Seeder
         DB::table('mitra')->insert([
             [
                 'name' => 'Mitra BantuRumah',
-                'telephone' => '1234567890',
                 'layanan' => 'Asisten Rumah Tangga',
+                'umur' => '25',
                 'status' => 'tersedia',
                 'harga' => 1000000,
                 'created_at' => now(),

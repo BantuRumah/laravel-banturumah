@@ -116,14 +116,14 @@
                                                     <p class="card-text mb-2">{{ $mitraItem->user_name }}</p>
                                                 </b>
 
-                                                <label>Telephone:</label>
-                                                <b>
-                                                    <p class="card-text mb-2">{{ $mitraItem->telephone }}</p>
-                                                </b>
-
                                                 <label>Layanan:</label>
                                                 <b>
                                                     <p class="card-text mb-2">{{ $mitraItem->layanan }}</p>
+                                                </b>
+
+                                                <label>Umur:</label>
+                                                <b>
+                                                    <p class="card-text mb-2">{{ $mitraItem->umur }}</p>
                                                 </b>
 
                                                 <label>Status:</label>
