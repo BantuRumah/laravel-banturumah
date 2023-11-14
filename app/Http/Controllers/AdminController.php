@@ -34,8 +34,6 @@ class AdminController extends Controller
             'name' => 'required|string',
             'email' => 'required|email|unique:users',
             'role' => 'required|in:admin,mitra,user',
-            'telephone' => 'required|numeric',
-            'alamat' => 'required',
             'password' => ['required', 'regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/'],
         ]);
     
@@ -54,8 +52,6 @@ class AdminController extends Controller
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'role' => $request->input('role'),
-            'telephone' => 'required|numeric',
-            'alamat' => 'required',
             'password' => Hash::make($request->input('password')),
         ];
     

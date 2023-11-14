@@ -47,13 +47,23 @@
                     <!-- Form tambahan hanya ditampilkan saat peran "mitra" dipilih -->
                     <div id="mitraForm" style="display: none;">
                         <div class="form-group">
-                            <label for="mitra_id">Nama:</label>
+                            <label for="mitra_id">Nama Keterangan Mitra:</label>
                             <select id="mitra_id" name="mitra_id" class="form-control" required>
                                 @foreach ($mitra as $mitraItem)
                                     <option value="{{ $mitraItem->id }}">{{ $mitraItem->name }}</option>
                                 @endforeach
                             </select>
                         </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telephone">Telephone:</label>
+                        <input type="text" id="telephone" name="telephone" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="alamat">Alamat:</label>
+                        <input type="alamat" id="alamat" name="alamat" class="form-control">
                     </div>
 
                     <div class="form-group">
