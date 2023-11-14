@@ -12,6 +12,8 @@
                             <th>Profile Image</th>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Telephone</th>
+                            <th>Alamat</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -32,6 +34,8 @@
                                 </td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
+                                <td>{{ $user->telephone }}</td>
+                                <td>{{ $user->alamat }}</td>
                                 <td>
                                     <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-primary">
                                         <i class="fas fa-edit"></i> Edit

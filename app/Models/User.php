@@ -23,6 +23,8 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
+        'telephone',
+        'alamat',
         'mitra_id',
     ];
 

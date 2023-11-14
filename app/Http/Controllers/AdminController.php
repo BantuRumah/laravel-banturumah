@@ -34,6 +34,8 @@ class AdminController extends Controller
             'name' => 'required|string',
             'email' => 'required|email|unique:users',
             'role' => 'required|in:admin,mitra,user',
+            'telephone' => 'required|numeric',
+            'alamat' => 'required',
             'password' => ['required', 'regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/'],
         ]);
     
@@ -52,6 +54,8 @@ class AdminController extends Controller
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'role' => $request->input('role'),
+            'telephone' => 'required|numeric',
+            'alamat' => 'required',
             'password' => Hash::make($request->input('password')),
         ];
     
@@ -88,6 +92,8 @@ class AdminController extends Controller
             'name' => 'required|string',
             'email' => 'required|email|unique:users,email,' . $id,
             'role' => 'required|in:admin,mitra,user',
+            'telephone' => 'required|numeric',
+            'alamat' => 'required',
             'password' => ['nullable', 'regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/'],
         ]);
     
@@ -98,6 +104,8 @@ class AdminController extends Controller
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->role = $request->input('role');
+        $user->telephone = $request->input('telephone');
+        $user->alamat = $request->input('alamat');
 
         // Enkripsi kata sandi hanya jika kata sandi baru telah diisi
         if ($request->filled('password')) {
@@ -131,7 +139,7 @@ class AdminController extends Controller
         // Simpan perubahan ke dalam database
         $user->save();
 
-        return redirect()->route('admin.user.mitra')->with('success', 'Data pengguna berhasil diperbarui.');
+        return redirect()->route('admin.user.alluser')->with('success', 'Data pengguna berhasil diperbarui.');
     }    
 
     public function deleteUser($id) {

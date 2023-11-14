@@ -46,6 +46,18 @@
                                 </div>
 
                                 <div class="mb-3">
+                                    <label for="telephone" class="form-label">Telephone:</label>
+                                    <input type="text" class="form-control" id="telephone" name="telephone"
+                                        value="{{ Auth::user()->telephone }}">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="alamat" class="form-label">Alamat:</label>
+                                    <input type="text" class="form-control" id="alamat" name="alamat"
+                                        value="{{ Auth::user()->alamat }}">
+                                </div>
+
+                                <div class="mb-3">
                                     <label for="profile_picture" class="form-label">Foto Profil:</label>
                                     <input type="file" class="form-control" id="profile_picture" name="profile_picture">
                                     <small class="form-text text-muted">Unggah foto profil Anda (opsional).</small>

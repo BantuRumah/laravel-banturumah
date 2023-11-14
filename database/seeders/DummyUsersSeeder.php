@@ -19,13 +19,15 @@ class DummyUsersSeeder extends Seeder
      public function run()
      {
          $userData = [
-             [
-                 'name' => 'Admin BantuRumah',
-                 'email' => 'banturumah4@gmail.com',
-                 'password' => Hash::make('Password121'),
-                 'role' => 'admin',
-                 'mitra_id' => null,
-             ],
+            [
+                'name' => 'Admin BantuRumah',
+                'email' => 'banturumah4@gmail.com',
+                'password' => Hash::make('Password121'),
+                'role' => 'admin',
+                'telephone' => '082313568127',
+                'alamat' => 'Jl. Soekarno Hatta No.9, Jatimulyo, Kec.Lowokwaru, Kota Malang, Jawa Timur 65141',
+                'mitra_id' => null,
+            ],
              [
                  'name' => 'Mitra BantuRumah',
                  'email' => 'mitra@gmail.com',
@@ -48,6 +50,8 @@ class DummyUsersSeeder extends Seeder
                  'email' => $data['email'],
                  'password' => $data['password'],
                  'role' => $data['role'],
+                 'telephone' => isset($data['telephone']) ? $data['telephone'] : null,
+                 'alamat' => isset($data['alamat']) ? $data['alamat'] : null,
                  'mitra_id' => $data['mitra_id'],
                 //  'role' => Role::where('role', $data['role'])->first()->id,
              ]);

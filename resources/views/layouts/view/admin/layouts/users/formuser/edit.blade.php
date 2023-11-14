@@ -47,6 +47,18 @@
                         </select>
                     </div>
 
+                    <div class="form-group">
+                        <label for="telephone">Telephone:</label>
+                        <input type="telephone" id="telephone" name="telephone" value="{{ $user->telephone }}"
+                            class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="alamat">Alamat:</label>
+                        <input type="alamat" id="alamat" name="alamat" value="{{ $user->alamat }}"
+                            class="form-control">
+                    </div>
+
                     @if ($user->role == 'mitra')
                         <div class="form-group">
                             <label for="mitra_id">Mitra ID:</label>

@@ -22,6 +22,8 @@ class UserProfileController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . Auth::id(),
             'role' => 'required|in:admin,mitra,user',
+            'telephone' => 'required|numeric',
+            'alamat' => 'required|string|max:255',
             'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg',
             'password' => ['nullable', 'regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/'],
         ]);
@@ -33,6 +35,8 @@ class UserProfileController extends Controller
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
             'role' => $validatedData['role'],
+            'telephone' => $validatedData['telephone'],
+            'alamat' => $validatedData['alamat'],
         ];
 
         // Handle password update (only if provided and not empty)

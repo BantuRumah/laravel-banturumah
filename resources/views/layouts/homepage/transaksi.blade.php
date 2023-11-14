@@ -89,6 +89,14 @@
                             Transfer ke rekening BRI <strong>312701035606537</strong> atas nama <strong>Arief Nauvan
                                 Ramadha</strong>
                         </div>
+                        @if (empty(Auth::user()->telephone) || empty(Auth::user()->alamat))
+                            <div class="alert alert-warning" role="alert">
+                                Silakan lengkapi profil Anda terlebih dahulu. <a
+                                    href="{{ route('profile1.update') }}">Update
+                                    Profile</a>
+                            </div>
+                        @endif
+
                         @php
                             $chunks = $mitra->chunk(3);
                             // dd($chunks);
