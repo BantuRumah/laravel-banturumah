@@ -39,7 +39,7 @@ class MitraController extends Controller
         $data = $request->validate([
             'name' => 'required',
             'telephone' => 'required|numeric',
-            'description' => 'nullable',
+            'layanan' => 'nullable',
             'status' => 'required|in:tersedia,tidak tersedia',
             'harga' => 'required',
         ]);
@@ -49,6 +49,63 @@ class MitraController extends Controller
         return redirect()->route('admin.user.keterangan-mitra');
     }
 
+    public function editKeteranganMitra($id)
+    {
+        // Find the Keterangan Mitra record by ID
+        $keteranganMitra = Mitra::find($id);
+
+        if (!$keteranganMitra) {
+            return redirect()->route('admin.user.keterangan-mitra')->with('error', 'Keterangan Mitra not found.');
+        }
+
+        // Load the view for editing Keterangan Mitra
+        return view('layouts.view.admin.layouts.users.formuser.edit-keterangan-mitra', compact('keteranganMitra'));
+    }
+
+    public function updateKeteranganMitra(Request $request, $id)
+    {
+        // Find the Keterangan Mitra record by ID
+        $keteranganMitra = Mitra::find($id);
+    
+        if (!$keteranganMitra) {
+            return redirect()->route('admin.user.keterangan-mitra')->with('error', 'Keterangan Mitra not found.');
+        }
+    
+        // Validate and update the Keterangan Mitra details
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'telephone' => 'required|numeric',
+            'layanan' => 'nullable',
+            'status' => 'required|in:tersedia,tidak tersedia',
+            'harga' => 'required',
+        ]);
+    
+        // Update the Keterangan Mitra fields with the new values
+        $keteranganMitra->name = $request->input('name');
+        $keteranganMitra->telephone = $request->input('telephone');
+        $keteranganMitra->layanan = $request->input('layanan');
+        $keteranganMitra->status = $request->input('status');
+        $keteranganMitra->harga = $request->input('harga');
+        $keteranganMitra->save();
+    
+        return redirect()->route('admin.user.keterangan-mitra')->with('success', 'Keterangan Mitra updated successfully.');
+    }    
+
+    public function deleteKeteranganMitra($id)
+    {
+        // Find the Keterangan Mitra record by ID
+        $keteranganMitra = Mitra::find($id);
+    
+        if (!$keteranganMitra) {
+            return redirect()->route('admin.user.keterangan-mitra')->with('error', 'Keterangan Mitra not found.');
+        }
+    
+        // Delete the Keterangan Mitra record
+        $keteranganMitra->delete();
+    
+        return redirect()->route('admin.user.keterangan-mitra')->with('success', 'Keterangan Mitra deleted successfully.');
+    }    
+    
     public function edit($id)
     {
         $mitra = Mitra::find($id);
@@ -61,7 +118,7 @@ class MitraController extends Controller
             'profile_picture' => 'nullable',
             'name' => 'required',
             'telephone' => 'required',
-            'description' => 'nullable',
+            'layanan' => 'nullable',
             'status' => 'nullable|in:tersedia,tidak tersedia',
             'harga' => 'nullable',
         ]);

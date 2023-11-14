@@ -4,7 +4,7 @@
     <section class="content-wrapper">
         <div class="container">
             <div class="container-fluid">
-                <h1>Create User</h1>
+                <h1>Edit Keterangan Mitra</h1>
 
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -22,22 +22,26 @@
                     </div>
                 @endif
 
-                <form method="POST" action="{{ route('admin.user.create-keterangan-mitra.store') }}"
+                <form method="POST" action="{{ route('admin.user.keterangan-mitra.update', $keteranganMitra->id) }}"
                     enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
 
                     <div class="form-group">
                         <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" class="form-control" required>
+                        <input type="text" id="name" name="name" class="form-control"
+                            value="{{ $keteranganMitra->name }}" required>
                     </div>
                     <div class="form-group">
                         <label for="telephone">Telephone:</label>
-                        <input type="number" id="telephone" name="telephone" class="form-control" required>
+                        <input type="number" id="telephone" name="telephone" class="form-control"
+                            value="{{ $keteranganMitra->telephone }}" required>
                     </div>
 
                     <div class="form-group">
                         <label for="layanan">Layanan:</label>
-                        <input type="text" id="layanan" name="layanan" class="form-control" required>
+                        <input type="text" id="layanan" name="layanan" class="form-control"
+                            value="{{ $keteranganMitra->layanan }}" required>
                     </div>
 
                     <div class="form-group">
@@ -49,10 +53,12 @@
 
                     <div class="form-group">
                         <label for="harga">Harga:</label>
-                        <input type="number" id="harga" name="harga" class="form-control" required>
+                        <input type="number" id="harga" name="harga" class="form-control"
+                            value="{{ $keteranganMitra->harga }}" required>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Create User</button>
+                    <a class="btn btn-success" href="/admin/user/keterangan-mitra">Kembali</a>
+                    <button type="submit" class="btn btn-warning">Update</button>
                 </form>
             </div>
         </div>

@@ -11,7 +11,6 @@
             </p>
         </div>
     </div>
-
     <div class="container">
         <div class="card mx-auto" style="max-width: 450px; padding: 15px; margin-top: 125px">
             <div class="card-body">
@@ -20,6 +19,11 @@
                         class="mx-auto">
                 </div>
                 <h3 class="text-center">LOGIN</h3>
+                <center>
+                    <p>email admin : banturumah4@gmail.com</p>
+                    <p>email mitra : mitra@gmail.com</p>
+                    <p>email admin : user@gmail.com</p>
+                </center>
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>

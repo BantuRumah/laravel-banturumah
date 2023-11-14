@@ -2,62 +2,56 @@
 
 @section('content')
     <section class="content-wrapper">
-        <div class="container">
-            <h1>Admin Users</h1>
+        <div class="container my-4">
+            <h1 class="mb-4">Transaksi</h1>
 
-            <!-- Your existing code here -->
-
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Jenis Sewa</th>
-                        <th>Tanggal Sewa</th>
-                        <th>Tanggal berakhir</th>
-                        <th>Tanggal transaksi</th>
-                        <th>waktu transaksi</th>
-                        <th>status</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @php
-                        $count = 1;
-                    @endphp
-                    @foreach ($transaksis as $tr)
-                        <tr>
-                            <td>{{ $count++ }}</td>
-                            <td>{{ $tr->jenis_sewa }}</td>
-                            <td>{{ $tr->tanggal_sewa }}</td>
-                            <td>{{ $tr->tanggal_berakhir }}</td>
-                            <td>{{ $tr->tanggal_transaksi }}</td>
-                            <td>{{ $tr->waktu_transaksi }}</td>
-                            <td>{{ $tr->status }}</td>
-                            <td>
-                                {{-- <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-primary">
-                                    <i class="fas fa-edit"></i> Edit
-                                </a>
-                                <a href="{{ route('admin.users.view', $user->id) }}" class="btn btn-info">
-                                    <i class="f     as fa-eye"></i> View
-                                </a> --}}
-                                <form action="{{ route('admin.transaksi.destroy', $tr->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger"
-                                        onclick="return confirm('Are you sure you want to delete this transaction?')">
-                                        <i class="fas fa-trash"></i> Delete
-                                    </button>
-                                </form>
-                                {{-- ... existing table rows --}}
-                                <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                    data-bs-target="#updateStatusModal{{ $tr->id }}">
-                                    Update Status
-                                </button>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead class="table-light">
+                            <tr>
+                                <th>No</th>
+                                <th>Jenis Sewa</th>
+                                <th>Tanggal Sewa</th>
+                                <th>Tanggal berakhir</th>
+                                <th>Tanggal transaksi</th>
+                                <th>Waktu transaksi</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @php $count = 1; @endphp
+                            @foreach ($transaksis as $tr)
+                                <tr>
+                                    <td>{{ $count++ }}</td>
+                                    <td>{{ $tr->jenis_sewa }}</td>
+                                    <td>{{ $tr->tanggal_sewa }}</td>
+                                    <td>{{ $tr->tanggal_berakhir }}</td>
+                                    <td>{{ $tr->tanggal_transaksi }}</td>
+                                    <td>{{ $tr->waktu_transaksi }}</td>
+                                    <td>{{ $tr->status }}</td>
+                                    <td>
+                                        <form action="{{ route('admin.transaksi.destroy', $tr->id) }}" method="POST"
+                                            class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm"
+                                                onclick="return confirm('Are you sure you want to delete this transaction?')">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
+                                        <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#updateStatusModal{{ $tr->id }}">
+                                            Update Status
+                                        </button>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </section>
     @foreach ($transaksis as $tr)
@@ -90,6 +84,8 @@
                                     <option value="success" {{ $tr->status == 'success' ? 'selected' : '' }}>Success
                                     </option>
                                     <option value="failed" {{ $tr->status == 'failed' ? 'selected' : '' }}>Failed</option>
+                                    <option value="finished" {{ $tr->status == 'finished' ? 'selected' : '' }}>Finished
+                                    </option>
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-primary">Update Status</button>

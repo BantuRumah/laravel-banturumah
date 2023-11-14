@@ -30,7 +30,7 @@ class AdminTransaksiController extends Controller
     public function update_status(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'status' => 'required|in:payyed,success,failed',
+            'status' => 'required|in:payyed,success,failed,finished',
         ]);
 
         $transaksi = Transaksi::findOrFail($id);
@@ -41,7 +41,12 @@ class AdminTransaksiController extends Controller
             if ($mitra) {
                 $mitra->update(['status' => 'tersedia']);
             }
-        } else if ($validatedData['status'] == 'success'){
+        } else if ($validatedData['status'] == 'finished') {
+            $mitra = Mitra::find($transaksi->mitra_id);
+            if ($mitra) {
+                $mitra->update(['status' => 'tersedia']);
+            }
+        }else if ($validatedData['status'] == 'success') {
             $mitra = Mitra::find($transaksi->mitra_id);
             if ($mitra) {
                 $mitra->update(['status' => 'tidak tersedia']);

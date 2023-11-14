@@ -36,12 +36,12 @@
                                     Transaksi
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a class="nav-link {{ Request::is('user/riwayat-transaksi') ? 'active' : '' }}"
                                     href="/user/riwayat-transaksi">
                                     Riwayat Transaksi
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     @elseif (Auth::user()->role == 'mitra' && Auth::user()->role == 'admin')
                         <ul class="navbar-nav ml-auto">
@@ -134,10 +134,16 @@
                             @endif
                             <li>
                                 <a class="dropdown-item" href="/update_profiles">
-                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <i class="nav-icon fas fa-user-edit"></i>
                                     Update Profile
                                 </a>
                             </li>
+                            @if (Auth()->user()->role == 'user')
+                                <a class="dropdown-item" href="/user/riwayat-transaksi">
+                                    <i class="nav-icon fas fa-history"></i>
+                                    Riwayat Transaksi
+                                </a>
+                            @endif
                             <li>
                                 <a class="dropdown-item" href="javascript:void(0)" id="logoutButton">
                                     <i class="fa fa-sign-out-alt"></i>

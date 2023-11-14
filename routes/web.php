@@ -4,6 +4,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminTransaksiController;
+use App\Http\Controllers\AdminSettingController;
 use App\Http\Controllers\AllUserController;
 use App\Http\Controllers\MitraController;
 use App\Http\Controllers\UserController;
@@ -63,11 +64,17 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/user/keterangan-mitra', [MitraController::class, 'keteranganMitra'])->name('admin.user.keterangan-mitra');
         Route::get('/admin/user/create-keterangan-mitra', [MitraController::class, 'create'])->name('admin.user.create-keterangan-mitra');
         Route::post('/admin/user/create-keterangan-mitra', [MitraController::class, 'store'])->name('admin.user.create-keterangan-mitra.store');
+        Route::get('/admin/user/edit-keterangan-mitra/{id}', [MitraController::class, 'editKeteranganMitra'])->name('admin.user.keterangan-mitra.edit');
+        Route::put('/admin/user/update-keterangan-mitra/{id}', [MitraController::class, 'updateKeteranganMitra'])->name('admin.user.keterangan-mitra.update');
+        Route::delete('/admin/user/delete-keterangan-mitra/{id}', [MitraController::class, 'deleteKeteranganMitra'])->name('admin.user.keterangan-mitra.delete');
         Route::get('/admin/user/user', [UserController::class, 'userUsers'])->name('admin.user.user');
         Route::get('/admin/transaksi', [AdminTransaksiController::class, 'index'])->name('admin.transaksi');
         Route::delete('/admin/transaksi/{id}', [AdminTransaksiController::class, 'destroy'])->name('admin.transaksi.destroy');
         Route::put('/admin/transaksi/{id}', [AdminTransaksiController::class, 'update_status'])->name('admin.transaksi.update_status');
 
+        Route::get('/admin/settings/debug', [AdminSettingController::class, 'index'])->name('indexdebug');
+        Route::post('/admin/settings/debug', [AdminSettingController::class, 'update'])->name('debug.update');                
+        
         Route::get('/admin/settings/mail-config', [MailConfigController::class, 'index'])->name('mail-config');
         Route::post('/admin/settings/mail-config/update', [MailConfigController::class, 'update'])->name('mail-config.update');
 

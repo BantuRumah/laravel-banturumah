@@ -3,28 +3,27 @@
 @section('content')
     <section class="content-wrapper">
         <div class="container">
-            <div class="container-fluid">
-                <h1>Data Users</h1>
+            <h1>Data Users</h1>
+            <a href="/admin/user/create" class="btn btn-success mb-3 mt-2">+ Tambah</a>
 
-                <a href="/admin/user/create" class="btn btn-success mb-3 mt-2">+ Tambah</a>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
 
-                @if (session('error'))
-                    <div class="alert alert-danger">
-                        {{ session('error') }}
-                    </div>
-                @endif
-
-                <table class="table">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th>ID</th>

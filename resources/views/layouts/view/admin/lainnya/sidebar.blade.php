@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="/admin/dashboard" class="brand-link">
+    <a href="/admin/dashboard" class="brand-link" style="text-decoration: none;">
         <img src="{{ asset('img/Artboard 1banturumah_icon.png') }}" alt="BantuRumah Logo"
             class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">BantuRumah</span>
@@ -31,6 +31,15 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
+
+                <li class="nav-item">
+                    <a href="/" class="nav-link">
+                        <i class="nav-icon fas fa-home"></i>
+                        <p>
+                            Beranda
+                        </p>
+                    </a>
+                </li>
 
                 <li class="nav-header">WELCOME</li>
                 <li class="nav-item">
@@ -68,9 +77,11 @@
                                 <p>Admin</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-circle"></i>
+                        <li
+                            class="nav-item {{ Request::is('admin/user/mitra') || Request::is('admin/user/keterangan-mitra') ? 'menu-open' : '' }}">
+                            <a href="#"
+                                class="nav-link {{ Request::is('admin/user/mitra') || Request::is('admin/user/keterangan-mitra') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
                                 <p>
                                     Mitra
                                     <i class="right fas fa-angle-left"></i>
@@ -78,16 +89,16 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="/admin/user/mitra" class="nav-link"
+                                    <a href="/admin/user/mitra"
                                         class="nav-link {{ Request::is('admin/user/mitra') ? 'active' : '' }}">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="far fa-dot-circle nav-icon"></i>
                                         <p>Mitra</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="/admin/user/keterangan-mitra" class="nav-link"
+                                    <a href="/admin/user/keterangan-mitra"
                                         class="nav-link {{ Request::is('admin/user/keterangan-mitra') ? 'active' : '' }}">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="far fa-dot-circle nav-icon"></i>
                                         <p>Keterangan Mitra</p>
                                     </a>
                                 </li>
@@ -106,45 +117,17 @@
                 <li class="nav-item">
                     <a href="/admin/transaksi" class="nav-link {{ Request::is('admin/transaksi') ? 'active' : '' }}"
                         class="nav-link">
-                        <i class="nav-icon far fa-envelope"></i>
+                        <i class="nav-icon fas fa-exchange-alt"></i>
                         <p>
                             Transaksi
                         </p>
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a href="pages/widgets.html" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
-                        <p>
-                            Widgets
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="./index.html" class="nav-link active">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard v1</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="./index2.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard v2</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="./index3.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard v3</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
                 <li class="nav-header">PENGATURAN</li>
+
                 <li class="nav-item">
-                    <a href="settings/mail-config"
+                    <a href="{{ route('mail-config') }}"
                         class="nav-link {{ Request::is('admin/settings/mail-config') ? 'active' : '' }}"
                         class="nav-link">
                         <i class="nav-icon far fa-envelope"></i>
@@ -154,99 +137,20 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="iframe.html" class="nav-link">
-                        <i class="nav-icon fas fa-ellipsis-h"></i>
-                        <p>Tabbed IFrame Plugin</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="https://adminlte.io/docs/3.1/" class="nav-link">
-                        <i class="nav-icon fas fa-file"></i>
-                        <p>Documentation</p>
-                    </a>
-                </li>
-                <li class="nav-header">MULTI LEVEL EXAMPLE</li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="fas fa-circle nav-icon"></i>
-                        <p>Level 1</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-circle"></i>
+                    <a href="{{ route('indexdebug') }}"
+                        class="nav-link {{ Request::is('admin/settings/debug') ? 'active' : '' }}" class="nav-link">
+                        <i class="nav-icon fas fa-cogs"></i>
                         <p>
-                            Level 1
-                            <i class="right fas fa-angle-left"></i>
+                            Debug
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Level 2</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>
-                                    Level 2
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>Level 3</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>Level 3</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-dot-circle nav-icon"></i>
-                                        <p>Level 3</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Level 2</p>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="fas fa-circle nav-icon"></i>
-                        <p>Level 1</p>
-                    </a>
-                </li>
-                <li class="nav-header">LABELS</li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon far fa-circle text-danger"></i>
-                        <p class="text">Important</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon far fa-circle text-warning"></i>
-                        <p>Warning</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon far fa-circle text-info"></i>
-                        <p>Informational</p>
+                    <a href="#" class="nav-link" data-toggle="modal" data-target="#logoutModal">
+                        <i class="nav-icon fas fa-sign-out-alt"></i>
+                        <p>
+                            Logout
+                        </p>
                     </a>
                 </li>
             </ul>
@@ -255,3 +159,4 @@
     </div>
     <!-- /.sidebar -->
 </aside>
+@include('layouts.lainnya.popup.modal-logout')

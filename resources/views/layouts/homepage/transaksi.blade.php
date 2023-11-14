@@ -99,11 +99,11 @@
                                             <div class="image mb-4">
                                                 @if ($mitraItem->user_profile_picture)
                                                     <img src="{{ asset('storage/profile_pictures/' . $mitraItem->user_profile_picture) }}"
-                                                        alt="{{ $mitraItem->user_name }}" class="card-img-top">
+                                                        alt="{{ $mitraItem->user_name }}" class="card-img-top img-fluid">
                                                 @else
                                                     <div style="text-align: center;">
                                                         <img src="{{ asset('img/profile_icon.png') }}"
-                                                            alt="Gambar Profil Default">
+                                                            alt="Gambar Profil Default" class="img-fluid">
                                                     </div>
                                                 @endif
                                             </div>
@@ -227,6 +227,8 @@
 
     <script>
         $(document).ready(function() {
+            var userId = {{ Auth::id() }};
+
             $(".order-button").click(function() {
                 var mitraName = $(this).data('mitra');
                 var mitraId = $(this).data('mitra_id');
@@ -264,12 +266,22 @@
                 // Dapatkan formulir HTML
                 var form = document.getElementById("order-form");
 
+                // Tentukan URL untuk panggilan AJAX
+                var ajaxUrl;
+                if (window.location.protocol === 'https:') {
+                    // Gunakan URL khusus jika diakses melalui HTTPS
+                    ajaxUrl = "https://nauvan.my.id/transaksi";
+                } else {
+                    // Gunakan route Laravel jika tidak diakses melalui HTTPS
+                    ajaxUrl = "{{ route('transaksi.store') }}";
+                }
+
                 // Buat FormData objek untuk pengiriman formulir
                 var formData = new FormData(form);
 
                 // Send data to the server using AJAX
                 $.ajax({
-                    url: "{{ route('transaksi.store') }}",
+                    url: ajaxUrl,
                     type: "POST",
                     data: formData,
                     processData: false,

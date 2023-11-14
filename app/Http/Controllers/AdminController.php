@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Mitra;
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -12,7 +13,8 @@ class AdminController extends Controller
 {
     public function index() {
         $userCount = User::count();
-        return view('layouts.view.admin.layouts.homes.home', ['userCount' => $userCount]);
+        $transactionCount = Transaksi::count();
+        return view('layouts.view.admin.layouts.homes.home', ['userCount' => $userCount, 'transactionCount' => $transactionCount]);
     }
 
     public function usersAdmin() {

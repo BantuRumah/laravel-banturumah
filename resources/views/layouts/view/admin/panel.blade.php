@@ -33,7 +33,9 @@
 
         @include('layouts.view.admin.lainnya.header')
         @include('layouts.view.admin.lainnya.sidebar')
-        @yield('content')
+        <div class="mt-5" style="background-color: #F3F5F8">
+            @yield('content')
+        </div>
         @include('layouts.view.admin.lainnya.footer')
 
         <!-- Control Sidebar -->
