@@ -3,18 +3,15 @@
         <div class="row mb-5">
             <div class="col-md-5" style="margin-right: 75px">
                 <img src="{{ asset('img/banturumah_nobg.png') }}" alt="" style="width: 250px">
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam nisi quae ut debitis
-                    provident
-                    esse fugiat error sunt ad doloribus. Facere, itaque amet. Voluptatum enim aspernatur ad,
-                    delectus quae ea, illum veritatis reprehenderit id soluta repudiandae sunt voluptate nihil
-                    officiis dolores exercitationem labore dolorum. Consequuntur vitae, voluptatibus ratione
-                    esse
-                    ab, doloribus illo velit quas, quibusdam officia laudantium tempore odit nulla reiciendis
-                    iusto
-                    debitis fugit libero? Ipsum quo, tenetur vel quia enim ad! Quis sit cupiditate facilis quae
-                    mollitia nulla magni doloremque similique cumque maxime suscipit, sunt, deserunt quasi
-                    commodi
-                    quo, debitis ex. Officiis expedita quasi quod nam architecto perferendis similique.</p>
+                <p>
+                    BantuRumah Merupakan sebuah platform yang menghubungkan seseorang yang <strong>memerlukan layanan di
+                        rumah tangga</strong>, termasuk <strong>pengasuh anak, pengemudi, dan asisten rumah
+                        tangga</strong>. Platform ini bertujuan untuk memfasilitasi <strong>pertemuan antara para
+                        pencari pekerja yang memiliki keahlian dalam bidang ini sesuai dengan kebutuhan,</strong> baik
+                    itu untuk hari, minggu, atau bulan tertentu. Sehingga membantu masyarakat dengan lebih mudah
+                    menemukan dan
+                    memperoleh pelayanan yang mereka butuhkan.
+                </p>
             </div>
             <div class="col-md-2 mt-2">
                 <h4>Menu</h4>

@@ -21,7 +21,7 @@ class MitraSeeder extends Seeder
                 'layanan' => 'Asisten Rumah Tangga',
                 'umur' => '25',
                 'status' => 'tersedia',
-                'harga' => 1000000,
+                'harga' => 35000,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

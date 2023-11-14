@@ -22,9 +22,11 @@
                         style="width: 150px">
                     <div class="card-body">
                         <h4 class="card-title">Asisten Rumah Tangga</h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis non,
-                            fugiat exercitationem veniam saepe consequuntur nulla inventore dicta nesciunt necessitatibus
-                            ducimus dolore nemo et minima.</p>
+                        <p class="card-text">
+                            Asisten rumah tangga adalah seseorang yang dipekerjakan untuk memberikan bantuan dalam
+                            tugas-tugas rumah tangga sehari-hari, seperti membersihkan rumah, memasak, mencuci pakaian,
+                            dan tugas-tugas lainnya yang berhubungan dengan pengelolaan rumah.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -34,9 +36,11 @@
                         style="width: 150px">
                     <div class="card-body">
                         <h4 class="card-title">Baby Sitter</h4>
-                        <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nostrum quasi ratione
-                            perspiciatis asperiores tenetur repellat dolore officia nam, facilis dolor culpa obcaecati
-                            dolorum fugit assumenda.</p>
+                        <p class="card-text">Babysitter, atau pengasuh bayi, adalah seseorang yang dipekerjakan untuk
+                            merawat dan mengawasi anak-anak dalam jangka waktu tertentu. Tugas utama seorang babysitter
+                            adalah menjaga keselamatan dan kesejahteraan anak-anak, termasuk memberi makan, menghibur,
+                            mengawasi permainan, dan memastikan anak-anak tidur dengan nyaman.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -46,8 +50,10 @@
                         style="width: 150px">
                     <div class="card-body">
                         <h4 class="card-title">Sopir</h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates sit iusto
-                            incidunt esse facilis repudiandae consequatur quis, rerum at natus, id enim eos, atque libero!
+                        <p class="card-text">
+                            Pengemudi atau sopir adalah individu yang mengemudikan kendaraan bermotor untuk mengangkut
+                            penumpang atau kargo. Tugas utamanya adalah menjaga keselamatan dan mematuhi peraturan lalu
+                            lintas, serta memastikan kendaraan dalam kondisi baik.
                         </p>
                     </div>
                 </div>

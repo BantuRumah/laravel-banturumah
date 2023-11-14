@@ -119,7 +119,7 @@
                                                         </div>
                                                     @endif
                                                 </div>
-                                                <label>User Name:</label>
+                                                <label>Nama Mitra:</label>
                                                 <b>
                                                     <p class="card-text mb-2">{{ $mitraItem->user_name }}</p>
                                                 </b>
@@ -131,7 +131,7 @@
 
                                                 <label>Umur:</label>
                                                 <b>
-                                                    <p class="card-text mb-2">{{ $mitraItem->umur }}</p>
+                                                    <p class="card-text mb-2">{{ $mitraItem->umur }} Tahun</p>
                                                 </b>
 
                                                 <label>Status:</label>
@@ -143,7 +143,7 @@
                                                     </span>
                                                 </div>
                                                 <label>Harga:</label>
-                                                <p class="card-text">Rp. {{ $mitraItem->harga }} / Bulan</p>
+                                                <p class="card-text">Rp. {{ $mitraItem->harga }} / Hari</p>
                                                 @if ($mitraItem->status == 'tersedia')
                                                     <a href="#" class="btn btn-primary order-button"
                                                         data-mitra="{{ $mitraItem->user_name }}"

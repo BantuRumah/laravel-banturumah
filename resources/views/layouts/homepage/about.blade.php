@@ -16,19 +16,19 @@
     <div id="about" class="container">
         <div class="row breadcrumb-content">
             <div class="col-md-6 mb-4">
-                <img src="{{ asset('img/banturumah_icons.png') }}" alt="Logo BantuRumah" class="img-fluid mx-auto d-block">
+                <img src="{{ asset('img/banturumah_nobg.png') }}" alt="Logo BantuRumah" class="img-fluid mx-auto d-block"
+                    style="width: 500px">
             </div>
             <div class="col-md-6 mt-3">
                 <h1>About Us</h1>
                 <p class="mt-3">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa necessitatibus adipisci exercitationem
-                    ipsum aperiam voluptatem id iste magnam, omnis expedita officia nobis pariatur animi in dolor optio
-                    perspiciatis ea accusantium voluptate? Obcaecati itaque repellendus eius tenetur nesciunt corporis,
-                    explicabo totam porro quasi aut distinctio repudiandae facilis ullam iste reprehenderit, quod cumque
-                    deserunt iure, possimus ad! Ut totam eum, molestiae provident mollitia quibusdam minima minus, saepe
-                    quae aliquam error recusandae commodi molestias. Tenetur porro exercitationem nulla saepe corrupti, aut
-                    maxime eum quo eius laborum numquam molestiae ea sapiente ut ex? Ratione a quasi sit! Aut numquam
-                    exercitationem vero. Quidem, libero omnis.
+                    BantuRumah Merupakan sebuah platform yang menghubungkan seseorang yang <strong>memerlukan layanan di
+                        rumah tangga</strong>, termasuk <strong>pengasuh anak, pengemudi, dan asisten rumah
+                        tangga</strong>. Platform ini bertujuan untuk memfasilitasi <strong>pertemuan antara para
+                        pencari pekerja yang memiliki keahlian dalam bidang ini sesuai dengan kebutuhan,</strong> baik
+                    itu untuk hari, minggu, atau bulan tertentu. Sehingga membantu masyarakat dengan lebih mudah
+                    menemukan dan
+                    memperoleh pelayanan yang mereka butuhkan.
                 </p>
             </div>
         </div>
