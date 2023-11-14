@@ -58,41 +58,48 @@ Route::middleware(['auth'])->group(function () {
     // Admin
     Route::middleware('userAkses:admin')->group(function () {
         Route::get('/admin/dashboard', [AdminController::class, 'index']);
-        Route::get('/admin/user/alluser', [AllUserController::class, 'index'])->name('admin.user.alluser');
-        Route::get('/admin/user/admin', [AdminController::class, 'usersAdmin'])->name('admin.user.admin');
-        Route::get('/admin/user/mitra', [MitraController::class, 'mitraUsers'])->name('admin.user.mitra');
-        Route::get('/admin/user/keterangan-mitra', [MitraController::class, 'keteranganMitra'])->name('admin.user.keterangan-mitra');
-        Route::get('/admin/user/create-keterangan-mitra', [MitraController::class, 'create'])->name('admin.user.create-keterangan-mitra');
-        Route::post('/admin/user/create-keterangan-mitra', [MitraController::class, 'store'])->name('admin.user.create-keterangan-mitra.store');
-        Route::get('/admin/user/edit-keterangan-mitra/{id}', [MitraController::class, 'editKeteranganMitra'])->name('admin.user.keterangan-mitra.edit');
-        Route::put('/admin/user/update-keterangan-mitra/{id}', [MitraController::class, 'updateKeteranganMitra'])->name('admin.user.keterangan-mitra.update');
-        Route::delete('/admin/user/delete-keterangan-mitra/{id}', [MitraController::class, 'deleteKeteranganMitra'])->name('admin.user.keterangan-mitra.delete');
-        Route::get('/admin/user/user', [UserController::class, 'userUsers'])->name('admin.user.user');
-        Route::get('/admin/transaksi', [AdminTransaksiController::class, 'index'])->name('admin.transaksi');
-        Route::delete('/admin/transaksi/{id}', [AdminTransaksiController::class, 'destroy'])->name('admin.transaksi.destroy');
-        Route::put('/admin/transaksi/{id}', [AdminTransaksiController::class, 'update_status'])->name('admin.transaksi.update_status');
+        Route::prefix('admin/user')->name('admin.user.')->group(function () {
+            Route::get('/alluser', [AllUserController::class, 'index'])->name('alluser');
+            Route::get('/admin', [AdminController::class, 'usersAdmin'])->name('admin');
+            Route::get('/mitra', [MitraController::class, 'mitraUsers'])->name('mitra');
+            Route::get('/keterangan-mitra', [MitraController::class, 'keteranganMitra'])->name('keterangan-mitra');
+            Route::get('/create-keterangan-mitra', [MitraController::class, 'create'])->name('create-keterangan-mitra');
+            Route::post('/create-keterangan-mitra', [MitraController::class, 'store'])->name('create-keterangan-mitra.store');
+            Route::get('/edit-keterangan-mitra/{id}', [MitraController::class, 'editKeteranganMitra'])->name('keterangan-mitra.edit');
+            Route::put('/update-keterangan-mitra/{id}', [MitraController::class, 'updateKeteranganMitra'])->name('keterangan-mitra.update');
+            Route::delete('/delete-keterangan-mitra/{id}', [MitraController::class, 'deleteKeteranganMitra'])->name('keterangan-mitra.delete');
+            Route::get('/user', [UserController::class, 'userUsers'])->name('user');
+        });
+
+        Route::middleware(['auth', 'userAkses:admin'])->prefix('admin')->name('admin.')->group(function () {
+            Route::get('/transaksi', [AdminTransaksiController::class, 'index'])->name('transaksi');
+            Route::delete('/transaksi/{id}', [AdminTransaksiController::class, 'destroy'])->name('transaksi.destroy');
+            Route::put('/transaksi/{id}', [AdminTransaksiController::class, 'update_status'])->name('transaksi.update_status');
+        });
 
         Route::get('/admin/settings/debug', [AdminSettingController::class, 'index'])->name('indexdebug');
         Route::post('/admin/settings/debug', [AdminSettingController::class, 'update'])->name('debug.update');                
-        
         Route::get('/admin/settings/mail-config', [MailConfigController::class, 'index'])->name('mail-config');
         Route::post('/admin/settings/mail-config/update', [MailConfigController::class, 'update'])->name('mail-config.update');
 
     });
 
-    // Create User Admin
-    Route::get('/admin/user/create', [AdminController::class, 'createUser'])->name('admin.users.create');
-    Route::post('/admin/user/store', [AdminController::class, 'storeUser'])->name('admin.users.store');
+    // Grouping untuk Rute Pengguna Admin
+    Route::middleware('auth')->middleware('userAkses:admin')->prefix('admin/user')->name('admin.users.')->group(function () {
+        // Create User Admin
+        Route::get('/create', [AdminController::class, 'createUser'])->name('create');
+        Route::post('/store', [AdminController::class, 'storeUser'])->name('store');
 
-    // Edit dan Update User
-    Route::get('/admin/user/edit/{id}', [AdminController::class, 'editUser'])->name('admin.users.edit');
-    Route::put('/admin/user/update/{id}', [AdminController::class, 'updateUser'])->name('admin.users.update');
+        // Edit dan Update User
+        Route::get('/edit/{id}', [AdminController::class, 'editUser'])->name('edit');
+        Route::put('/update/{id}', [AdminController::class, 'updateUser'])->name('update');
 
-    // View User
-    Route::get('/admin/user/view/{id}', [AdminController::class, 'viewUser'])->name('admin.users.view');
+        // View User
+        Route::get('/view/{id}', [AdminController::class, 'viewUser'])->name('view');
 
-    // Delete User
-    Route::get('/admin/user/delete/{id}', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
+        // Delete User
+        Route::get('/delete/{id}', [AdminController::class, 'deleteUser'])->name('delete');
+    });
     
     // Mitra
     Route::middleware('userAkses:mitra')->group(function () {
