@@ -14,8 +14,8 @@ class Mitra extends Model
 
     protected $fillable = [
         'name',
-        'telephone',
         'layanan',
+        'umur',
         'status',
         'harga',
     ];

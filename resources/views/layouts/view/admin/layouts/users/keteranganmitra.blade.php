@@ -12,8 +12,8 @@
                         <tr>
                             <th>No</th>
                             <th>Nama</th>
-                            <th>Telefon</th>
                             <th>Layanan</th>
+                            <th>Umur</th>
                             <th>Status</th>
                             <th>Harga</th>
                             <th>Action</th>
@@ -27,8 +27,8 @@
                             <tr>
                                 <td>{{ $count++ }}</td>
                                 <td>{{ $user->name }}</td>
-                                <td>{{ $user->telephone }}</td>
                                 <td>{{ $user->layanan }}</td>
+                                <td>{{ $user->umur }}</td>
                                 <td>{{ $user->status }}</td>
                                 <td>{{ $user->harga }}</td>
                                 <td>

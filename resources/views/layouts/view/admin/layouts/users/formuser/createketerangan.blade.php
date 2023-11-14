@@ -30,14 +30,15 @@
                         <label for="name">Name:</label>
                         <input type="text" id="name" name="name" class="form-control" required>
                     </div>
-                    <div class="form-group">
-                        <label for="telephone">Telephone:</label>
-                        <input type="number" id="telephone" name="telephone" class="form-control" required>
-                    </div>
 
                     <div class="form-group">
                         <label for="layanan">Layanan:</label>
                         <input type="text" id="layanan" name="layanan" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="umur">Umur:</label>
+                        <input type="number" id="umur" name="umur" class="form-control" required>
                     </div>
 
                     <div class="form-group">

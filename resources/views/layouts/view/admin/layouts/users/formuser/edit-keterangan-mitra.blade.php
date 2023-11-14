@@ -32,16 +32,17 @@
                         <input type="text" id="name" name="name" class="form-control"
                             value="{{ $keteranganMitra->name }}" required>
                     </div>
-                    <div class="form-group">
-                        <label for="telephone">Telephone:</label>
-                        <input type="number" id="telephone" name="telephone" class="form-control"
-                            value="{{ $keteranganMitra->telephone }}" required>
-                    </div>
 
                     <div class="form-group">
                         <label for="layanan">Layanan:</label>
                         <input type="text" id="layanan" name="layanan" class="form-control"
                             value="{{ $keteranganMitra->layanan }}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="umur">Umur:</label>
+                        <input type="number" id="umur" name="umur" class="form-control"
+                            value="{{ $keteranganMitra->umur }}" required>
                     </div>
 
                     <div class="form-group">
