@@ -148,7 +148,8 @@
                                                 @if ($mitraItem->status == 'tersedia')
                                                     <a href="#" class="btn btn-primary order-button"
                                                         data-mitra="{{ $mitraItem->user_name }}"
-                                                        data-mitra_id="{{ $mitraItem->id }}">Order
+                                                        data-mitra_id="{{ $mitraItem->id }}"
+                                                        data-price="{{ $mitraItem->harga }}">Order
                                                         Sekarang</a>
                                                 @elseif ($mitraItem->status == 'menunggu')
                                                     <a href="#" class="btn btn-warning order-button disabled"
@@ -242,14 +243,19 @@
     <script>
         $(document).ready(function() {
             var userId = {{ Auth::id() }};
+            var selectedPrice = 0;
 
             $(".order-button").click(function() {
                 var mitraName = $(this).data('mitra');
                 var mitraId = $(this).data('mitra_id');
+                var mitraPrice = $(this).data('price');
+                selectedPrice = mitraPrice;
                 $("#mitraName").text("Mitra: " + mitraName);
                 $("#mitra_id").val(mitraId);
                 $("#user_id").val(userId); // Set the user_id value
                 $("#orderModal").modal("show");
+
+                updateJumlahHarga(mitraPrice);
             });
 
             // Handle form submission
@@ -362,15 +368,15 @@
             // Function to calculate and update Jumlah Harga
             function updateJumlahHarga() {
                 var jenisSewa = $("#jenis_sewa").val();
-                var harga = {{ $mitraItem->harga }};
+                // var harga = {{ $mitraItem->harga }};
                 var jumlahHarga = 0;
 
                 if (jenisSewa === "harian") {
-                    jumlahHarga = harga * 1;
+                    jumlahHarga = selectedPrice * 1;
                 } else if (jenisSewa === "mingguan") {
-                    jumlahHarga = harga * 7;
+                    jumlahHarga = selectedPrice * 7;
                 } else if (jenisSewa === "bulanan") {
-                    jumlahHarga = harga * 30;
+                    jumlahHarga = selectedPrice * 30;
                 }
 
                 $("#jumlah_harga").val("Rp. " + jumlahHarga.toLocaleString());
