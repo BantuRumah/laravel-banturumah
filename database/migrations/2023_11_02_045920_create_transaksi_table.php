@@ -20,6 +20,7 @@ return new class extends Migration
             $table->date('tanggal_berakhir');
             $table->date('tanggal_transaksi');
             $table->time('waktu_transaksi');
+            $table->string('jumlah_harga')->nullable();
             $table->string('bukti_pembayaran');
             $table->enum('status', ['payyed', 'success', 'failed','finished'])->default('payyed');
             $table->unsignedBigInteger('mitra_id');

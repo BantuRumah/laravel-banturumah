@@ -19,6 +19,7 @@ class Transaksi extends Model
         'tanggal_berakhir',
         'tanggal_transaksi',
         'waktu_transaksi', 
+        'jumlah_harga', 
         'status', 
         'bukti_pembayaran'];
 

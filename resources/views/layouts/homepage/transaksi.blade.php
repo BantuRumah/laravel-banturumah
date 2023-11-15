@@ -143,7 +143,8 @@
                                                     </span>
                                                 </div>
                                                 <label>Harga:</label>
-                                                <p class="card-text">Rp. {{ $mitraItem->harga }} / Hari</p>
+                                                <p class="card-text">Rp.
+                                                    {{ number_format($mitraItem->harga, 0, ',', '.') }} / Hari</p>
                                                 @if ($mitraItem->status == 'tersedia')
                                                     <a href="#" class="btn btn-primary order-button"
                                                         data-mitra="{{ $mitraItem->user_name }}"
@@ -187,6 +188,10 @@
                         @csrf
                         <input type="hidden" name="mitra_id" id="mitra_id" value="{{ Auth::id() }}">
                         <input type="hidden" name="user_id" id="user_id" value="{{ Auth::id() }}">
+                        <div class="alert alert-info" role="alert">
+                            Transfer ke rekening BRI <strong>312701035606537</strong> atas nama <strong><br>Arief Nauvan
+                                Ramadha</strong>
+                        </div>
                         <div class="form-group">
                             <label for="jenis_sewa">Jenis Sewa</label>
                             <select class="form-control" name="jenis_sewa" id="jenis_sewa" required>
@@ -205,6 +210,12 @@
                             <label for="tanggal_berakhir">Tanggal Berakhir</label>
                             <input type="date" class="form-control" name="tanggal_berakhir" id="tanggal_berakhir"
                                 value="{{ date('Y-m-d') }}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="jumlah_harga">Jumlah Harga:</label>
+                            <input type="text" class="form-control" id="jumlah_harga"
+                                value="Rp. {{ number_format($mitraItem->harga, 0, ',', '.') }}" readonly>
                         </div>
 
                         <div class="form-group">
@@ -347,6 +358,31 @@
                 var formattedDate = tanggalBerakhir.toISOString().split('T')[0];
                 $("#tanggal_berakhir").val(formattedDate);
             }
+
+            // Function to calculate and update Jumlah Harga
+            function updateJumlahHarga() {
+                var jenisSewa = $("#jenis_sewa").val();
+                var harga = {{ $mitraItem->harga }};
+                var jumlahHarga = 0;
+
+                if (jenisSewa === "harian") {
+                    jumlahHarga = harga * 1;
+                } else if (jenisSewa === "mingguan") {
+                    jumlahHarga = harga * 7;
+                } else if (jenisSewa === "bulanan") {
+                    jumlahHarga = harga * 30;
+                }
+
+                $("#jumlah_harga").val("Rp. " + jumlahHarga.toLocaleString());
+            }
+
+            // Call updateJumlahHarga() when jenis_sewa changes
+            $("#jenis_sewa").change(function() {
+                updateJumlahHarga();
+            });
+
+            // Call updateJumlahHarga() initially
+            updateJumlahHarga();
 
             // Dengarkan perubahan pada jenis_sewa dan tanggal_sewa
             $("#jenis_sewa, #tanggal_sewa").change(function() {
