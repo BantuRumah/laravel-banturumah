@@ -27,6 +27,12 @@
                 <p><i class="fas fa-envelope" style="margin-right: 10px"></i>banturumah4@gmail.com</p>
                 <p><i class="fas fa-map-marker-alt" style="margin-right: 15px"></i>Jl. Soekarno Hatta No.9,
                     Jatimulyo, Kec.Lowokwaru, Kota Malang, Jawa Timur 65141</p>
+                <div class="embed-responsive-item" style="width: 100%">
+                    <iframe class="embed-responsive-item embed-responsive-16by9"
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d987.8824823292664!2d112.61413541706554!3d-7.944060645445279!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd629dfd58aaf95%3A0xe72a182dfd18e01c!2sCivil%20Engineering%20and%20Information%20Technology%20Building%2C%20POLINEMA!5e0!3m2!1sen!2sus!4v1700045676060!5m2!1sen!2sus"
+                        width="350" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-3 mt-4">
