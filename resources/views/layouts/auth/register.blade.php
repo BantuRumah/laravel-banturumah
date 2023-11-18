@@ -38,6 +38,7 @@
     @include('layouts.lainnya.footer-app')
 
     <script src="{{ asset('/js/show-password-register.js') }}"></script>
+    <script src="{{ asset('/js/show-alert-confirmpassword-register.js') }}"></script>
 
     @if (isset($success) && $success)
         <script>

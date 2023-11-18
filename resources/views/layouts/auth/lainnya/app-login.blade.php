@@ -43,22 +43,28 @@
                 <form method="POST" action="">
                     @csrf
 
-                    <div class="form-group" style="margin-top: 25px">
+                    <div class="form-group" style="margin-top: 35px">
+                        <label for="email" class="mb-2">Email :</label>
                         <input type="email" id="email" value="{{ old('email') }}" name="email" class="form-control"
-                            placeholder="Email">
+                            placeholder="example@gmail.com">
+                    </div>
+
+                    <div class="form-group" style="margin-top: 15px">
+                        <label for="password" class="mb-2">Password :</label>
+                        <input type="password" id="password" value="{{ old('password') }}" name="password"
+                            class="form-control" placeholder="********">
                     </div>
 
                     <div class="form-group" style="margin-top: 25px">
-                        <input type="password" id="password" name="password" class="form-control" placeholder="Password">
-                    </div>
-
-                    <div class="form-group form-check" style="margin-top: 25px">
-                        <input type="checkbox" class="form-check-input" id="showPassword">
-                        <label class="form-check-label" for="showPassword">Show Password</label>
+                        {!! NoCaptcha::renderJs() !!}
+                        {!! NoCaptcha::display() !!}
                     </div>
 
                     <div class="form-group" style="margin-top: 25px">
                         <button name="submit" type="submit" class="btn btn-primary btn-block">Login</button>
+                    </div>
+                    <div class="form-group" style="margin-top: 15px">
+                        <p>Pengguna Baru ? <a href="/register">Buat Akun</a></p>
                     </div>
                 </form>
             </div>

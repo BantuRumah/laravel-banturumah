@@ -38,20 +38,23 @@
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
 
-                    <div class="form-group" style="margin-top: 25px">
-                        <input type="text" id="name" name="name" class="form-control" placeholder="Nama"
+                    <div class="form-group" style="margin-top: 35px">
+                        <label for="name" class="mb-2">Nama Lengkap :</label>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="example names"
                             required>
                     </div>
 
-                    <div class="form-group" style="margin-top: 25px">
-                        <input type="email" id="email" name="email" class="form-control" placeholder="Email"
-                            required>
+                    <div class="form-group" style="margin-top: 15px">
+                        <label for="email" class="mb-2">Email :</label>
+                        <input type="email" id="email" name="email" class="form-control"
+                            placeholder="example@gmail.com" required>
                     </div>
 
-                    <div class="form-group" style="margin-top: 25px">
+                    <div class="form-group" style="margin-top: 15px">
+                        <label for="name" class="mb-2">Password :</label>
                         <div class="input-group">
                             <input type="password" id="password" name="password" class="form-control"
-                                placeholder="Password" required>
+                                placeholder="********" required>
                             <div class="input-group-append" style="margin-left: 10px">
                                 <span class="input-group-text" id="togglePassword" style="width: 42px; height: 45px">
                                     <i class="eye-icon show-password fas fa-eye"></i>
@@ -60,10 +63,11 @@
                         </div>
                     </div>
 
-                    <div class="form-group" style="margin-top: 25px">
+                    <div class="form-group" style="margin-top: 15px">
+                        <label for="name" class="mb-2">Konfirmasi Password :</label>
                         <div class="input-group">
                             <input type="password" id="password_confirmation" name="password_confirmation"
-                                class="form-control" placeholder="Konfirmasi Password" required>
+                                class="form-control" placeholder="********" required>
                             <div class="input-group-append" style="margin-left: 10px">
                                 <span class="input-group-text" id="toggleConfirmPassword" style="width: 42px; height: 45px">
                                     <i class="eye-icon show-confirm-password fas fa-eye"></i>
@@ -79,4 +83,5 @@
             </div>
         </div>
     </div>
+
 @endsection

@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Hash;
 class RegisterController extends Controller
 {
     public function index() {
-        return view('layouts.auth.lainnya.app-register');
+        $showPassword = true;
+        return view('layouts.auth.lainnya.app-register', compact('showPassword'));
     }
 
     public function register(Request $request) {

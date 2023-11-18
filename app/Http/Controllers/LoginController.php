@@ -17,12 +17,17 @@ class LoginController extends Controller
             [
                 'email' => ['required', 'email'],
                 'password' => ['required', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/'],
+                'g-recaptcha-response' => 'required|captcha',
             ],
             [
                 'email.required' => 'Email wajib diisi',
                 'email.email' => 'Format email tidak valid',
                 'password.required' => 'Password wajib diisi',
                 'password.regex' => 'Password harus mengandung setidaknya 8 karakter, satu huruf besar, satu huruf kecil, dan satu angka.',
+                'g-recaptcha-response' => [
+                    'required' => 'Please verify that you are not a robot.',
+                    'captcha' => 'Captcha error! try again later or contact site admin.',
+                ],
             ]
         );
 
