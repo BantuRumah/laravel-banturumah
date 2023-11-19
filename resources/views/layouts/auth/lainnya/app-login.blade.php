@@ -55,6 +55,11 @@
                             class="form-control" placeholder="********">
                     </div>
 
+                    <div class="form-group form-check" style="margin-top: 15px">
+                        <input type="checkbox" class="form-check-input" id="showPassword">
+                        <label class="form-check-label" for="showPassword">Show Password</label>
+                    </div>
+
                     <div class="form-group" style="margin-top: 25px">
                         {!! NoCaptcha::renderJs() !!}
                         {!! NoCaptcha::display() !!}
@@ -63,8 +68,9 @@
                     <div class="form-group" style="margin-top: 25px">
                         <button name="submit" type="submit" class="btn btn-primary btn-block">Login</button>
                     </div>
+
                     <div class="form-group" style="margin-top: 15px">
-                        <p>Pengguna Baru ? <a href="/register">Buat Akun</a></p>
+                        <p>Pengguna Baru? <a href="/register">Buat Akun</a></p>
                     </div>
                 </form>
             </div>

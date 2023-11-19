@@ -232,6 +232,9 @@
                         break;
                 }
 
+                // Set the time to 00:01
+                tanggalBerakhir.setHours(0, 1, 0, 0);
+
                 // Format tanggal_berakhir to YYYY-MM-DD
                 var formattedDate = tanggalBerakhir.toISOString().split('T')[0];
                 $("#tanggal_berakhir").val(formattedDate);

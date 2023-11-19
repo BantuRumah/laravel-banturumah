@@ -60,6 +60,15 @@ class TransaksiController extends Controller
             $file = $request->file('bukti_pembayaran');
             $imageName = time() . '_' . $file->getClientOriginalExtension();
             $file->storeAs('public/bukti_pembayaran', $imageName);
+
+            // Calculate the end date and time as in your JavaScript code
+            $tanggalBerakhir = Carbon::parse($request->tanggal_berakhir)->setTime(0, 1);
+
+            // Check if the current date and time have passed the end date and time
+            if (now()->greaterThanOrEqualTo($tanggalBerakhir)) {
+                // Change mitra's status to 'finished'
+                $mitra->update(['status' => 'finished']);
+            }
     
             // Create the transaction with the calculated jumlah_harga
             $transaksi = Transaksi::create([
