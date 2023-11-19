@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserProfileController extends Controller
 {
@@ -56,8 +57,20 @@ class UserProfileController extends Controller
         // Update user
         $user->update($updateData);
 
+        // Redirect to the profile edit page with a success message
+        Alert::success('Success', 'Profile has been updated successfully!');
+
         // Redirect ke halaman profil
-        return redirect()->route('profile1.update')->with('success', 'Profil berhasil diperbarui');
+        return redirect()->route('profile1.update')->with('profile_updated', 'Profile has been updated successfully!');
+        // return redirect()->route('profile1.update')->with('success', 'Profil berhasil diperbarui');
+    }
+
+    public static function hasUpdatedProfile($userId)
+    {
+        // Lakukan pengecekan profil di sini, dan kembalikan true atau false sesuai hasilnya
+        // Contoh:
+        $user = User::find($userId);
+        return !empty($user->telephone) && !empty($user->alamat);
     }
 
     public function deletePicture() {

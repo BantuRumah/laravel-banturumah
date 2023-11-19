@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="{{ asset('/css/cardd-fixed.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/cardd-homepage.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/dropdown-navbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/transaksi-view.css') }}">
 
 </head>
 
@@ -69,6 +70,7 @@
     </script>
 
     <script src="{{ asset('js/slider-homepage.js') }}"></script>
+    {{-- <script src="{{ asset('js/transaksi-view.js') }}"></script> --}}
 
     <script>
         // Toggle dropdown when the button is clicked

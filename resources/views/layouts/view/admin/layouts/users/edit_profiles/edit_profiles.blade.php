@@ -90,4 +90,19 @@
             </div>
         </div>
     </section>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+        // Check if the 'profile_updated' session flash message exists
+        @if (session('profile_updated'))
+            // Display SweetAlert message with a success icon
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '{{ session('profile_updated') }}',
+                showConfirmButton: false, // Remove the 'OK' button
+                timer: 2000 // Auto-close the alert after 2 seconds
+            });
+        @endif
+    </script>
 @endsection

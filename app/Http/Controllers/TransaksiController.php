@@ -8,6 +8,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Controllers\UserProfileController;
 
 class TransaksiController extends Controller
 {
@@ -26,6 +27,10 @@ class TransaksiController extends Controller
         ]);
     
         $user_id = Auth::id();
+
+        if (!UserProfileController::hasUpdatedProfile(Auth::id())) {
+            return redirect()->route('profile1.update')->with('error', 'Silakan perbarui profil Anda sebelum melakukan transaksi.');
+        }
         
         // Retrieve the selected mitra
         $mitra = Mitra::find($request->mitra_id);
@@ -107,5 +112,8 @@ class TransaksiController extends Controller
                 'message' => 'Bukti pembayaran is required.'
             ], 422);
         }
+    }
+    public function __construct() {
+        $this->middleware('auth');
     }
 }

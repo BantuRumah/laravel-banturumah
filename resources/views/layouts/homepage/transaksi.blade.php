@@ -1,82 +1,10 @@
 @extends('layouts.app')
 
+@php
+    use App\Http\Controllers\UserProfileController;
+@endphp
+
 @section('content-app')
-    <script>
-        // Define a JavaScript variable to hold the user_id
-        var userId = {{ Auth::id() }};
-    </script>
-    <style>
-        .card {
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            margin: 10px;
-            padding: 10px;
-        }
-
-        .card-header {
-            padding: 15px;
-            background-color: #092647;
-            color: #FFD700;
-        }
-
-        .card-body {
-            padding: 15px;
-        }
-
-        .card-title {
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .card-text {
-            font-size: 16px;
-            margin-bottom: 10px;
-            text-align: justify;
-        }
-
-        label {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        b {
-            font-weight: normal;
-        }
-
-        .badge {
-            font-size: 14px;
-            padding: 8px 12px;
-            border-radius: 8px;
-        }
-
-        .btn-primary {
-            background-color: #007BFF;
-            border: none;
-        }
-
-        .btn-primary:hover {
-            background-color: #0056b3;
-        }
-
-        .btn-danger {
-            background-color: #dc3545;
-            border: none;
-        }
-
-        .btn-danger:hover {
-            background-color: #c82333;
-        }
-
-        .btn-primary:disabled {
-            background-color: #6c757d;
-        }
-
-        .btn-danger:disabled {
-            background-color: #6c757d;
-        }
-    </style>
-
     <div class="container mt-4">
         <div class="row">
             <div class="col-md-12">
@@ -111,11 +39,11 @@
                                                     @if ($mitraItem->user_profile_picture)
                                                         <img src="{{ asset('storage/profile_pictures/' . $mitraItem->user_profile_picture) }}"
                                                             alt="{{ $mitraItem->user_name }}"
-                                                            class="card-img-top img-fluid">
+                                                            class="card-img-top img-fluid profile-image">
                                                     @else
                                                         <div style="text-align: center;">
                                                             <img src="{{ asset('img/profile_icon.png') }}"
-                                                                alt="Gambar Profil Default" class="img-fluid">
+                                                                alt="Gambar Profil Default" class="img-fluid profile-image">
                                                         </div>
                                                     @endif
                                                 </div>
@@ -149,8 +77,9 @@
                                                     <a href="#" class="btn btn-primary order-button"
                                                         data-mitra="{{ $mitraItem->user_name }}"
                                                         data-mitra_id="{{ $mitraItem->id }}"
-                                                        data-price="{{ $mitraItem->harga }}">Order
-                                                        Sekarang</a>
+                                                        data-price="{{ $mitraItem->harga }}"
+                                                        data-profile-updated="{{ UserProfileController::hasUpdatedProfile(Auth::id()) }}">
+                                                        Order Sekarang</a>
                                                 @elseif ($mitraItem->status == 'menunggu')
                                                     <a href="#" class="btn btn-warning order-button disabled"
                                                         data-mitra="{{ $mitraItem->user_name }}"
@@ -172,73 +101,8 @@
             </div>
         </div>
     </div>
-    <!-- Modal -->
-    <div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="orderModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="orderModalLabel">Pesan Sekarang</h5>
-                    <button type="button" id="closeModal" class="close" data-dismiss="modal" aria-label="Tutup">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form id="order-form" action="{{ route('transaksi.store') }}" method="POST"
-                        enctype="multipart/form-data">
-                        @csrf
-                        <input type="hidden" name="mitra_id" id="mitra_id" value="{{ Auth::id() }}">
-                        <input type="hidden" name="user_id" id="user_id" value="{{ Auth::id() }}">
-                        <div class="alert alert-info" role="alert">
-                            Transfer ke rekening BRI <strong>312701035606537</strong> atas nama <strong><br>Arief Nauvan
-                                Ramadha</strong>
-                        </div>
-                        <div class="form-group">
-                            <label for="jenis_sewa">Jenis Sewa</label>
-                            <select class="form-control" name="jenis_sewa" id="jenis_sewa" required>
-                                <option value="harian">Harian</option>
-                                <option value="mingguan">Mingguan</option>
-                                <option value="bulanan">Bulanan</option>
-                            </select>
-                        </div>
 
-                        <div class="form-group">
-                            <label for="tanggal_sewa">Tanggal Sewa</label>
-                            <input type="date" class="form-control" name="tanggal_sewa" id="tanggal_sewa"
-                                value="{{ date('Y-m-d') }}" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="tanggal_berakhir">Tanggal Berakhir</label>
-                            <input type="date" class="form-control" name="tanggal_berakhir" id="tanggal_berakhir"
-                                value="{{ date('Y-m-d') }}" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="jumlah_harga">Jumlah Harga:</label>
-                            <input type="text" class="form-control" id="jumlah_harga"
-                                value="Rp. {{ number_format($mitraItem->harga, 0, ',', '.') }}" readonly>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="bukti_pembayaran">Bukti Pembayaran</label>
-                            <input type="file" class="form-control" name="bukti_pembayaran" id="bukti_pembayaran"
-                                required>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary" id="placeOrderButton">Pesan Sekarang</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    </div>
-    <!-- Load jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+    @include('layouts.lainnya.popup.modal-transaksi')
 
     <script>
         $(document).ready(function() {
@@ -246,16 +110,24 @@
             var selectedPrice = 0;
 
             $(".order-button").click(function() {
-                var mitraName = $(this).data('mitra');
-                var mitraId = $(this).data('mitra_id');
-                var mitraPrice = $(this).data('price');
-                selectedPrice = mitraPrice;
-                $("#mitraName").text("Mitra: " + mitraName);
-                $("#mitra_id").val(mitraId);
-                $("#user_id").val(userId); // Set the user_id value
-                $("#orderModal").modal("show");
+                var profileUpdated = $(this).data('profile-updated');
+                // Cek apakah profil telah diperbarui
+                if (profileUpdated) {
+                    // Lanjutkan dengan menampilkan modal "Order Sekarang"
+                    var mitraName = $(this).data('mitra');
+                    var mitraId = $(this).data('mitra_id');
+                    var mitraPrice = $(this).data('price');
+                    selectedPrice = mitraPrice;
+                    $("#mitraName").text("Mitra: " + mitraName);
+                    $("#mitra_id").val(mitraId);
+                    $("#user_id").val(userId); // Set the user_id value
+                    $("#orderModal").modal("show");
 
-                updateJumlahHarga(mitraPrice);
+                    updateJumlahHarga(mitraPrice);
+                } else {
+                    // Tampilkan pesan bahwa profil harus diperbarui
+                    alert('Silakan perbarui profil Anda sebelum melakukan transaksi.');
+                }
             });
 
             // Handle form submission
