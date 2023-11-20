@@ -13,6 +13,7 @@
                     <thead>
                         <tr>
                             <th>No</th>
+                            <th>Nama Mitra</th>
                             <th>Jenis Sewa</th>
                             <th>Tanggal Sewa</th>
                             <th>Tanggal berakhir</th>
@@ -28,6 +29,7 @@
                         @foreach ($transaksis as $tr)
                             <tr>
                                 <td>{{ $count++ }}</td>
+                                <td>{{ $tr->mitra->name }}</td>
                                 <td>{{ $tr->jenis_sewa }}</td>
                                 <td>{{ $tr->tanggal_sewa }}</td>
                                 <td>{{ $tr->tanggal_berakhir }}</td>

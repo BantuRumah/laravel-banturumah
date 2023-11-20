@@ -163,15 +163,11 @@
             <div class="col-md-12">
                 <div class="card shadow-sm" style="background-color: rgb(234, 234, 234)">
                     <div class="card-body text-center mt-5 mb-5">
-                        <h1 class="card-title mb-4">Anda Punya Kendala?</h1>
-                        <p class="card-text mb-5">
+                        <h1 class="card-title mb-4" style="font-size: 300%">Anda Punya Kendala?</h1>
+                        <p class="card-text mb-5 text-center">
                             Hubungi kami jika anda mempunyai kendala, <br>
                             silahkan klik salah satu tombol dibawah ini.
                         </p>
-                        {{-- <a href="/sendemail" class="btn btn-primary btn-lg mb-4">
-                            <i class="fas fa-envelope" style="margin-right: 10px"></i>
-                            Hubungi melalui Email
-                        </a><br> --}}
                         <button id="emailBtn" class="btn btn-primary btn-lg mb-4" data-toggle="modal"
                             data-target="#emailModal">
                             <i class="fas fa-envelope" style="margin-right: 10px"></i>

@@ -65,10 +65,10 @@ class TransaksiController extends Controller
             $tanggalBerakhir = Carbon::parse($request->tanggal_berakhir)->setTime(0, 1);
 
             // Check if the current date and time have passed the end date and time
-            if (now()->greaterThanOrEqualTo($tanggalBerakhir)) {
-                // Change mitra's status to 'finished'
-                $mitra->update(['status' => 'finished']);
-            }
+            // if (now()->greaterThanOrEqualTo($tanggalBerakhir)) {
+            //     // Change mitra's status to 'finished'
+            //     $mitra->update(['status' => 'finished']);
+            // }
     
             // Create the transaction with the calculated jumlah_harga
             $transaksi = Transaksi::create([

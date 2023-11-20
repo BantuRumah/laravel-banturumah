@@ -25,10 +25,53 @@
                             </div>
                         @endif
 
+                        <div class="filter-layanan mb-3">
+                            <form action="{{ route('user.mitra-list') }}" method="get">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" style="padding: 10px">
+                                                    <i class="fas fa-filter"></i>
+                                                </span>
+                                            </div>
+                                            <select id="filterLayanan" name="layanan" class="form-control">
+                                                <option value="">Pilih Layanan</option>
+                                                @foreach ($layananList as $layanan)
+                                                    <option value="{{ $layanan }}"
+                                                        {{ $selectedLayanan == $layanan ? 'selected' : '' }}>
+                                                        {{ $layanan }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <div class="input-group">
+                                            <input type="text" name="search" class="form-control"
+                                                placeholder="Cari nama mitra...">
+                                            <div class="input-group-append">
+                                                <button type="submit" class="btn btn-primary">
+                                                    <i class="fas fa-search"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col"></div>
+                                    <div class="col"></div>
+                                </div>
+                            </form>
+                            @if ($mitra->isEmpty() && empty($selectedLayanan) && empty($searchTerm))
+                                <div class="alert alert-warning" role="alert">
+                                    Pencarian Anda tidak ditemukan.
+                                </div>
+                            @endif
+                        </div>
+
                         @php
                             $chunks = $mitra->chunk(3);
                             // dd($chunks);
                         @endphp
+
                         @foreach ($chunks as $chunk)
                             <div class="row">
                                 @foreach ($chunk as $mitraItem)
@@ -103,6 +146,19 @@
     </div>
 
     @include('layouts.lainnya.popup.modal-transaksi')
+
+    <script>
+        $(document).ready(function() {
+            // Menangani perubahan filter layanan
+            $("#filterLayanan").change(function() {
+                // Dapatkan nilai yang dipilih dari dropdown filter
+                var selectedLayanan = $(this).val();
+
+                // Redirect ke halaman dengan parameter layanan yang dipilih
+                window.location.href = "{{ route('user.mitra-list') }}?layanan=" + selectedLayanan;
+            });
+        });
+    </script>
 
     <script>
         $(document).ready(function() {
@@ -231,9 +287,6 @@
                         tanggalBerakhir = new Date(tanggalSewa);
                         break;
                 }
-
-                // Set the time to 00:01
-                tanggalBerakhir.setHours(0, 1, 0, 0);
 
                 // Format tanggal_berakhir to YYYY-MM-DD
                 var formattedDate = tanggalBerakhir.toISOString().split('T')[0];
