@@ -13,7 +13,14 @@ use App\Http\Controllers\SendEmailController;
 use App\Http\Controllers\MailConfigController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\ResetPasswordController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +54,18 @@ Route::middleware(['guest'])->group(function () {
     // Register
     Route::get('/register', [RegisterController::class, 'index'])->name('register');
     Route::post('/register', [RegisterController::class, 'register']);
+});
+
+// Forgot Password Routes
+Route::prefix('forgot-password')->middleware('guest')->group(function () {
+    Route::get('/', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+    Route::post('/', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+});
+
+// Reset Password Routes
+Route::prefix('reset-password')->middleware('guest')->group(function () {
+    Route::get('/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+    Route::post('/', [ResetPasswordController::class, 'reset'])->name('password.update');
 });
 
 Route::middleware(['auth'])->group(function () {

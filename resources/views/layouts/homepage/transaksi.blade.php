@@ -47,8 +47,7 @@
                                     </div>
                                     <div class="col-sm-5">
                                         <div class="input-group">
-                                            <input type="text" name="search" class="form-control"
-                                                placeholder="Cari nama mitra...">
+                                            <input type="text" name="search" class="form-control" placeholder="Cari...">
                                             <div class="input-group-append">
                                                 <button type="submit" class="btn btn-primary">
                                                     <i class="fas fa-search"></i>

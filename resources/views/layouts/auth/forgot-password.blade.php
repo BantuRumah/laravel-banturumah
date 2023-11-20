@@ -18,12 +18,7 @@
                     <img src="{{ asset('img/banturumah_nobg.png') }}" alt="image_login" style="width: 250px"
                         class="mx-auto">
                 </div>
-                <h3 class="text-center">LOGIN</h3>
-                {{-- <center>
-                    <p>email admin : banturumah4@gmail.com</p>
-                    <p>email mitra : mitra@gmail.com</p>
-                    <p>email admin : user@gmail.com</p>
-                </center> --}}
+                <h3 class="text-center">FORGOT PASSWORD</h3>
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -40,39 +35,31 @@
                     </div>
                 @endif
 
-                <form method="POST" action="">
+                <form method="POST" action="{{ route('password.email') }}">
                     @csrf
 
                     <div class="form-group" style="margin-top: 35px">
                         <label for="email" class="mb-2">Email :</label>
                         <input type="email" id="email" value="{{ old('email') }}" name="email" class="form-control"
-                            placeholder="example@gmail.com">
-                    </div>
-
-                    <div class="form-group" style="margin-top: 15px">
-                        <label for="password" class="mb-2">Password :</label>
-                        <input type="password" id="password" value="{{ old('password') }}" name="password"
-                            class="form-control" placeholder="********">
-                    </div>
-
-                    <div class="form-group form-check" style="margin-top: 15px">
-                        <input type="checkbox" class="form-check-input" id="showPassword">
-                        <label class="form-check-label" for="showPassword">Show Password</label>
+                            placeholder="">
                     </div>
 
                     <div class="form-group" style="margin-top: 25px">
-                        {!! NoCaptcha::renderJs() !!}
-                        {!! NoCaptcha::display() !!}
-                    </div>
-
-                    <div class="form-group" style="margin-top: 25px">
-                        <button name="submit" type="submit" class="btn btn-primary btn-block">Login</button>
-                    </div>
-                    <div class="form-group" style="margin-top: 15px">
-                        Forgot password? <a href="/forgot-password">Forgot</a>
+                        <button name="submit" type="submit" class="btn btn-primary btn-block"
+                            onclick="showAlert()">Request Reset</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
+    <script>
+        function showAlert() {
+            var email = document.getElementById('email').value; // Mengambil nilai email dari input
+            if (email === "") {
+                alert("Silahkan isi alamat email Anda.");
+            }
+        }
+    </script>
+
 @endsection
