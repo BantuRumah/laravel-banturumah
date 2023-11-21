@@ -8,7 +8,7 @@
     <div class="container mt-4">
         <div class="row">
             <div class="col-md-12">
-                <div class="card" style="margin-left: 50px; margin-right: 50px;">
+                <div class="card" style="margin-left: 0px; margin-right: 0px;">
                     <div class="card-header">
                         <h2>Transaksi</h2>
                     </div>
@@ -246,7 +246,7 @@
                         Swal.fire({
                             icon: 'success',
                             title: 'Berhasil',
-                            text: 'Anda telah berhasil melakukan transaksi.',
+                            text: 'Anda telah berhasil melakukan transaksi. Orderan anda sedang diperiksa oleh admin.',
                         }).then((result) => {
                             if (result.isConfirmed) {
                                 // Reload the page to '/user/mitra-list'

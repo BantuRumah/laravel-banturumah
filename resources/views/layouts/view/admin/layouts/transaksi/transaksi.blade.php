@@ -7,56 +7,58 @@
 
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <table class="table table-hover">
-                        <thead class="table-light">
-                            <tr>
-                                <th>No</th>
-                                <th>Nama Mitra</th>
-                                <th>Nama Penyewa</th>
-                                <th>Jenis Sewa</th>
-                                <th>Tanggal Sewa</th>
-                                <th>Tanggal berakhir</th>
-                                <th>Tanggal transaksi</th>
-                                <th>Waktu transaksi</th>
-                                <th>Jumlah Harga</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @php $count = 1; @endphp
-                            @foreach ($transaksis as $tr)
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="table-light">
                                 <tr>
-                                    <td>{{ $count++ }}</td>
-                                    <td>{{ $tr->mitra->name }}</td>
-                                    <td>{{ $tr->users->name }}</td>
-                                    <td>{{ $tr->jenis_sewa }}</td>
-                                    <td>{{ $tr->tanggal_sewa }}</td>
-                                    <td>{{ $tr->tanggal_berakhir }}</td>
-                                    <td>{{ $tr->tanggal_transaksi }}</td>
-                                    <td>{{ $tr->waktu_transaksi }}</td>
-                                    <td>{{ $tr->jumlah_harga }}</td>
-                                    <td>{{ $tr->status }}</td>
-                                    <td>
-                                        <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#updateStatusModal{{ $tr->id }}" data-bs-toggle="tooltip"
-                                            data-bs-placement="top" title="Update Status">
-                                            <i class="fas fa-sync-alt fa-spin"></i>
-                                        </button>
-                                        <form action="{{ route('admin.transaksi.destroy', $tr->id) }}" method="POST"
-                                            class="d-inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm"
-                                                onclick="return confirm('Are you sure you want to delete this transaction?')">
-                                                <i class="fas fa-trash fa-trash-animation" title="delete"></i>
-                                            </button>
-                                        </form>
-                                    </td>
+                                    <th>No</th>
+                                    <th>Nama Mitra</th>
+                                    <th>Nama Penyewa</th>
+                                    <th>Jenis Sewa</th>
+                                    <th>Tanggal Sewa</th>
+                                    <th>Tanggal berakhir</th>
+                                    <th>Tanggal transaksi</th>
+                                    <th>Waktu transaksi</th>
+                                    <th>Jumlah Harga</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @php $count = 1; @endphp
+                                @foreach ($transaksis as $tr)
+                                    <tr>
+                                        <td>{{ $count++ }}</td>
+                                        <td>{{ $tr->mitra->name }}</td>
+                                        <td>{{ $tr->users->name }}</td>
+                                        <td>{{ $tr->jenis_sewa }}</td>
+                                        <td>{{ $tr->tanggal_sewa }}</td>
+                                        <td>{{ $tr->tanggal_berakhir }}</td>
+                                        <td>{{ $tr->tanggal_transaksi }}</td>
+                                        <td>{{ $tr->waktu_transaksi }}</td>
+                                        <td>{{ $tr->jumlah_harga }}</td>
+                                        <td>{{ $tr->status }}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                                                data-bs-target="#updateStatusModal{{ $tr->id }}"
+                                                data-bs-toggle="tooltip" data-bs-placement="top" title="Update Status">
+                                                <i class="fas fa-sync-alt fa-spin"></i>
+                                            </button>
+                                            <form action="{{ route('admin.transaksi.destroy', $tr->id) }}" method="POST"
+                                                class="d-inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm"
+                                                    onclick="return confirm('Are you sure you want to delete this transaction?')">
+                                                    <i class="fas fa-trash fa-trash-animation" title="delete"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
