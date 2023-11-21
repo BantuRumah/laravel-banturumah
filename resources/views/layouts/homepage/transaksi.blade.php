@@ -5,6 +5,11 @@
 @endphp
 
 @section('content-app')
+    <style>
+        .copy-icon {
+            cursor: pointer;
+        }
+    </style>
     <div class="container mt-4">
         <div class="row">
             <div class="col-md-12">
@@ -325,5 +330,33 @@
             // Perbarui tanggal_berakhir saat halaman dimuat
             updateTanggalBerakhir();
         });
+    </script>
+    <script>
+        function copyText() {
+            /* Copy text into clipboard */
+            var rekeningText = "312701035606537"; // The text you want to copy
+            navigator.clipboard.writeText(rekeningText).then(function() {
+                var textArea = document.createElement("textarea");
+                textArea.value = rekeningText;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand("copy");
+                document.body.removeChild(textArea);
+
+                var copyIcon = document.getElementById("copy-icon");
+                copyIcon.classList.remove("fa-copy");
+                copyIcon.classList.add("fa-check");
+
+                // Show a standard JavaScript alert
+                alert("Text berhasil disalin ke clipboard!");
+
+                setTimeout(function() {
+                    copyIcon.classList.remove("fa-check");
+                    copyIcon.classList.add("fa-copy");
+                }, 2000);
+            }).catch(function(error) {
+                console.error("Unable to copy text: ", error);
+            });
+        }
     </script>
 @endsection
