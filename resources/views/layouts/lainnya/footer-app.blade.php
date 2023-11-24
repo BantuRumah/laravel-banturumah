@@ -16,9 +16,23 @@
             <div class="col-md-2 mt-2">
                 <h4>Menu</h4>
                 <ul class="list-unstyled">
-                    <li><a href="/">Beranda</a></li>
-                    <li><a href="/service">Layanan Kami</a></li>
-                    <li><a href="/aboutus">Tentang Kami</a></li>
+                    @auth
+                        @if (Auth::user()->role == 'mitra' || Auth::user()->role == 'admin')
+                            <li><a href="/">Beranda</a></li>
+                            <li><a href="/service">Layanan Kami</a></li>
+                            <li><a href="/about-us">Tentang Kami</a></li>
+                        @elseif(Auth::user()->role == 'user')
+                            <li><a href="/">Beranda</a></li>
+                            <li><a href="/service">Layanan Kami</a></li>
+                            <li><a href="/about-us">Tentang Kami</a></li>
+                            <li><a href="/user/mitra-list">Transaksi</a></li>
+                        @endif
+                    @endauth
+                    @guest
+                        <li><a href="/">Beranda</a></li>
+                        <li><a href="/service">Layanan Kami</a></li>
+                        <li><a href="/about-us">Tentang Kami</a></li>
+                    @endguest
                 </ul>
             </div>
             <div class="col-md-4 mt-2">

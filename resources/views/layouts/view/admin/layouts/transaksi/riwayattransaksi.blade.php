@@ -3,7 +3,7 @@
 
 @section('content-app')
     <section class="content-wrapper">
-        <div class="container">
+        <div class="container mt-5">
             <h1>Riwayat Transaksi</h1>
 
             <!-- Your existing code here -->
@@ -15,6 +15,7 @@
                             <th>No</th>
                             <th>Nama Mitra</th>
                             <th>Jenis Sewa</th>
+                            <th>Harga</th>
                             <th>Tanggal Sewa</th>
                             <th>Tanggal berakhir</th>
                             <th>Tanggal transaksi</th>
@@ -31,6 +32,7 @@
                                 <td>{{ $count++ }}</td>
                                 <td>{{ $tr->mitra->name }}</td>
                                 <td>{{ $tr->jenis_sewa }}</td>
+                                <td>{{ $tr->jumlah_harga }}</td>
                                 <td>{{ $tr->tanggal_sewa }}</td>
                                 <td>{{ $tr->tanggal_berakhir }}</td>
                                 <td>{{ $tr->tanggal_transaksi }}</td>
@@ -41,11 +43,14 @@
                                     @elseif ($tr->status == 'success')
                                         <button class="btn btn-success btn-sm" disabled>Success</button>
                                     @elseif ($tr->status == 'failed')
-                                        <button class="btn btn-danger btn-sm" disabled>Failed</button>
-                                        <a href="{{ route('user.mitra-list') }}" class="btn btn-primary btn-sm">Re-Order</a>
+                                        <button class="btn btn-danger btn-sm" disabled
+                                            style="background-color: red; color: white;">Failed</button>
+                                        <a href="{{ route('user.mitra-list') }}" class="btn btn-warning btn-sm"
+                                            title="re-order"><i class="fas fa-sync-alt fa-spin"></i></a>
                                     @elseif ($tr->status == 'finished')
                                         <button class="btn btn-info btn-sm" disabled>Finished</button>
-                                        <a href="{{ route('user.mitra-list') }}" class="btn btn-primary btn-sm">Re-Order</a>
+                                        <a href="{{ route('user.mitra-list') }}" class="btn btn-warning btn-sm"
+                                            title="re-order"><i class="fas fa-sync-alt fa-spin"></i></a>
                                     @endif
                                 </td>
                             </tr>

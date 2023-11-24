@@ -111,11 +111,22 @@
 
                                                 <label>Status:</label>
                                                 <div class="card-text mb-2">
-                                                    <span
-                                                        class="badge {{ $mitraItem->status == 'tersedia' ? 'bg-success' : 'bg-danger' }}"
-                                                        style="font-size: 14px; padding: 8px 12px; border-radius: 8px;">
-                                                        {{ $mitraItem->status }}
-                                                    </span>
+                                                    @if ($mitraItem->status == 'tersedia')
+                                                        <span class="badge bg-success"
+                                                            style="font-size: 14px; padding: 8px 12px; border-radius: 8px;">
+                                                            {{ $mitraItem->status }}
+                                                        </span>
+                                                    @elseif ($mitraItem->status == 'menunggu')
+                                                        <span class="badge bg-info"
+                                                            style="font-size: 14px; padding: 8px 12px; border-radius: 8px;">
+                                                            {{ $mitraItem->status }}
+                                                        </span>
+                                                    @else
+                                                        <span class="badge bg-danger"
+                                                            style="font-size: 14px; padding: 8px 12px; border-radius: 8px;">
+                                                            {{ $mitraItem->status }}
+                                                        </span>
+                                                    @endif
                                                 </div>
                                                 <label>Harga:</label>
                                                 <p class="card-text">Rp.

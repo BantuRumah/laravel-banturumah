@@ -22,7 +22,6 @@ class UserProfileController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . Auth::id(),
-            'role' => 'required|in:admin,mitra,user',
             'telephone' => 'required|numeric',
             'alamat' => 'required|string|max:255',
             'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg',
@@ -35,7 +34,6 @@ class UserProfileController extends Controller
         $updateData = [
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
-            'role' => $validatedData['role'],
             'telephone' => $validatedData['telephone'],
             'alamat' => $validatedData['alamat'],
         ];

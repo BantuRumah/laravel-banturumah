@@ -40,12 +40,6 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="role" class="form-label">Role:</label>
-                                    <input type="text" class="form-control" id="role" name="role"
-                                        value="{{ Auth::user()->role }}" readonly>
-                                </div>
-
-                                <div class="mb-3">
                                     <label for="telephone" class="form-label">Telephone:</label>
                                     <input type="number" class="form-control" id="telephone" name="telephone"
                                         value="{{ Auth::user()->telephone }}">
@@ -64,17 +58,19 @@
                                 </div>
 
                                 <!-- Tampilkan foto profil saat ini -->
-                                @if (Auth::user()->profile_picture)
-                                    <div class="current-profile-picture">
-                                        <img src="{{ asset('storage/profile_pictures/' . Auth::user()->profile_picture) }}"
-                                            alt="Foto Profil" width="100">
-                                    </div>
-                                    <div class="mt-3">
-                                        <a href="{{ route('profile.delete_picture') }}" class="btn btn-danger btn-sm"
-                                            onclick="return confirm('Apakah Anda yakin ingin menghapus foto profil?')">Hapus
-                                            Foto Profil</a>
-                                    </div>
-                                @endif
+                                <div class="mb-3">
+                                    @if (Auth::user()->profile_picture)
+                                        <div class="current-profile-picture">
+                                            <img src="{{ asset('storage/profile_pictures/' . Auth::user()->profile_picture) }}"
+                                                alt="Foto Profil" width="100">
+                                        </div>
+                                        <div class="mt-3">
+                                            <a href="{{ route('profile.delete_picture') }}" class="btn btn-danger btn-sm"
+                                                onclick="return confirm('Apakah Anda yakin ingin menghapus foto profil?')">Hapus
+                                                Foto Profil</a>
+                                        </div>
+                                    @endif
+                                </div>
 
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password (biarkan kosong jika tidak ingin
