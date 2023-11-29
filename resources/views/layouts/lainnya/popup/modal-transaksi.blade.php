@@ -15,9 +15,10 @@
                     <input type="hidden" name="mitra_id" id="mitra_id" value="{{ Auth::id() }}">
                     <input type="hidden" name="user_id" id="user_id" value="{{ Auth::id() }}">
                     <div class="alert alert-info" role="alert">
-                        Transfer ke rekening BRI <strong>312701035606537</strong> atas nama <br>
-                        <strong>Arief Nauvan Ramadha <i id="copy-icon" class="fas fa-copy copy-icon"
-                                onclick="copyText()"></i></strong>
+                        Transfer ke rekening BRI <strong>312701035606537 </strong><i id="copy-icon"
+                            class="fas fa-copy copy-icon" onclick="copyText()" title="copy nomor rekening"></i> atas
+                        nama <br>
+                        <strong>Arief Nauvan Ramadha</strong>
                     </div>
                     <div class="form-group">
                         <label for="jenis_sewa">Jenis Sewa</label>

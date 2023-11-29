@@ -8,6 +8,7 @@
     <style>
         .copy-icon {
             cursor: pointer;
+            padding: 1px
         }
     </style>
     <div class="container mt-4">
@@ -359,7 +360,7 @@
                 copyIcon.classList.add("fa-check");
 
                 // Show a standard JavaScript alert
-                alert("Text berhasil disalin ke clipboard!");
+                // alert("Text berhasil disalin ke clipboard!");
 
                 setTimeout(function() {
                     copyIcon.classList.remove("fa-check");
