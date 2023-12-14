@@ -14,6 +14,9 @@
                             <th>Nama</th>
                             <th>Layanan</th>
                             <th>Umur</th>
+                            <th>Radius</th>
+                            <th>Mobilitas</th>
+                            <th>Pekerjaan</th>
                             <th>Status</th>
                             <th>Harga</th>
                             <th>Action</th>
@@ -29,6 +32,9 @@
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->layanan }}</td>
                                 <td>{{ $user->umur }}</td>
+                                <td>{{ $user->radius }}</td>
+                                <td>{{ $user->mobilitas }}</td>
+                                <td>{!! nl2br($user->pekerjaan) !!}</td>
                                 <td>{{ $user->status }}</td>
                                 <td>{{ $user->harga }}</td>
                                 <td>

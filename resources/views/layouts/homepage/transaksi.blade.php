@@ -132,6 +132,13 @@
                                                 <label>Harga:</label>
                                                 <p class="card-text">Rp.
                                                     {{ number_format($mitraItem->harga, 0, ',', '.') }} / Hari</p>
+                                                <a href="#" class="btn btn-secondary detail-button"
+                                                    data-pekerjaan="{{ $mitraItem->pekerjaan }}"
+                                                    data-radius="{{ $mitraItem->radius }}"
+                                                    data-mobilitas="{{ $mitraItem->mobilitas }}" data-toggle="modal"
+                                                    data-target="#detailModal">
+                                                    Detail
+                                                </a>
                                                 @if ($mitraItem->status == 'tersedia')
                                                     <a href="#" class="btn btn-primary order-button"
                                                         data-mitra="{{ $mitraItem->user_name }}"
@@ -161,7 +168,73 @@
         </div>
     </div>
 
+    <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="detailModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-warning" style="background: #092647">
+                    <h5 class="modal-title" id="detailModalLabel">Detail Mitra</h5>
+                    <button type="button" id="closeModalDetail" class="close" data-dismiss="modal"
+                        aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-4">
+                            <h6>Mengerjakan Tugas</h6>
+                        </div>
+                        <div class="col-8">
+                            <p id="pekerjaanDetail"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <h6>Daerah Radius</h6>
+                        </div>
+                        <div class="col-8">
+                            <p id="radiusDetail"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <h6>Mobilitas</h6>
+                        </div>
+                        <div class="col-8">
+                            <p id="mobilitasDetail"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     @include('layouts.lainnya.popup.modal-transaksi')
+
+    <script>
+        $(document).ready(function() {
+            $(".detail-button").click(function() {
+                var pekerjaan = $(this).data('pekerjaan');
+                var radius = $(this).data('radius');
+                var mobilitas = $(this).data('mobilitas');
+
+                // Set the text in the modal
+                $("#pekerjaanDetail").text(pekerjaan);
+                $("#radiusDetail").text(radius);
+                $("#mobilitasDetail").text(mobilitas);
+
+                // Show the modal
+                $('#detailModal').modal('show');
+            });
+            // Tutup modal
+            $("#closeModalDetail, .modal-footer .btn-secondary").click(function() {
+                $('#detailModal').modal('hide');
+            });
+        });
+    </script>
 
     <script>
         $(document).ready(function() {

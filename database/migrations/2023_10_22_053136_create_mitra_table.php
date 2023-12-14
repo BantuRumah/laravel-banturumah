@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('name');
             $table->longText('layanan')->nullable();
             $table->bigInteger('umur');
+            $table->string('radius')->nullable();
+            $table->string('pekerjaan')->nullable();
+            $table->string('mobilitas')->nullable();
             $table->enum('status', ['menunggu', 'tersedia', 'tidak tersedia'])->default('tersedia');
             $table->bigInteger('harga');
             $table->timestamps();

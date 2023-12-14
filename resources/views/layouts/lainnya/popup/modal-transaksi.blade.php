@@ -2,7 +2,7 @@
 <div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="orderModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header text-warning" style="background: #092647">
                 <h5 class="modal-title" id="orderModalLabel">Pesan Sekarang</h5>
                 <button type="button" id="closeModal" class="close" data-dismiss="modal" aria-label="Tutup">
                     <span aria-hidden="true">&times;</span>

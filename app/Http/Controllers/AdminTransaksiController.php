@@ -16,16 +16,16 @@ class AdminTransaksiController extends Controller
     }
     public function riwayattransaksi() {
         // Dapatkan ID pengguna yang sedang login
-    $userId = Auth::id();
+        $userId = Auth::id();
 
-    // Filter transaksi berdasarkan ID pengguna yang sedang login
-    // Asumsi bahwa di model Transaksi ada relasi 'users' yang menghubungkan ke tabel pengguna
-    $transaksis = Transaksi::with(['mitra', 'users'])->whereHas('users', function($query) use ($userId) {
-        $query->where('id', $userId);
-    })->get();
+        // Filter transaksi berdasarkan ID pengguna yang sedang login
+        // Asumsi bahwa di model Transaksi ada relasi 'users' yang menghubungkan ke tabel pengguna
+        $transaksis = Transaksi::with(['mitra', 'users'])->whereHas('users', function($query) use ($userId) {
+            $query->where('id', $userId);
+        })->get();
 
-    // dd($transaksis); // Debug untuk melihat hasil query
-    return view('layouts.view.admin.layouts.transaksi.riwayattransaksi', compact('transaksis'));
+        // dd($transaksis); // Debug untuk melihat hasil query
+        return view('layouts.view.admin.layouts.transaksi.riwayattransaksi', compact('transaksis'));
     }
     public function update_status(Request $request, $id)
     {

@@ -1,10 +1,7 @@
 <?php
 
 namespace Database\Seeders;
-
-use App\Models\Role;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -22,20 +19,27 @@ class DummyUsersSeeder extends Seeder
             [
                 'name' => 'Admin BantuRumah',
                 'email' => 'banturumah4@gmail.com',
-                'password' => Hash::make('Password121'),
+                'password' => Hash::make('Bana2023'),
                 'role' => 'admin',
                 'telephone' => '082313568127',
                 'alamat' => 'Jl. Soekarno Hatta No.9, Jatimulyo, Kec.Lowokwaru, Kota Malang, Jawa Timur 65141',
                 'mitra_id' => null,
             ],
              [
-                 'name' => 'Mitra BantuRumah',
-                 'email' => 'mitra@gmail.com',
+                 'name' => 'Bu Yanti',
+                 'email' => 'yanti123@gmail.com',
                  'password' => Hash::make('Password121'),
                  'role' => 'mitra',
                  'telephone' => '085159094233',
                  'alamat' => 'Jl. Soekarno Hatta No.9, Jatimulyo, Kec.Lowokwaru, Kota Malang, Jawa Timur 65141',
                  'mitra_id' => 1,
+             ],
+             [
+                 'name' => 'Devi Oktarina',
+                 'email' => 'devioktarina86@gmail.com',
+                 'password' => Hash::make('Password121'),
+                 'role' => 'user',
+                 'mitra_id' => null,
              ],
              [
                  'name' => 'User BantuRumah',

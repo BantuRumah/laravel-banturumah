@@ -16,6 +16,9 @@ class Mitra extends Model
         'name',
         'layanan',
         'umur',
+        'radius',
+        'pekerjaan',
+        'mobilitas',
         'status',
         'harga',
     ];

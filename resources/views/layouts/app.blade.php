@@ -31,6 +31,15 @@
     <link rel="stylesheet" href="{{ asset('/css/dropdown-navbar.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/transaksi-view.css') }}">
 
+    <style>
+        .input-group-text {
+            background-size: contain;
+            background-repeat: no-repeat;
+            padding-left: 10px;
+            /* sesuaikan padding agar tulisan tidak bertabrakan dengan bendera */
+        }
+    </style>
+
 </head>
 
 <body>

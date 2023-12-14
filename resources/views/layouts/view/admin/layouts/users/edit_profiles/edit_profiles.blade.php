@@ -41,8 +41,11 @@
 
                                 <div class="mb-3">
                                     <label for="telephone" class="form-label">Telephone:</label>
-                                    <input type="number" class="form-control" id="telephone" name="telephone"
-                                        value="{{ Auth::user()->telephone }}">
+                                    <div class="input-group">
+                                        <span class="input-group-text">+62</span>
+                                        <input type="number" class="form-control" id="telephone" name="telephone"
+                                            value="{{ Auth::user()->telephone }}">
+                                    </div>
                                 </div>
 
                                 <div class="mb-3">

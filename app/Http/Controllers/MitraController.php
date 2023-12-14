@@ -40,6 +40,9 @@ class MitraController extends Controller
             'name' => 'required',
             'layanan' => 'nullable',
             'umur' => 'required|numeric',
+            'radius' => 'required',
+            'mobilitas' => 'required',
+            'pekerjaan' => 'required',
             'status' => 'required|in:tersedia,tidak tersedia',
             'harga' => 'required',
         ]);
@@ -76,6 +79,9 @@ class MitraController extends Controller
             'name' => 'required|string|max:255',
             'layanan' => 'nullable',
             'umur' => 'required|numeric',
+            'radius' => 'nullable',
+            'mobilitas' => 'nullable',
+            'pekerjaan' => 'nullable',
             'status' => 'required|in:tersedia,tidak tersedia',
             'harga' => 'required',
         ]);
@@ -84,6 +90,9 @@ class MitraController extends Controller
         $keteranganMitra->name = $request->input('name');
         $keteranganMitra->layanan = $request->input('layanan');
         $keteranganMitra->umur = $request->input('umur');
+        $keteranganMitra->radius = $request->input('radius');
+        $keteranganMitra->mobilitas = $request->input('mobilitas');
+        $keteranganMitra->pekerjaan = $request->input('pekerjaan');
         $keteranganMitra->status = $request->input('status');
         $keteranganMitra->harga = $request->input('harga');
         $keteranganMitra->save();
@@ -119,6 +128,9 @@ class MitraController extends Controller
             'name' => 'required',
             'layanan' => 'nullable',
             'umur' => 'required',
+            'radius' => 'nullable',
+            'mobilitas' => 'nullable',
+            'pekerjaan' => 'nullable',
             'status' => 'nullable|in:tersedia,tidak tersedia',
             'harga' => 'nullable',
         ]);

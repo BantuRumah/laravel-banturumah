@@ -33,12 +33,36 @@
 
                     <div class="form-group">
                         <label for="layanan">Layanan:</label>
-                        <input type="text" id="layanan" name="layanan" class="form-control" required>
+                        <select id="layanan" name="layanan" class="form-control">
+                            <option value="Asisten Rumah Tangga">Asisten Rumah Tangga</option>
+                            <option value="Baby Sitter">Baby Sitter</option>
+                            <option value="Sopir">Sopir</option>
+                            <option value="ART + Baby Sitter">ART + Baby Sitter</option>
+                        </select>
+                        {{-- <input type="text" id="layanan" name="layanan" class="form-control" required> --}}
                     </div>
 
                     <div class="form-group">
                         <label for="umur">Umur:</label>
                         <input type="number" id="umur" name="umur" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="radius">Daerah Radius:</label>
+                        <input type="text" id="radius" name="radius" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mobilitas">Mobilitas:</label>
+                        <select id="mobilitas" name="mobilitas" class="form-control">
+                            <option value="Pulang Pergi">Pulang Pergi</option>
+                            <option value="Menginap">Menginap</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pekerjaan">Jenis Pekerjaan:</label>
+                        <textarea id="pekerjaan" name="pekerjaan" class="form-control" rows="4" required></textarea>
                     </div>
 
                     <div class="form-group">
@@ -49,7 +73,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="harga">Harga:</label>
+                        <label for="harga">Harga: (perhari)</label>
                         <input type="number" id="harga" name="harga" class="form-control" required>
                     </div>
 

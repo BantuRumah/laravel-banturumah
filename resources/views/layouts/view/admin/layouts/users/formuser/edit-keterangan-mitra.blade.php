@@ -46,6 +46,28 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="radius">Daerah Radius:</label>
+                        <input type="text" id="radius" name="radius" class="form-control"
+                            value="{{ $keteranganMitra->radius }}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mobilitas">Mobilitas:</label>
+                        <select id="mobilitas" name="mobilitas" class="form-control"
+                            value="{{ $keteranganMitra->mobilitas }}" required>
+                            <option value="Pulang Pergi">Pulang Pergi</option>
+                            <option value="Menginap">Menginap</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pekerjaan">Jenis Pekerjaan:</label>
+                        <textarea id="pekerjaan" name="pekerjaan" class="form-control" rows="4" required>
+                            {{ $keteranganMitra->pekerjaan }}
+                        </textarea>
+                    </div>
+
+                    <div class="form-group">
                         <label for="status">Status:</label>
                         <select id="status" name="status" class="form-control" readonly>
                             <option value="tersedia">Tersedia</option>
