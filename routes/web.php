@@ -131,6 +131,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/user/mitra-list', [UserController::class, 'mitraList'])->name('user.mitra-list');
         Route::get('/user/riwayat-transaksi', [AdminTransaksiController::class, 'riwayattransaksi'])->name('user.riwayat-transaksi');
         Route::get('/reorder/{id}', [AdminTransaksiController::class, 'reorder'])->name('reorder');
+        Route::post('/user/review/{id}', [UserController::class, 'storeReview'])->name('user.store_review');
 
         // Transaksi
         Route::get('/transaksi/create', [TransaksiController::class, 'create'])->name('transaksi.create');

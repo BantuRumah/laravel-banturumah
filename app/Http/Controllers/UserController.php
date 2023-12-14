@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Role;
 use App\Models\User;
 use App\Models\Mitra;
 use App\Models\Transaksi;
-use App\Http\Controllers\UserProfileController;
+use App\Models\Rating;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -77,17 +75,30 @@ class UserController extends Controller
         return view('layouts.homepage.transaksi', compact('mitra', 'transaksi', 'layananList', 'selectedLayanan'));
     }
 
-    // public function mitraList() {
-    //     // Fetch the list of "mitra" roles that the "user" can rent
-    //     // $mitraRoles = Role::where('role', 'mitra')->get();
+    public function storeReview(Request $request, $id)
+    {
+        // Validasi request
+        $request->validate([
+            'rating' => 'required|integer|min:1|max:5',
+            'review' => 'required|string|max:255',
+        ]);
 
-    //     $mitra = Mitra::leftJoin('users', 'users.mitra_id', '=', 'mitra.id')
-    //         ->select('mitra.*', 'users.name as user_name', 'users.profile_picture as user_profile_picture')
-    //         ->get();
+        // Temukan transaksi berdasarkan ID
+        $transaksi = Transaksi::find($id);
 
-    //         $transaksi = Transaksi::where('user_id', auth()->id())->first();
+        // Buat rating baru
+        $rating = new Rating([
+            'user_id' => auth()->id(),
+            'transaksi_id' => $transaksi->id,
+            'rating' => $request->rating,
+            'review' => $request->review,
+        ]);
 
-    //         return view('layouts.homepage.transaksi', compact('mitra', 'transaksi'));
-    // }
+        // Simpan rating
+        $rating->save();
+
+        // Redirect atau tindakan lainnya setelah menyimpan rating
+        return redirect()->back()->with('success', 'Rating dan review telah disimpan.');
+    }
 
 }

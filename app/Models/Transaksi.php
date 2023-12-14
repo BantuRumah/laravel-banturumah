@@ -29,6 +29,9 @@ class Transaksi extends Model
     public function users() {
         return $this->belongsTo(User::class, 'user_id');
     }
+    public function ratings() {
+        return $this->hasMany(Rating::class);
+    }
 
     // public function setStatusAttribute($value)
     // {
