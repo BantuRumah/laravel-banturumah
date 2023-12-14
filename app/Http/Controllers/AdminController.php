@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Mitra;
+use App\Models\Rating;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -14,7 +15,8 @@ class AdminController extends Controller
     public function index() {
         $userCount = User::count();
         $transactionCount = Transaksi::count();
-        return view('layouts.view.admin.layouts.homes.home', ['userCount' => $userCount, 'transactionCount' => $transactionCount]);
+        $ratingsCount = Rating::count();
+        return view('layouts.view.admin.layouts.homes.home', ['userCount' => $userCount, 'transactionCount' => $transactionCount, 'ratingsCount' => $ratingsCount]);
     }
 
     public function usersAdmin() {

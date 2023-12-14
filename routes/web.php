@@ -3,6 +3,7 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminRatingsController;
 use App\Http\Controllers\AdminTransaksiController;
 use App\Http\Controllers\AdminSettingController;
 use App\Http\Controllers\AllUserController;
@@ -94,6 +95,11 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/transaksi', [AdminTransaksiController::class, 'index'])->name('transaksi');
             Route::delete('/transaksi/{id}', [AdminTransaksiController::class, 'destroy'])->name('transaksi.destroy');
             Route::put('/transaksi/{id}', [AdminTransaksiController::class, 'update_status'])->name('transaksi.update_status');
+        });
+
+        Route::middleware(['auth', 'userAkses:admin'])->group(function () {
+            Route::get('/admin/ratings', [AdminRatingsController::class, 'index'])->name('admin.ratings');
+            Route::delete('/ratings/{id}', [AdminRatingsController::class, 'destroy'])->name('admin.ratings.destroy');
         });
 
         Route::get('/admin/settings/debug', [AdminSettingController::class, 'index'])->name('indexdebug');

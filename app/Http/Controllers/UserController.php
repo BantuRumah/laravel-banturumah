@@ -80,7 +80,7 @@ class UserController extends Controller
         // Validasi request
         $request->validate([
             'rating' => 'required|integer|min:1|max:5',
-            'review' => 'required|string|max:255',
+            'review' => 'nullable|string|max:255',
         ]);
 
         // Temukan transaksi berdasarkan ID

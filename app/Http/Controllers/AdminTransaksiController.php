@@ -14,6 +14,7 @@ class AdminTransaksiController extends Controller
         // dd($transaksis);
         return view('layouts.view.admin.layouts.transaksi.transaksi' ,compact('transaksis'));
     }
+
     public function riwayattransaksi() {
         // Dapatkan ID pengguna yang sedang login
         $userId = Auth::id();
@@ -27,6 +28,7 @@ class AdminTransaksiController extends Controller
         // dd($transaksis); // Debug untuk melihat hasil query
         return view('layouts.view.admin.layouts.transaksi.riwayattransaksi', compact('transaksis'));
     }
+
     public function update_status(Request $request, $id)
     {
         $validatedData = $request->validate([
@@ -60,6 +62,7 @@ class AdminTransaksiController extends Controller
 
         return redirect()->route('admin.transaksi')->with('success', 'Transaction status updated successfully');
     }
+    
     public function destroy($id) {
         // Find the transaction by ID
         $transaksi = Transaksi::findOrFail($id);

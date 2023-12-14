@@ -124,6 +124,16 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a href="/admin/ratings" class="nav-link {{ Request::is('admin/ratings') ? 'active' : '' }}"
+                        class="nav-link">
+                        <i class="nav-icon fas fa-star"></i>
+                        <p>
+                            Ratings
+                        </p>
+                    </a>
+                </li>
+
                 <li class="nav-header">PENGATURAN</li>
 
                 <li class="nav-item">
