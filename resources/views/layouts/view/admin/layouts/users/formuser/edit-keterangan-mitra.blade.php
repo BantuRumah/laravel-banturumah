@@ -35,8 +35,13 @@
 
                     <div class="form-group">
                         <label for="layanan">Layanan:</label>
-                        <input type="text" id="layanan" name="layanan" class="form-control"
-                            value="{{ $keteranganMitra->layanan }}" required>
+                        <select id="layanan" name="layanan" class="form-control">
+                            <option value="Asisten Rumah Tangga">Asisten Rumah Tangga</option>
+                            <option value="Baby Sitter">Baby Sitter</option>
+                            <option value="Driver">Driver</option>
+                            <option value="ART + Baby Sitter">ART + Baby Sitter</option>
+                        </select>
+                        {{-- <input type="text" id="layanan" name="layanan" class="form-control" required> --}}
                     </div>
 
                     <div class="form-group">

@@ -36,7 +36,7 @@
                         <select id="layanan" name="layanan" class="form-control">
                             <option value="Asisten Rumah Tangga">Asisten Rumah Tangga</option>
                             <option value="Baby Sitter">Baby Sitter</option>
-                            <option value="Sopir">Sopir</option>
+                            <option value="Driver">Driver</option>
                             <option value="ART + Baby Sitter">ART + Baby Sitter</option>
                         </select>
                         {{-- <input type="text" id="layanan" name="layanan" class="form-control" required> --}}
